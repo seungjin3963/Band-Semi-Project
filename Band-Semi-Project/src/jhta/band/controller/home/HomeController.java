@@ -14,6 +14,6 @@ public class HomeController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String contextPath = req.getContextPath();
 		req.getServletContext().setAttribute("cp", contextPath);
-		resp.sendRedirect(req.getContextPath()); // login Page move!!!
+		resp.sendRedirect(req.getContextPath()+"/login/login.jsp"); // login Page move!!!
 	}
 }
