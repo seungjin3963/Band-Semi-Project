@@ -159,6 +159,7 @@ public class loginDao {
 		String sql2 = "insert into userinfo values(?,?,?,?,?,?,?,null,?)";
 		try {
 			con = JDBCUtil.getConn();
+			con.setAutoCommit(false);
 			pstmt1 = con.prepareStatement(sql1);
 			pstmt1.setLong(1, vo1.getLogin_num());
 			pstmt1.setString(2, vo1.getLogin_id());
@@ -176,12 +177,20 @@ public class loginDao {
 				pstmt2.setString(7, vo2.getUser_anser());
 				pstmt2.setDate(8, vo2.getBirth());
 				int n2 = pstmt2.executeUpdate();
+				con.commit();
 				return n2;
 			}else {
+				con.rollback();
 				return 0;
 			}
 		}catch(SQLException se) {
 			se.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return -1;
 		}finally {
 			JDBCUtil.close(pstmt1);
