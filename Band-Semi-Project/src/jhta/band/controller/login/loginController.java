@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jhta.band.dao.loginDao;
 @WebServlet("/loginOk.do")
@@ -23,6 +24,9 @@ public class loginController extends HttpServlet{
 		if(a <= 0) {
 			code = "false";
 		}
+		HttpSession session = req.getSession();
+		session.setAttribute("login_num", a);
+		
 		req.setAttribute("loginId", loginId);
 		req.setAttribute("loginPwd", loginPwd);
 		req.setAttribute("code",code);

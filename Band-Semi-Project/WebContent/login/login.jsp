@@ -16,8 +16,9 @@
 <body>
 <script type="text/javascript">
 
+	// login하면 MyInfo.jsp로 바로 넘겨짐
+	// sql문에 answer수정
 	// 시퀀스 없음 loginDao , UserinfoController 수정해야함
-	// css 없애야 함
 	var year = document.getElementsByName("year");
 	var month = document.getElementsByName("month");
 	var date = document.getElementsByName("date");
