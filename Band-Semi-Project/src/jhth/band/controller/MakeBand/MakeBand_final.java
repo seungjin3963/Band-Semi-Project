@@ -20,17 +20,20 @@ public class MakeBand_final extends HttpServlet {
 		int bandcoverimg=Integer.parseInt(req.getParameter("bandcover"));
 		int open=Integer.parseInt(req.getParameter("open"));
 		int scategory=Integer.parseInt(req.getParameter("scategory"));
-
+		
+		long loginnum=Long.parseLong(req.getParameter("loginnum"));
+		
+		System.out.println(loginnum);
 		
 		MakebandVo data=new MakebandVo(0,scategory,bandname,open,bandintroduct,bandcoverimg,null,0);
 		
 		MakebandDao dao=new MakebandDao();
-		int n=dao.makeband(data);
-		
-		if(n>0) {
-			System.out.println("성공");
-		}else {
-			System.out.println("실패");
-		}
+		int n=dao.makeband(data,loginnum);
+//		
+//		if(n>0) {
+//			System.out.println("성공");
+//		}else {
+//			System.out.println("실패");
+//		}
 	}	
 }

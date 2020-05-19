@@ -17,7 +17,7 @@ public class LayoutController extends HttpServlet {
 			resp.sendRedirect(req.getContextPath()+"/bandList_layout.jsp");
 		}else {
 			req.setAttribute("file", file);
-			req.getRequestDispatcher("/makeband/bandList_layout.jsp").forward(req, resp);
+			req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req, resp);
 		}
 	}
 }

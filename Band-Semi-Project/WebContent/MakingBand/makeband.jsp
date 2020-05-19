@@ -14,6 +14,7 @@
 	    	<div>
 	    			<img src="MakingBand/bandcover/1.jpg" id="bcover" style="width: 500px; height: 280px;">
 		  			<input type="hidden" value="" id="bandcoverimg" name="bandcover">
+		  			<input type="hidden" value="${ sessionScope.login_num }" name="loginnum">
 		    	<div style="width: 740px; display: inline-block;">
 		    		<div>
 		    			커버선택 

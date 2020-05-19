@@ -21,8 +21,6 @@ public class MakeBand_scategory extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int bcategorynum=Integer.parseInt(req.getParameter("bcategorynum"));
 		
-		System.out.println(bcategorynum);
-		
 		CategoryDao dao=new CategoryDao();
 		
 		ArrayList<ScategoryVo> stitle = dao.scategory(bcategorynum);

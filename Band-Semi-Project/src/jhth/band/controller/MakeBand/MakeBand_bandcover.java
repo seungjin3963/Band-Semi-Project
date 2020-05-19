@@ -46,8 +46,8 @@ public class MakeBand_bandcover extends HttpServlet {
 		
 		ArrayList<CoverVo> cover=dao.cover(num);
 		req.setAttribute("scategory", scategory);
-		req.setAttribute("file", "MakingBand/makeband.jsp");
+		req.setAttribute("file", "makeband.jsp");
 		req.setAttribute("cover", cover);
-		req.getRequestDispatcher("/bandList_layout.jsp").forward(req, resp);
+		req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req, resp);
 	}
 }

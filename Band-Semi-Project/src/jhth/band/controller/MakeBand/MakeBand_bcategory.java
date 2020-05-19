@@ -20,7 +20,6 @@ public class MakeBand_bcategory extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String file=req.getParameter("file");
 		CategoryDao dao=new CategoryDao();
 		int num=1;
 		ArrayList<BcategoryVo> category=dao.bcategory(num);
@@ -29,9 +28,10 @@ public class MakeBand_bcategory extends HttpServlet {
 			category.get(i).getBcategoryNum();
 		}
 		
+		
 		req.setAttribute("category", category);
-		req.setAttribute("file", file);
-		req.getRequestDispatcher("/bandList_layout.jsp").forward(req, resp);
+		req.setAttribute("file","categorySel.jsp");
+		req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req, resp);
 	}
 	
 	@Override
