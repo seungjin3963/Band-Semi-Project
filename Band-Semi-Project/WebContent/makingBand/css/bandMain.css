@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#wrap {
+	width: 1890px;
+	height: 1400px;
+	background-color: #999;
+}
+
+#header {
+	height: 7%;
+	position: fixed;
+	top: 0px;
+	background-color: white;
+}
+
+#header #headerbar {
+	margin: auto;
+	width: 1890px;
+}
+
+#main {
+	height: 86%;
+	margin-top: 3%;
+	background-color: orange;
+}
+
+#main #mainbar {
+	width: 100%;
+}
+
+#footer {
+	height: 6%;
+	background-color: blue;
+}
+
+#footer #footerbar {
+	margin: auto;
+	width: 1700px;
+}
+
+#bandLisgheader {
+	margin-top: 20px;
+}
+
+#a1 {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#a2 {
+	text-decoration: none;
+	color: black;
+}
+
+#bandList3 {
+	display: inline-block;
+}
+
+#bandList4 {
+	display: inline-block;
+	border-radius: 40px;
+	background-color: transparent;
+	border: 2px solid black;
+	height: 28px;
+}
+
+#div1 {
+	display: inline-block;
+	float: right;
+}
+
+#div2 {
+	border: 1px solid black;
+	text-align: left;
+	width: 200px;
+	clear: right;
+	float: right;
+	display: none;
+	z-index: 200;
+	background-color: white;
+}
+
+.bandList1 {
+	background-color: transparent;
+	border: none;
+}
+
+#bandList_triangle {
+	opacity: 0.5;
+}
+
+#bandList {
+	background-color: #f5f5f5;
+	height: 40%;
+	padding: 30px 100px;
+}
+
+#makeband {
+	background-color: #c0c0c0;
+	width: 180px;
+	height: 200px;
+	text-align: center;
+	display: inline-block;
+}
+
+#add {
+	font-size: 100px;
+	background-color: #f0f0f0;
+	border-radius: 50%;
+	display: inline-block;
+	height: 60px;
+	padding-top: 20px;
+	margin-top: 50px;
+	margin-bottom: 10px;
+}
+
+#category {
+	background-color: #f5f5f5;
+	height: 40%;
+	padding: 30px;
+}
