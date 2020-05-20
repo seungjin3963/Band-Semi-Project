@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import test.dao.loginDao;
-import test.vo.JoinVo;
+import jhta.band.dao.loginDao;
+import jhta.band.vo.JoinVo;
 
 @WebServlet("/Cancle.do")
 public class CancleController extends HttpServlet{

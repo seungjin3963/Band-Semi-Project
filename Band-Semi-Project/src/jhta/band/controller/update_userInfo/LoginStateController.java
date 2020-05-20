@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import test.dao.UpdateInfoDao;
+import jhta.band.dao.UpdateInfoDao;
+
 @WebServlet("/Login_state.do")
 public class LoginStateController extends HttpServlet{
 	@Override

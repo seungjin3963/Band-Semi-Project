@@ -1,5 +1,6 @@
 package jhta.band.dao;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -8,11 +9,91 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import jhta.band.db.JDBCUtil;
+import jhta.band.vo.JoinVo;
 import jhta.band.vo.UserinfoVo;
 import jhta.band.vo.loginVo;
 
+
 public class loginDao {
 	
+	public JoinVo selectInfo(long num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from login ll, userinfo uu "
+				+ "where ll.login_num = uu.login_num and ll.login_num=?";
+		try {
+			con = JDBCUtil.getConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				long login_num = rs.getLong("login_num");
+				String login_id = rs.getString("login_id");
+				String login_pwd = rs.getString("login_pwd");
+				Date login_date = rs.getDate("login_date");
+				int login_state = rs.getInt("login_state");
+				String user_name = rs.getString("user_name");
+				String user_phone = rs.getString("user_phone");
+				String user_email = rs.getString("user_email");
+				String user_gender = rs.getString("user_gender");
+				String user_quiz = rs.getString("user_quiz");
+				String user_answer = rs.getString("user_answer");
+				Date user_birth = rs.getDate("user_birth");
+				
+				JoinVo vo = new JoinVo(login_num, login_id, login_pwd, login_date, login_state, user_name,
+						user_phone, user_email, user_gender, user_quiz, user_answer, user_birth);
+				return vo;
+			}else {
+				return null;
+			}
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(rs,pstmt,con);
+		}
+	}
+	public JoinVo selectInfo(String id, String pwd) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from login ll, userinfo uu "
+				+ "where ll.login_num = uu.login_num and ll.login_id=? and ll.login_pwd=?";
+		try {
+			con = JDBCUtil.getConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				long login_num = rs.getLong("login_num");
+				String login_id = rs.getString("login_id");
+				String login_pwd = rs.getString("login_pwd");
+				Date login_date = rs.getDate("login_date");
+				int login_state = rs.getInt("login_state");
+				String user_name = rs.getString("user_name");
+				String user_phone = rs.getString("user_phone");
+				String user_email = rs.getString("user_email");
+				String user_gender = rs.getString("user_gender");
+				String user_quiz = rs.getString("user_quiz");
+				String user_answer = rs.getString("user_answer");
+				Date user_birth = rs.getDate("user_birth");
+				
+				JoinVo vo = new JoinVo(login_num, login_id, login_pwd, login_date, login_state, user_name,
+										user_phone, user_email, user_gender, user_quiz, user_answer, user_birth);
+				return vo;
+			}else {
+				return null;
+			}
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(rs,pstmt,con);
+		}
+	}
 	public String check_id(String id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -22,7 +103,6 @@ public class loginDao {
 			con = JDBCUtil.getConn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
-			System.out.println("check_id: "+id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				String okey = rs.getString("login_id");
@@ -159,7 +239,6 @@ public class loginDao {
 		String sql2 = "insert into userinfo values(?,?,?,?,?,?,?,null,?)";
 		try {
 			con = JDBCUtil.getConn();
-			con.setAutoCommit(false);
 			pstmt1 = con.prepareStatement(sql1);
 			pstmt1.setLong(1, vo1.getLogin_num());
 			pstmt1.setString(2, vo1.getLogin_id());
@@ -177,20 +256,12 @@ public class loginDao {
 				pstmt2.setString(7, vo2.getUser_anser());
 				pstmt2.setDate(8, vo2.getBirth());
 				int n2 = pstmt2.executeUpdate();
-				con.commit();
 				return n2;
 			}else {
-				con.rollback();
 				return 0;
 			}
 		}catch(SQLException se) {
 			se.printStackTrace();
-			try {
-				con.rollback();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			return -1;
 		}finally {
 			JDBCUtil.close(pstmt1);

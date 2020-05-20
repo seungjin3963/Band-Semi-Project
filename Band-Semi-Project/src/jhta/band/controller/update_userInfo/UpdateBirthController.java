@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import test.dao.UpdateInfoDao;
-import test.dao.loginDao;
-import test.vo.JoinVo;
+import jhta.band.dao.UpdateInfoDao;
+import jhta.band.dao.loginDao;
+import jhta.band.vo.JoinVo;
 
 @WebServlet("/Birth.do")
 public class UpdateBirthController extends HttpServlet{
