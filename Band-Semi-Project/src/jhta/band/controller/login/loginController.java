@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import jhta.band.dao.loginDao;
-import jhth.band.dao.ssjDao.BandListDao;
-import jhth.band.vo.ssjVo.BandListVo;
+import jhth.band.dao.MakeBandDao.BandListDao;
+import jhth.band.vo.MakeBandVo.BandListVo;
 @WebServlet("/loginOk.do")
 public class loginController extends HttpServlet{
 	@Override

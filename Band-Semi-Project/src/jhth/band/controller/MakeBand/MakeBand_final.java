@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jhth.band.dao.ssjDao.MakebandDao;
-import jhth.band.vo.ssjVo.MakebandVo;
+import jhth.band.dao.MakeBandDao.MakebandDao;
+import jhth.band.vo.MakeBandVo.MakebandVo;
 @WebServlet("/band/makeband_end.do")
 public class MakeBand_final extends HttpServlet {
 	@Override

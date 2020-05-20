@@ -1,4 +1,4 @@
-package jhth.band.vo.ssjVo;
+package jhth.band.vo.MakeBandVo;
 
 public class BcategoryVo {
 	private int bcategoryNum;

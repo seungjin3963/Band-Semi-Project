@@ -1,4 +1,4 @@
-package jhth.band.dao.ssjDao;
+package jhth.band.dao.MakeBandDao;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import jhta.band.db.JDBCUtil;
-import jhth.band.vo.ssjVo.PhotoVo;
+import jhth.band.vo.MakeBandVo.PhotoVo;
 
 public class PhotoDao {
 	public int imgInput(String location) {
