@@ -10,15 +10,15 @@
 <body>
 <h1></h1>
 <div class="band_main_page2_Img">
-	
+	<img src="${cp }/${imgname }">
 </div>
 <div class="band_main_page2_w">
-<h1>밴드 이름</h1>
+<h1>${bandname }</h1>
 <p>맴버</p>&nbsp;<p>18</p><br>
 
-<p>▷</p><a href="${cp }/mainpagedata.do">밴드 정보 보기</a>
-<p>누구나 밴드를 검색해 찾을 수 있고, 밴드 소개와 게시글을 볼 수 있습니다.</p>
-<p>○</p><a href="${cp }/setBand_page.do">밴드 설정</a>
+<p>▷</p><a href="${cp }/mainpagedata.do">밴드 정보 보기</a><br>
+<p>${band_intoroductio}</p><br>
+<p>○</p><a href="${cp }/setBand_page.do">밴드 설정</a><br>
 </div>
 </body>
 </html>

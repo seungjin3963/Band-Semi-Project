@@ -36,6 +36,31 @@ public class band_main_page_infoDao {
 		}
 		return null;
 	}
+		public BandAllinfoDvo bandAllinfo(int num) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = JDBCUtil.getConn();
+				String sql = "select c.bandimg , a.* from (select * from band where band_num=?)a , bandimg c where a.bandimgnum = c.bandimgnum";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1,num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					String bandimg = rs.getString("bandimg");
+					String band_name=rs.getString("band_name");
+					String band_intoroductio=rs.getString("band_intoroductio");
+					BandAllinfoDvo dvo=new BandAllinfoDvo(band_name, band_intoroductio, bandimg);
+					return dvo;
+				}
+			}catch(SQLException se) {
+				se.printStackTrace();
+				return null;
+			}finally {
+				JDBCUtil.close(rs,pstmt,con);
+			}
+			return null;
+		}
 		
 	}
 
