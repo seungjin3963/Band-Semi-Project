@@ -1,4 +1,4 @@
-package jhth.band.vo.ssjVo;
+package jhth.band.vo.MakeBandVo;
 
 import java.util.Date;
 

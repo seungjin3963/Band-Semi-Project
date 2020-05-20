@@ -1,4 +1,4 @@
-package jhth.band.dao.ssjDao;
+package jhth.band.dao.MakeBandDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import jhta.band.db.JDBCUtil;
-import jhth.band.vo.ssjVo.BcategoryVo;
-import jhth.band.vo.ssjVo.ScategoryVo;
+import jhth.band.vo.MakeBandVo.BcategoryVo;
+import jhth.band.vo.MakeBandVo.ScategoryVo;
 
 public class CategoryDao {
 	public ArrayList<BcategoryVo> bcategory(int category){

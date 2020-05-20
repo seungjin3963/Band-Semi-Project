@@ -1,11 +1,11 @@
-package jhth.band.dao.ssjDao;
+package jhth.band.dao.MakeBandDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import jhta.band.db.JDBCUtil;
-import jhth.band.vo.ssjVo.MakebandVo;
+import jhth.band.vo.MakeBandVo.MakebandVo;
 import oracle.jdbc.OracleConnection.CommitOption;
 
 public class MakebandDao {

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import jhth.band.dao.ssjDao.BandCoverDao;
-import jhth.band.vo.ssjVo.CoverVo;
+import jhth.band.dao.MakeBandDao.BandCoverDao;
+import jhth.band.vo.MakeBandVo.CoverVo;
 @WebServlet("/bandcover.do")
 public class MakeBand_bandcover extends HttpServlet {
 	@Override

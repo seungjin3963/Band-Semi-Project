@@ -1,4 +1,4 @@
-package jhth.band.dao.ssjDao;
+package jhth.band.dao.MakeBandDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import jhta.band.db.JDBCUtil;
-import jhth.band.vo.ssjVo.CoverVo;
+import jhth.band.vo.MakeBandVo.CoverVo;
 
 public class BandCoverDao {
 	public ArrayList<CoverVo> cover(int num){

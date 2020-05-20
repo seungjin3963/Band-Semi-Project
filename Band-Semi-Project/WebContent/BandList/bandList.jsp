@@ -36,7 +36,8 @@ window.onload=function(){
 			</div>
 		</a>
 		<c:forEach var="list" items="${requestScope.bandlist }">
-			<a href="?${list.band_num}" id="a2" >
+			<a href="${cp }/rladudsh.do?band_numnum=${list.band_num}&loginnum=${sessionScope.login_num}" id="a2" >
+			
 				<div style="display: inline-block; width: 180px; height: 200px; margin-left: 20px;" onmouseover="inshodow()" onmouseout="outshodow()">
 					<img src="${list.bandimg }" style="width: 180px; height: 150px;"><br>
 					<span>${list.bandname }</span><br>

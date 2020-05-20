@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import jhth.band.dao.ssjDao.CategoryDao;
-import jhth.band.vo.ssjVo.ScategoryVo;
+import jhth.band.dao.MakeBandDao.CategoryDao;
+import jhth.band.vo.MakeBandVo.ScategoryVo;
 @WebServlet("/scategory.do")
 public class MakeBand_scategory extends HttpServlet{
 	@Override

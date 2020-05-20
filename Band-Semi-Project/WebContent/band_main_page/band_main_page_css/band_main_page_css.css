@@ -1,0 +1,257 @@
+@charset "UTF-8";
+
+/* 메인 페이지 css*/
+
+.band_main_page{
+	background-color:#ececec;}
+	.band_main_page_h{
+	width: 1900px; height:80px; 
+	}
+		.band_main_page_h_1{
+		width: 100%; height: 60%;
+		background-color: orange;}
+		.band_main_page_h_2{
+		width: 100%; height: 40%; 
+		background-color: #ff8040;
+		}
+				/* 메인 페이지 css*/
+	.band_main_page_m{
+		width: 1150px; height:1000px;
+		margin: auto; 
+		margin-top:20px;  } 
+		.band_main_page_m_1{
+			width: 20%; height: 70%;
+			float: left;}
+		.band_main_page_m_2{
+			width: 54%; height: auto;
+			border: 1px solid black; 
+			float: left;
+			margin-left: 20px;
+			background-color: white;
+			margin-top: 10px;}
+		.band_main_page_m_3{
+			width: 22%; height: 70%;
+			float: left;
+			margin-left: 20px;}
+			
+/**header h2/*/
+
+.band_main_page_h2{width: 20%; height: 100%;margin: auto;}
+	.band_main_page_h2 a{padding-left: 40px; color: white; text-decoration: none;}
+
+
+/*m1 div*/
+
+.band_main_page1_Img{
+	width: 100%; height: 180px;
+	 background-color: white;}
+.band_main_page1_w p{
+	display: inline-block; }		/* 비로그인 일때 m1 css*/
+.band_main_page1_w input{
+	width: 100%; height: 50px;}
+.band_main_page1_w a{
+	text-decoration: none; 
+	color: black;}
+
+.band_main_page2_Img{
+	width: 100%; height: 
+	180px; background-color: white;}		/* 로그인 일때 m1 css*/	
+.band_main_page2_w p{
+	display: inline-block; }
+.band_main_page2_w a{
+	text-decoration: none; 
+	color: black;}
+	
+
+/*m3 div*/
+
+.band_main_page_m3{
+	width: 100%;height: 35%;}
+		.band_main_page_m3 h4{
+		float: left;
+		 margin-left: 10px;}
+		.band_main_page_m3 p{		/* 최근사진 css*/
+		float: right; 
+		margin-right: 10px;}
+	.band_main_page_m3_div{
+	width: 90%; height: 75%; 
+	border: 1px solid black; 
+	clear: right; 
+	margin: auto;}
+		.band_main_page_m3_div1
+		{width: 80%; height: 80%; 
+		border: 1px solid black; 
+		margin: auto; 
+		margin-top: 15px;}
+		
+/* 밴드 설정 css*/
+.band_page_admin{
+	width: 96%; height: auto;  
+	margin: auto; 
+	background: white; 
+	padding-left:20px; 
+	border: 2px solid white;}		
+	.band_page_admin #div{
+	width: 90%; height: 20%;
+	margin: auto;}
+			.band_page_admin h3{
+			display: inline-block;}
+			.band_page_admin #input{
+			float: right;margin-top: 20px;}
+			.band_page_admin_Img{
+			width: 80px; height:80px;
+			 border-radius: 70px; 
+			 float: left; 
+			 background: #ececec;}
+		.band_page_admin #div1{
+		width: 94%; height: 20%; }
+			.band_page_admin #div1 div{
+			margin-left:30px; }
+			.band_page_admin #div1 textarea{
+			margin-left:30px; }
+			.band_page_admin #div1 #input1{
+			float: right; 
+			margin-top: 125px;}
+			.band_page_admin .div1btn{
+			float: right; 
+			clear: right;}
+
+/*밴드 소개 페이지 scc*/
+
+	.band_page_data{
+	width: 96.5%; height: auto; 
+	background-color: white; 
+	border: 1px solid white; 
+	padding-left: 20px;}
+	.band_page_data0{
+	width: 90%; height: auto; 
+	margin: auto;}
+	#band_page_data1{
+	width: 99.5%; height: 300px; 
+	background-color: white; 
+	padding-top: 120px;} 
+		.band_page_data1 {
+		width:40%; height: auto;
+		 margin-left: 200px; } 
+		.band_page_data1_Img{
+		width: 80px; height:80px;
+		border-radius: 70px; 
+		margin:auto;
+		background: #ececec;}
+			 #band_page_data1_p{margin-left: 50px;}
+			 
+			 
+/* 달력*/
+.container button{
+	margin-left: 450px;
+	margin-top:25px;}
+	
+	.calender{
+	background-color: white; 
+	width: 90%;height: auto; 
+	margin:auto;
+	margin-top: 20px;}
+	
+	#calender_year{
+	padding-left: 120px;}
+	
+	.calender h1{
+	display: inline-block;}
+	
+	#calender_day{
+	width: 100%; 
+	height: 10%; 
+	border: 1px solid;}
+	
+	#calender_day ul li{
+	display: inline-block;
+	margin-right:48px; 
+	font-size:20px;}
+	
+	#calender_day ul li:first-of-type {
+	color: red;}
+	#calender_day ul li:last-of-type {
+	color: blue;}
+	
+	#calender_day_day{
+	width: 95%; height:73%; 
+	padding-left: 23px;}
+	
+	#calender_day_day  td{
+	width:13%; height:90%; 
+	display: inline-block;
+	}
+	table{
+	width:530px; 
+	height: 470px; 
+	margin-left: 20px;
+	margin-top: 40px;}
+	
+	.red{color: red}
+	.bule{color: blue;}
+	
+	#calenderbtn{float: right; }
+
+
+
+
+.bandmemberslist{width: 100%;height: 80%; border: 1px solid black; margin: auto; background-color: white; padding-top: 20px;}
+	.bandmemberslist_h{width: 100%;height: 10%;}
+	.bandmemberslist_h ul li{display: inline-block;}
+	.bandmemberslist_h ul li:first-of-type{font-size:30px; }
+	.bandmemberslist_h ul li:last-of-type{padding-left: 30px;}
+	.bandmemberslist input{width: 85%;height: 40px; margin-left: 40px; }
+	.bandmemberslist button{width: 30px;}
+	.bandmemberslist_m{width: 85%; height: 70%; border: 1px solid black;margin-left: 40px;}
+	.bandmemberslist_m_h p{float: left; margin-top: 20px;}
+	
+	.bandmemberslist_m_h select{float: right; width: 100px;}
+	.bandmemberslist_m_h h4{clear: right;margin-bottom: 15px; padding-left: 50px;}
+	.listbandname{width: 100%; height:auto; border: 1px solid black; padding-left: 20px;}
+	.listbandname_div{width: 50px; height: 50px; border: 1px solid black; border-radius: 70px; 
+			 float: left; 
+			 background: #ececec;}
+			 
+			 
+			 
+			 
+			 
+
+
+#bandList3 {
+	display: inline-block;
+}
+
+#bandList4 {
+	display: inline-block;
+	border-radius: 40px;
+	background-color: transparent;
+	border: 2px solid black;
+	height: 28px;
+}
+.bandList1 {
+	background-color: transparent;
+	border: none;
+}
+#a1 {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 18px;
+}
+#bandLisgheader #div1 {
+	display: inline-block;
+	float: right;
+}
+
+#bandLisgheader #div2 {
+	border: 1px solid black;
+	text-align: left;
+	width: 200px;
+	clear: right;
+	float: right;
+	display: none;
+	z-index: 200;
+	background-color: white;
+}
+
