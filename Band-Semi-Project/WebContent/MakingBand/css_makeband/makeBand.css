@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+.block {
+	display: inline-block;
+}
+
+#selopen {
+	width: 300px;
+	margin-left: 80px;
+}
+
+#selec {
+	text-align: center;
+}
+
+#makeband_cover {
+	font-family: 'Roboto';
+	display: block;
+	background: #FFF;
+	padding: 30px 350px;
+}
+
+h2 {
+	margin-bottom: 50px;
+}
+
+h2 small {
+	font-weight: normal;
+	color: #888;
+	display: block;
+}
+
+.footer {
+	text-align: center;
+}
+
+.footer a {
+	color: #53B2C8;
+}
+
+.group {
+	position: relative;
+	margin-bottom: 45px;
+}
+
+#textinput {
+	font-size: 18px;
+	padding: 10px 10px 20px 5px;
+	display: block;
+	width: 1215px;
+	border: none;
+	border-bottom: 1px solid #757575;
+}
+
+input:focus {
+	outline: 0;
+}
+
+
+#c_submit {
+	width: 150px;
+	height: 50px;
+	font-size: 20px;
+
+	background-color: gray;
+	color: white;
+	outline: none;
+}
+
+#c_reset {
+	width: 150px;
+	height: 50px;
+	font-size: 20px;
+	outline: none;
+}
+
