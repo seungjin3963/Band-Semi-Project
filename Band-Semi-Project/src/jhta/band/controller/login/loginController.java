@@ -25,7 +25,9 @@ public class loginController extends HttpServlet{
 		loginDao dao = new loginDao();
 		long a = dao.select(loginId, loginPwd);
 		if(a <= 0) {
-			resp.sendRedirect(req.getContextPath()+"/login/login.jsp");
+			int code = 1;
+			req.setAttribute("code", code);
+			req.getRequestDispatcher("/login/login.jsp").forward(req, resp);
 		}else {
 			HttpSession session = req.getSession();
 			session.setAttribute("login_num", a);

@@ -395,8 +395,14 @@ var temp=0;
 <div class="container-fluid" style="width: 100%">
 	<div class="row no-gutter">
 		<h4>내 정보</h4>
-		<div>	<!-- 사용중인 프로필 -->
-		
+		<div class="row">	<!-- 사용중인 프로필 -->
+			<div class="col-md-3" style="text-align: center;">사용중인 프로필</div>
+			<!-- 밑에 div에 사진 -->
+			<div class="col-md-2"></div>
+			<div class="col-md-5">${requestScope.joinVo.user_name }</div>
+			<div class="col-md-2">
+				<input class="btn btn-primary btn-xs" type="button" value="변경">
+			</div>
 		</div>
 		<div class="row">	<!-- 개인정보  -->
 			<div class="col-md-3"  style="text-align: center;">개인 정보</div>

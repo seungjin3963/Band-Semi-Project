@@ -13,12 +13,19 @@
     src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${cp }/Resources/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body onload="check_login_member()">
 <script type="text/javascript">
 
-	// login하면 MyInfo.jsp로 바로 넘겨짐
-	// sql문에 answer수정
 	// 시퀀스 없음 loginDao , UserinfoController 수정해야함
+	function check_login_member(){
+		var code = ${requestScope.code};
+		var img = document.getElementById("img1");
+		if(code != 1 || code != null || code != ""){
+			img.setAttribute("src","./images/bandLoginImg.PNG");
+			alert("회원이 아닙니다.");
+		}
+	}
+	
 	var year = document.getElementsByName("year");
 	var month = document.getElementsByName("month");
 	var date = document.getElementsByName("date");
@@ -101,10 +108,10 @@
 </script>
 <div class="container-fluid">
   <div class="row no-gutter">
-    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
-    	<img src="../images/abc1.jpg">
+    <div style="position: relative; margin-top: 50px; text-align: right;" class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
+    	<img id="img1" src="../images/bandLoginImg.PNG">
     </div>
-    <div class="col-md-8 col-lg-6">
+    <div style="position: relative; margin-top: 200px;" class="col-md-8 col-lg-6">
       <div class="login d-flex align-items-center py-5">
         <div class="container">
           <div class="row">
