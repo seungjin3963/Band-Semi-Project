@@ -14,14 +14,14 @@
 <c:forEach var="vo" items="${list}" >
 <table   style="width:800px; border:1px solid orange;  "  >
 	
-	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}&loginnum=${vo.login_num}' ">
+	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
 		<td colspan="5" rowspan="4">사진</td>
 		<td colspan="8" >밴드이름: ${vo.band_name}</td>
 	</tr >
-	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}&loginnum=${vo.login_num}' ">
+	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
 		<td colspan="8" >밴드소개글: ${vo.band_intoroductio}</td>
 	</tr>
-	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}&loginnum=${vo.login_num}' ">
+	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
 		<td colspan="8" >멤버수:   /   리더:</td>
 	</tr>
 	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}&loginnum=${vo.login_num}' ">
