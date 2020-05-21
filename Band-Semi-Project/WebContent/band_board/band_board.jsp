@@ -34,6 +34,7 @@
 			console.log(data.result);
 			console.log('${b_n}')
 		}
+		
 		$.ajax({
 			type: "post",
 			data: { 
