@@ -12,7 +12,7 @@
 	<h1>밴드 소개</h1>
 	<div class="band_page_data0">
 		<h4>밴드 소개글</h4>
-		<p>밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ 밴드 소개/ </p>
+		<p>${band_intoroductio}</p>
 		<br>
 		<br>
 		<br>
@@ -22,7 +22,7 @@
 		 <ul>
 		 	<li>개설일 &nbsp; yyyy/mm/dd</li>
 		 	<li>게시글 &nbsp; n 건</li>
-		 	<li>밴드 가입 &nbsp; n 명</li>
+		 	<li>밴드 가입 &nbsp; &{memberscount}명</li>
 		 </ul>
 		 <br>
 		<br>

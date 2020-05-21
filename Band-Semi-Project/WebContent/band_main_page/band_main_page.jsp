@@ -27,10 +27,22 @@
 <body>
 <div class="band_main_page">
  
- 로그인 번호:${ sessionScope.loginNum }
- 등급:${sessionScope.band_approved }
- 밴드 번호${sessionScope.b_n }
- 밴드 유저 번호:${userband_num }
+ 로그인 번호:${sessionScope.login_num}<br>
+ 
+ 등급:${sessionScope.band_approved }<br>
+ 
+ 밴드 번호${sessionScope.b_n }<br>
+ 
+ 밴드 유저 번호:${sessionScope.userband_num }<br>
+ 
+ 이미지 :${sessionScope.imgname }<br>
+
+밴드 이름: &{sessionScope.band_name}<br>
+
+소개글 : &{sessionScope.band_intoroductio}<br>
+
+인원수 : &{sessionScope.memberscount}<br>
+ 
 
 	
 	

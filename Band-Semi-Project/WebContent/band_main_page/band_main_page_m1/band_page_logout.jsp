@@ -20,12 +20,12 @@
 	<img src="${cp }/${imgname }">
 </div>
 <div class="band_main_page1_w">
-<h1>${bandname }</h1>
-<p>맴버</p>&nbsp;<p>${memberscount }명</p>>&nbsp;<p>리더</p>&nbsp;<p>김영노</p>
+<h1> ${band_name }</h1>
+<p>맴버</p>&nbsp;<p>${memberscount }명</p>
 &nbsp;&nbsp;<button type="button" data-toggle="modal" data-target="#myModal">밴드 가입하기</button><br>
 <br>
-<p>▷</p><a href="${cp }/mainpagedata.do">밴드 정보 보기</a>
 <p>${band_intoroductio}</p><br>
+<p>▷</p><a href="${cp }/mainpagedata.do">밴드 정보 보기</a><br>
 </div>
 
   <div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
