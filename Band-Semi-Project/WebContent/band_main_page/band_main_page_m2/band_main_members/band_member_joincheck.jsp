@@ -30,7 +30,7 @@
 					<input type="button" value="거절" class="listbandname_input" onclick="approvalNo('${vo.getName() }','${vo.getUser_num() }'),'${vo.getDivdelete() }'">
 					<div class="listbandname_div"></div>
 					<h4>${vo.getName() }</h4>
-					<h4>${vo.getName() }</h4>
+					<h4>${vo.getUser_num() }</h4>
 				</div>
 				<br>
 			</c:forEach>

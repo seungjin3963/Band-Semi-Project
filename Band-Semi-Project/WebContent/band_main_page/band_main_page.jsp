@@ -42,7 +42,7 @@
 		</div>
 		<c:if test="${sessionScope.band_approved==1 || sessionScope.band_approved==2}">
 			<div class="band_main_page_h_2">
-				<jsp:include page="band_main_page_h/band_main_page_h2.jsp"></jsp:include>
+				<jsp:include page="/band_main_page/band_main_page_h/band_main_page_h2.jsp"></jsp:include>
 			</div>
 		</c:if>		
 	</div>
@@ -54,10 +54,10 @@
 			
 			<c:choose>
 				<c:when test="${sessionScope.band_approved==1 || sessionScope.band_approved==2}">
-					<jsp:include page="band_main_page_m1/band_page_login.jsp"></jsp:include>
+					<jsp:include page="/band_main_page/band_main_page_m1/band_page_login.jsp"></jsp:include>
 				</c:when>
 				<c:otherwise>
-					<jsp:include page="band_main_page_m1/band_page_logout.jsp"></jsp:include>
+					<jsp:include page="/band_main_page/band_main_page_m1/band_page_logout.jsp"></jsp:include>
 				</c:otherwise>		
 			</c:choose>
 		</div>
@@ -70,7 +70,7 @@
 		</div>
 		<div class="band_main_page_m_3">
 			<c:if test="${sessionScope.band_approved==1 || sessionScope.band_approved==2}">
-				<jsp:include page="band_main_page_m3/bandpageImg.jsp"></jsp:include>
+				<jsp:include page="/band_main_page/band_main_page_m3/bandpageImg.jsp"></jsp:include>
 			</c:if>
 		</div>
 		
