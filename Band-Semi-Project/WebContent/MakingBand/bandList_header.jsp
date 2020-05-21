@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script>
+function noSpaceForm(){                        
+   	var keyword=document.getElementById("bandList2");
+   
+   	var keyword2=keyword.value.replace(/ /g,"");//  정규식:/ /사이에 있는 모든것 지움
+   	if(keyword2=="" || keyword2==null){
+   		keyword.value=null;
+   		return false;
+   	}else{
+   		keyword.value=keyword.value.trim();
+   		return true;
+   	}
+   	
+}
 window.addEventListener('load',function(){
 	var on=false;
 
@@ -33,8 +46,8 @@ window.addEventListener('load',function(){
 		&nbsp BAND &nbsp 
 	</a>
 </fieldset>
-<form method="post" action="" id="bandList3">
-	<input type="text" class="search-query" id="bandList2" placeholder="밴드명, 소개글 검색">
+<form method="post" action="${cp }/bandSerch" id="bandList3" onsubmit="return noSpaceForm()">
+	<input type="text" name="keyword" class="search-query" id="bandList2" placeholder="밴드명, 소개글 검색">
     	<button type="submit" class="bandList1"> <i class="icon-search"></i> </button>
 </form>
 <div id="div1">
