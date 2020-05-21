@@ -24,14 +24,14 @@ public class MembersLikeSelectController extends HttpServlet{
 		
 		memberslistDao dao=new memberslistDao();
 		
-		ArrayList<String> list=new ArrayList<String>();
+		ArrayList<mainpagemembersDvo> list=new ArrayList<mainpagemembersDvo>();
 		if(selectoption.equals("1")) {
 			
-			list=dao.likeselect(selecttext , sss);
-			System.out.println(list);
+			 list=dao.likeselect(selecttext , sss);
+			
 		}else {
-			list=dao.regdateselect(selecttext , sss);
-			System.out.println(list);
+			 list=dao.regdateselect(selecttext , sss);
+			
 		}
 		req.setAttribute("list",list);
 		String cp=req.getContextPath();

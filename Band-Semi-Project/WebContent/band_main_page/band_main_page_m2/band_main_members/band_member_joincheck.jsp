@@ -26,10 +26,11 @@
 			<c:forEach var="vo" items="${requestScope.list }">
 				<br>
 				<div class="listbandname">
-					<input type="button" value="승인" class="listbandname_input" onclick="approvalYes('${vo }')">
-					<input type="button" value="거절" class="listbandname_input" onclick="approvalNo('${vo }')">
+					<input type="button" value="승인" class="listbandname_input" onclick="approvalYes('${vo.getName() }','${vo.getUser_num() }'),'${vo.getDivdelete() }'">
+					<input type="button" value="거절" class="listbandname_input" onclick="approvalNo('${vo.getName() }','${vo.getUser_num() }'),'${vo.getDivdelete() }'">
 					<div class="listbandname_div"></div>
-					<h4>${vo }</h4>
+					<h4>${vo.getName() }</h4>
+					<h4>${vo.getName() }</h4>
 				</div>
 				<br>
 			</c:forEach>
@@ -37,27 +38,37 @@
 <script type="text/javascript">
 	
 	var xhr=null;
-	function approvalYes(name) {
+	function approvalYes(name,user_num , divnum) {
 		xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=approvalyes;
-		xhr.open('get','<%=request.getContextPath()%>/approvalyes.do?name='+name+''${b_n},true);
+		xhr.open('get','<%=request.getContextPath()%>/approvalyes.do?name='+name+'&num='+user_num,true);
 		xhr.send();
 	}
 	function approvalyes() {
 		if(xhr.readyState==4 && xhr.status==200){
-			alert("승인이 완료되었습니다");	
+			var xml=xhr.responseXML;
+			var update=xml.getElementsByTagName("update")[0].firstChild.nodeValue;
+		 	//var memberscheck_div=document.getElementsByClassName("memberscheck_div")[0];
+		 	//var deletediv=document.getElementsByClassName("listbandname")[divnum-1];
+		 	//memberscheck_div.removeChild(deletediv);
+			alert(update);
 		}
 	}
 	
-	function approvalNo(name) {
+	
+	
+	
+	function approvalNo(name,user_num, divnum) {
 		xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=approvalno;
-		xhr.open('get','<%=request.getContextPath()%>/approvalno.do?name='+name,true);
+		xhr.open('get','<%=request.getContextPath()%>/approvalno.do?name='+name+'&num='+user_num,true);
 		xhr.send();
 	}
 	function approvalno() {
 		if(xhr.readyState==4 && xhr.status==200){
-			alert("승인이 거절되었습니다");	
+			var xml=xhr.responseXML;
+			var deleted=xml.getElementsByTagName("deleted")[0].firstChild.nodeValue;
+			alert(deleted);
 		}
 	}
 </script>

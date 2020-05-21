@@ -12,7 +12,8 @@ import jhta.band.db.JDBCUtil;
 
 
 public class memberslistDao {
-	public ArrayList<String> bandmembersSelect(int num) {
+	public ArrayList<mainpagemembersDvo> bandmembersSelect(int num) {
+		int a=0;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -21,11 +22,14 @@ public class memberslistDao {
 				String sql="select * from(select * from band_userinfo where band_num=?) where BAND_APPROVED=1 or BAND_APPROVED=2";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, num);
-				ArrayList<String> list=new ArrayList<String>();
+				ArrayList<mainpagemembersDvo> list=new ArrayList<mainpagemembersDvo>();
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
+					a += 1;
 					String BAND_NICKNAME=rs.getString("BAND_NICKNAME");
-					list.add(BAND_NICKNAME);
+					int usernum=rs.getInt("USERBAND_NUM");
+					mainpagemembersDvo vo=new mainpagemembersDvo(BAND_NICKNAME, usernum,a);
+					list.add(vo);
 				}
 				return list;
 				
@@ -43,7 +47,8 @@ public class memberslistDao {
 			return null;
 	}
 	
-	public ArrayList<String> likeselect(String text , int num){
+	public ArrayList<mainpagemembersDvo> likeselect(String text , int num){
+		int a=0;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -54,11 +59,14 @@ public class memberslistDao {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, text);
 			pstmt.setInt(2, num);
-			ArrayList<String> list=new ArrayList<String>();
+			ArrayList<mainpagemembersDvo> list=new ArrayList<mainpagemembersDvo>();
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
+				a += 1;
 				String BAND_NICKNAME=rs.getString("BAND_NICKNAME");
-				list.add(BAND_NICKNAME);
+				int usernum=rs.getInt("USERBAND_NUM");
+				mainpagemembersDvo vo=new mainpagemembersDvo(BAND_NICKNAME, usernum,a);
+				list.add(vo);
 			}
 			return list;
 		}catch(SQLException se) {
@@ -77,7 +85,8 @@ public class memberslistDao {
 		
 	}
 	
-	public ArrayList<String> regdateselect(String text , int num){
+	public ArrayList<mainpagemembersDvo> regdateselect(String text , int num){
+		int a=0;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -89,11 +98,14 @@ public class memberslistDao {
 			pstmt.setString(1, text);
 			
 			pstmt.setInt(2, num);
-			ArrayList<String> list=new ArrayList<String>();
+			ArrayList<mainpagemembersDvo> list=new ArrayList<mainpagemembersDvo>();
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
+				a +=1;
 				String BAND_NICKNAME=rs.getString("BAND_NICKNAME");
-				list.add(BAND_NICKNAME);
+				int usernum=rs.getInt("USERBAND_NUM");
+				mainpagemembersDvo vo=new mainpagemembersDvo(BAND_NICKNAME, usernum,a);
+				list.add(vo);
 			}
 			return list;
 		}catch(SQLException se) {
@@ -112,7 +124,8 @@ public class memberslistDao {
 		
 	}
 	
-	public ArrayList<String> memberscheck(int num){
+	public ArrayList<mainpagemembersDvo> memberscheck(int num){
+		int a=0;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -122,10 +135,13 @@ public class memberslistDao {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			rs=pstmt.executeQuery();
-			ArrayList<String> list=new ArrayList<String>();
+			ArrayList<mainpagemembersDvo> list=new ArrayList<mainpagemembersDvo>();
 			while(rs.next()) {
+				a +=1;
 				String BAND_NICKNAME=rs.getString("BAND_NICKNAME");
-				list.add(BAND_NICKNAME);
+				int usernum=rs.getInt("USERBAND_NUM");
+				mainpagemembersDvo vo=new mainpagemembersDvo(BAND_NICKNAME, usernum,a);
+				list.add(vo);
 			}
 			return list;
 		}catch(SQLException se) {
@@ -141,17 +157,46 @@ public class memberslistDao {
 	}
 		return null;
 	}
-	public int updateapproved1(String name) {
+	public int updateapproved1(String name, int unum ,int bnum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=JDBCUtil.getConn();
-			String sql="";
+			String sql="update band_userinfo set band_approved=2 where band_nickname=? and band_num=? and USERBAND_NUM=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, name);
+			pstmt.setInt(2, bnum);
+			pstmt.setInt(3, unum);
+			int n=pstmt.executeUpdate();
+			return n;
 			
-			
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+		}finally {
+			try {
+			if(pstmt!=null) {pstmt.close();}
+			if(con!=null) {con.close();}
+			}catch(SQLException see) {
+				System.out.println(see.getMessage());
+		}
+	}
+		return -1;
+	}
+	
+	public int updateapproved2(String name, int unum ,int bnum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="delete from band_userinfo where band_nickname=? and band_num=? and USERBAND_NUM=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, bnum);
+			pstmt.setInt(3, unum);
+			int n=pstmt.executeUpdate();
+			return n;
 			
 		}catch(SQLException se) {
 			System.out.println(se.getMessage());

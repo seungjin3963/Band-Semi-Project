@@ -19,7 +19,9 @@ public class MembersjoinOkController extends HttpServlet{
 		int band_n=(int) session.getAttribute("b_n");
 		memberslistDao dao=new memberslistDao();
 		
-		ArrayList<String> list=dao.memberscheck(band_n);
+		
+		
+		ArrayList<mainpagemembersDvo> list=dao.memberscheck(band_n);
 		String cp=req.getContextPath();
 		 
 		req.setAttribute("cp", cp);

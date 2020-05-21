@@ -43,7 +43,7 @@
 				<br>
 				<div class="listbandname">
 					<div class="listbandname_div"></div>
-					<h4>${vo }</h4>
+					<h4>${vo.getName() }</h4>
 				</div>
 			</c:forEach>
 			</div>
