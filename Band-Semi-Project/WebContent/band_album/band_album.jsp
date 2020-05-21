@@ -16,7 +16,6 @@
 
 	#main{
 			height:auto;
-			margin-top:50px;
 			width:100%;
 			padding-top: 40px;
 		    padding-bottom: 20px;
@@ -45,7 +44,7 @@
 		margin-block-end:1em;
 		margin-inline-start:0px;
 		margin-inline-end:0px;
-		padding-inline-start:40px
+		padding-inline-start:30px
 	}
 	#albumImg li{
 		position: relative;

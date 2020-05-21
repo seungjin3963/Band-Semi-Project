@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import jhta.band.dao.board.BoardDao;
 import jhta.band.vo.board.BoardVo;
 
-@WebServlet("/board/totContent.do")
+@WebServlet("/totContent.do")
 public class totContentController extends HttpServlet
 {
 	@Override
@@ -25,12 +25,10 @@ public class totContentController extends HttpServlet
 		list = dao.select(band_num);
 		
 		req.setAttribute("list", list);
-		req.setAttribute("band_num", 1);
-		req.setAttribute("userband_num", 1);
 		
-		req.setAttribute("file","/band_board.jsp");
+		req.setAttribute("file","/band_board/band_board.jsp");
 		
-		req.getRequestDispatcher("/band_main/band_main.jsp").forward(req, resp);
+		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
 	}
 }
 
