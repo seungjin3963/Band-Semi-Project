@@ -23,14 +23,17 @@
 	</div>
 	<br>
 	<br>
+		
 			<c:forEach var="vo" items="${requestScope.list }">
+			
 				<br>
 				<div class="listbandname">
-					<input type="button" value="승인" class="listbandname_input" onclick="approvalYes('${vo.getName() }','${vo.getUser_num() }'),'${vo.getDivdelete() }'">
-					<input type="button" value="거절" class="listbandname_input" onclick="approvalNo('${vo.getName() }','${vo.getUser_num() }'),'${vo.getDivdelete() }'">
+					<input type="button" value="승인" class="listbandname_input" onclick="approvalYes('${vo.getName() }','${vo.getUser_num() }')">
+					<input type="button" value="거절" class="listbandname_input" onclick="approvalNo('${vo.getName() }','${vo.getUser_num() }')">
 					<div class="listbandname_div"></div>
 					<h4>${vo.getName() }</h4>
-					<h4>${vo.getUser_num() }</h4>
+					
+					
 				</div>
 				<br>
 			</c:forEach>
@@ -38,39 +41,18 @@
 <script type="text/javascript">
 	
 	var xhr=null;
-	function approvalYes(name,user_num , divnum) {
-		xhr=new XMLHttpRequest();
-		xhr.onreadystatechange=approvalyes;
-		xhr.open('get','<%=request.getContextPath()%>/approvalyes.do?name='+name+'&num='+user_num,true);
-		xhr.send();
-	}
-	function approvalyes() {
-		if(xhr.readyState==4 && xhr.status==200){
-			var xml=xhr.responseXML;
-			var update=xml.getElementsByTagName("update")[0].firstChild.nodeValue;
-		 	//var memberscheck_div=document.getElementsByClassName("memberscheck_div")[0];
-		 	//var deletediv=document.getElementsByClassName("listbandname")[divnum-1];
-		 	//memberscheck_div.removeChild(deletediv);
-			alert(update);
-		}
+	function approvalYes(name,user_num) {
+		
+		location.href ="<%=request.getContextPath()%>/approvalyes.do?name="+name+"&num="+user_num;
+	
 	}
 	
 	
-	
-	
-	function approvalNo(name,user_num, divnum) {
-		xhr=new XMLHttpRequest();
-		xhr.onreadystatechange=approvalno;
-		xhr.open('get','<%=request.getContextPath()%>/approvalno.do?name='+name+'&num='+user_num,true);
-		xhr.send();
+	function approvalNo(name,user_num) {
+		
+		location.href ="<%=request.getContextPath()%>/approvalno.do?name="+name+"&num="+user_num;
 	}
-	function approvalno() {
-		if(xhr.readyState==4 && xhr.status==200){
-			var xml=xhr.responseXML;
-			var deleted=xml.getElementsByTagName("deleted")[0].firstChild.nodeValue;
-			alert(deleted);
-		}
-	}
+	
 </script>
 </body>
 </html>

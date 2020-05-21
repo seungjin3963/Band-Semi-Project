@@ -16,14 +16,14 @@ public class MemberSelectController extends HttpServlet{
 		HttpSession session=req.getSession();
 		//¹êµå ¹øÈ£
 		int band_n=(int) session.getAttribute("b_n");
-		System.out.println("aaaaaaaaaaaaaaaaaa");
+	
 		memberslistDao dao=new memberslistDao();
 		ArrayList<mainpagemembersDvo> list=dao.bandmembersSelect(band_n);
-		System.out.println("aaaaaaaaaaaaaaaaaa");
+		
 		req.setAttribute("list",list);
 		String cp=req.getContextPath();
 		req.setAttribute("cp", cp);
-		req.setAttribute("file", "band_main_page_m2/band_main_members/band_main_members.jsp");
+		req.setAttribute("file", "/band_main_page/band_main_page_m2/band_main_members/band_main_members.jsp");
 		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
 		
 	}

@@ -23,21 +23,18 @@ public class HomeController1 extends HttpServlet {
 		int BANDNUM=Integer.parseInt(req.getParameter("band_numnum"));
 		HttpSession paramBANDinfo = req.getSession();
 		paramBANDinfo.setAttribute("b_n", BANDNUM);
-		
+		System.out.println("gggg   :"+BANDNUM);
 		
 		//로그인 num
-		int login_num=Integer.parseInt(req.getParameter("loginnum"));
-		paramBANDinfo.setAttribute("loginNum", login_num);
-	
+		//int login_num=Integer.parseInt(req.getParameter("loginnum"));
+		long login_num=(long)paramBANDinfo.getAttribute("login_num");
+		System.out.println(login_num);
+		
+		
+		
 		band_main_page_infoDao dao=new band_main_page_infoDao();
 		BandInfoDvo vo=dao.b_m_p_info(BANDNUM,login_num);
-		//등급 관리자:1  회원:2  / 대기중 3  비회원0  
-		paramBANDinfo.setAttribute("band_approved", vo.getBand_approved());
-		//유저 번호
-		paramBANDinfo.setAttribute("userband_num", vo.getUser_Band_num());
 		
-		String cp=req.getContextPath();
-		req.setAttribute("cp", cp);
 		//벤드 이미지/소개글/이름
 		BandAllinfoDvo dvo=dao.bandAllinfo(BANDNUM);
 		paramBANDinfo.setAttribute("imgname", dvo.getBandimg());
@@ -46,15 +43,18 @@ public class HomeController1 extends HttpServlet {
 		
 		paramBANDinfo.setAttribute("band_intoroductio", dvo.getBand_intoroductio());
 		
-		
 		//인원수
 		int bandmembers=dao.memberscount(BANDNUM);
 		paramBANDinfo.setAttribute("memberscount", bandmembers);
 		
-		if(vo.getBand_approved()==0 || vo.getBand_approved()==3) {
+		if(vo==null || vo.getBand_approved()==3) {
 			req.setAttribute("file", "/band_main_page/band_main_page_m1/band_page_data0.jsp");
 		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
 		}else {
+			//등급 관리자:1  회원:2  / 대기중 3  비회원0  
+			paramBANDinfo.setAttribute("band_approved", vo.getBand_approved());
+			//유저 번호
+			paramBANDinfo.setAttribute("userband_num", vo.getUser_Band_num());
 			req.setAttribute("file", "/band_board/band_board.jsp");
 			req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
 		}

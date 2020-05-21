@@ -25,7 +25,7 @@ public class memberslistDao {
 				ArrayList<mainpagemembersDvo> list=new ArrayList<mainpagemembersDvo>();
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
-					a += 1;
+					a+=1;
 					String BAND_NICKNAME=rs.getString("BAND_NICKNAME");
 					int usernum=rs.getInt("USERBAND_NUM");
 					mainpagemembersDvo vo=new mainpagemembersDvo(BAND_NICKNAME, usernum,a);
@@ -62,7 +62,7 @@ public class memberslistDao {
 			ArrayList<mainpagemembersDvo> list=new ArrayList<mainpagemembersDvo>();
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				a += 1;
+				a+=1;
 				String BAND_NICKNAME=rs.getString("BAND_NICKNAME");
 				int usernum=rs.getInt("USERBAND_NUM");
 				mainpagemembersDvo vo=new mainpagemembersDvo(BAND_NICKNAME, usernum,a);
@@ -101,7 +101,7 @@ public class memberslistDao {
 			ArrayList<mainpagemembersDvo> list=new ArrayList<mainpagemembersDvo>();
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				a +=1;
+				a+=1;
 				String BAND_NICKNAME=rs.getString("BAND_NICKNAME");
 				int usernum=rs.getInt("USERBAND_NUM");
 				mainpagemembersDvo vo=new mainpagemembersDvo(BAND_NICKNAME, usernum,a);
@@ -137,7 +137,7 @@ public class memberslistDao {
 			rs=pstmt.executeQuery();
 			ArrayList<mainpagemembersDvo> list=new ArrayList<mainpagemembersDvo>();
 			while(rs.next()) {
-				a +=1;
+				a+=1;
 				String BAND_NICKNAME=rs.getString("BAND_NICKNAME");
 				int usernum=rs.getInt("USERBAND_NUM");
 				mainpagemembersDvo vo=new mainpagemembersDvo(BAND_NICKNAME, usernum,a);
@@ -185,6 +185,7 @@ public class memberslistDao {
 	}
 	
 	public int updateapproved2(String name, int unum ,int bnum) {
+		
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -196,6 +197,7 @@ public class memberslistDao {
 			pstmt.setInt(2, bnum);
 			pstmt.setInt(3, unum);
 			int n=pstmt.executeUpdate();
+			
 			return n;
 			
 		}catch(SQLException se) {

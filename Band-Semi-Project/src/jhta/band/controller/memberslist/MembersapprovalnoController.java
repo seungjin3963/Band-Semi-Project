@@ -2,6 +2,7 @@ package jhta.band.controller.memberslist;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,20 +24,15 @@ public class MembersapprovalnoController extends HttpServlet{
 		memberslistDao dao=new memberslistDao();
 		int n=dao.updateapproved2(name,user_num,band_n);
 		
-		if(n==1) {
-			 resp.setContentType("text/xml;charset=utf-8");
-			 PrintWriter pw=resp.getWriter();
-			 pw.print("<?xml version='1.0' encoding='utf-8' ?>");
-			 pw.print("<result1>");	
-				 pw.print("<deleted>승인 거절이 완료되었습니다</deleted>");				
-			 pw.print("</result1>");
-		}else {
-			resp.setContentType("text/xml;charset=utf-8");
-			 PrintWriter pw=resp.getWriter();
-			 pw.print("<?xml version='1.0' encoding='utf-8' ?>");
-			 pw.print("<result1>");
-				 pw.print("<deleted>승인 거절이 실패하였습니다.</deleted>");
-			 pw.print("</result1>");
+		ArrayList<mainpagemembersDvo> list=dao.memberscheck(band_n);
+		req.setAttribute("list",list);
+	
+			
+			if(n==1) {
+				req.setAttribute("file", "/band_main_page/band_main_page_m2/band_main_members/band_member_joincheck.jsp");
+				req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
+			}else {
+		
+			}	
 		}
-	}
 }

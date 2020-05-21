@@ -23,13 +23,14 @@ drop sequence seq_comments;
 drop sequence seq_imgboard;
 drop sequence seq_tmpimg;
 drop sequence seq_login;
+drop sequence seq_calender;
 
 create sequence seq_board;
 create sequence seq_comments;
 create sequence seq_imgboard;
 create sequence seq_tmpimg;
 create sequence seq_login;
-
+create sequence seq_calender;
 
 /* Create Tables */
 

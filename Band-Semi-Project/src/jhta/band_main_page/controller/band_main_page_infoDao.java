@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import jhta.band.db.JDBCUtil;
 
 public class band_main_page_infoDao {
-	public BandInfoDvo b_m_p_info(int bandnum ,int loginnum) {
+	public BandInfoDvo b_m_p_info(int bandnum ,long loginnum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -18,7 +18,7 @@ public class band_main_page_infoDao {
 			con = JDBCUtil.getConn();
 			String sql = "select * from band_userinfo where login_num=? and band_num=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1,loginnum);
+			pstmt.setLong(1,loginnum);
 			pstmt.setInt(2, bandnum);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {

@@ -13,10 +13,11 @@
 	<img src="${cp }/${imgname }">
 </div>
 <div class="band_main_page2_w">
-<h1>${bandname }</h1>
+<h1>${band_name }</h1>
 <p>맴버</p>&nbsp;<p>${memberscount }명</p><br>
 
 <p>▷</p><a href="${cp }/mainpagedata.do">밴드 정보 보기</a><br>
+<p>소개글</p><br>
 <p>${band_intoroductio}</p><br>
 <p>○</p><a href="${cp }/setBand_page.do">밴드 설정</a><br>
 </div>

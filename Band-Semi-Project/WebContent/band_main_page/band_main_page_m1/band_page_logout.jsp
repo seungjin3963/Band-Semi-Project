@@ -8,22 +8,24 @@
 <style type="text/css">
 	.band_page_logout_madal{width: 100%; height:100px; }
 	.band_page_logout_Img{width:60px;height:60px; border: 1px solid black; border-radius: 70px; float: left;}
+	
 	.band_page_logout_madal h4{float: left; margin-left: 15px; margin-top: 20px;}
 	.band_page_logout_madal input {float: right; }
+	.band_main_page1_Img img{width: 100%; height: 180px;}
 </style>
 </head>
 
 <body>
 <div class="band_main_page1_Img">
-	
+	<img src="${cp }/${imgname }">
 </div>
 <div class="band_main_page1_w">
-<h1>밴드 이름</h1>
-<p>맴버</p>&nbsp;<p>18</p>&nbsp;<p>리더</p>&nbsp;<p>김영노</p>
+<h1>${bandname }</h1>
+<p>맴버</p>&nbsp;<p>${memberscount }명</p>>&nbsp;<p>리더</p>&nbsp;<p>김영노</p>
 &nbsp;&nbsp;<button type="button" data-toggle="modal" data-target="#myModal">밴드 가입하기</button><br>
 <br>
 <p>▷</p><a href="${cp }/mainpagedata.do">밴드 정보 보기</a>
-<p>누구나 밴드를 검색으로 찾아 밴드 소개를 볼 수 있지만, 게시글은 멤버만 볼 수 있습니다.</p>
+<p>${band_intoroductio}</p><br>
 </div>
 
   <div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
