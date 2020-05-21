@@ -15,12 +15,12 @@
 </head>
 <body>
 <div class="band_main_page">
- <!--
+ 
  로그인 번호:${ sessionScope.loginNum }
  등급:${sessionScope.band_approved }
  밴드 번호${sessionScope.b_n }
  밴드 유저 번호:${userband_num }
- -->
+
 	
 	
 	

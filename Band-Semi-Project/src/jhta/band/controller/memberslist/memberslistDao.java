@@ -26,7 +26,6 @@ public class memberslistDao {
 				while(rs.next()) {
 					String BAND_NICKNAME=rs.getString("BAND_NICKNAME");
 					list.add(BAND_NICKNAME);
-					System.out.println(BAND_NICKNAME);
 				}
 				return list;
 				
@@ -141,6 +140,30 @@ public class memberslistDao {
 		}
 	}
 		return null;
+	}
+	public int updateapproved1(String name) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			
+			
+			
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+		}finally {
+			try {
+			if(pstmt!=null) {pstmt.close();}
+			if(con!=null) {con.close();}
+			}catch(SQLException see) {
+				System.out.println(see.getMessage());
+		}
+	}
+		return -1;
 	}
 }
 

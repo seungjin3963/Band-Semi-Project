@@ -12,6 +12,7 @@ public class MembersapprovalYesController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String name=req.getParameter("name");
-		System.out.println(name);
+		memberslistDao dao=new memberslistDao();
+		int n=dao.updateapproved1(name);
 	}
 }

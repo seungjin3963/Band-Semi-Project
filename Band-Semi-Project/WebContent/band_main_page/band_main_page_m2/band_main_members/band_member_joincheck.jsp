@@ -23,7 +23,7 @@
 	</div>
 	<br>
 	<br>
-	<c:forEach var="vo" items="${requestScope.list }">
+			<c:forEach var="vo" items="${requestScope.list }">
 				<br>
 				<div class="listbandname">
 					<input type="button" value="승인" class="listbandname_input" onclick="approvalYes('${vo }')">
@@ -40,7 +40,7 @@
 	function approvalYes(name) {
 		xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=approvalyes;
-		xhr.open('get','<%=request.getContextPath()%>/approvalyes.do?name='+name,true);
+		xhr.open('get','<%=request.getContextPath()%>/approvalyes.do?name='+name+''${b_n},true);
 		xhr.send();
 	}
 	function approvalyes() {

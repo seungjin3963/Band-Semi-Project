@@ -61,9 +61,29 @@ public class band_main_page_infoDao {
 			}
 			return null;
 		}
-		/*public int memberscount(int num) {
-			
-		}*/
+		public int memberscount(int num) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = JDBCUtil.getConn();
+				String sql = "select count(*) cc from (select * from band_userinfo where band_num=?) where band_approved=1 or band_approved=2";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1,num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					return rs.getInt("cc");
+				}
+			}catch(SQLException se) {
+				se.printStackTrace();
+				return -1;
+			}finally {
+				JDBCUtil.close(rs,pstmt,con);
+			}
+			return -1;
+		}	
 		
-	}
+	
+	
 
+}

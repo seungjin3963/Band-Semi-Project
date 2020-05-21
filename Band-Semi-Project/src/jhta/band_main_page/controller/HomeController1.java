@@ -18,10 +18,13 @@ import sun.awt.RepaintArea;
 public class HomeController1 extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		//밴드 번호
 		int BANDNUM=Integer.parseInt(req.getParameter("band_numnum"));
 		HttpSession paramBANDinfo = req.getSession();
 		paramBANDinfo.setAttribute("b_n", BANDNUM);
+		
+		
 		//로그인 num
 		int login_num=Integer.parseInt(req.getParameter("loginnum"));
 		paramBANDinfo.setAttribute("loginNum", login_num);
@@ -38,15 +41,19 @@ public class HomeController1 extends HttpServlet {
 		//벤드 이미지/소개글/이름
 		BandAllinfoDvo dvo=dao.bandAllinfo(BANDNUM);
 		paramBANDinfo.setAttribute("imgname", dvo.getBandimg());
+		
 		paramBANDinfo.setAttribute("band_name", dvo.getBand_name());
+		
 		paramBANDinfo.setAttribute("band_intoroductio", dvo.getBand_intoroductio());
 		
-		//인원수
-	//	int bandmembers=dao.memberscount(BANDNUM);
 		
-		if(vo.getBand_approved()==0) {
+		//인원수
+		int bandmembers=dao.memberscount(BANDNUM);
+		paramBANDinfo.setAttribute("memberscount", bandmembers);
+		
+		if(vo.getBand_approved()==0 || vo.getBand_approved()==3) {
+			req.setAttribute("file", "/band_main_page/band_main_page_m1/band_page_data0.jsp");
 		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
-		req.setAttribute("file", "band_main_page_m1/band_page_data0.jsp");
 		}else {
 		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
 		}
