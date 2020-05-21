@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${cp }/login/login_css/findUser_css.css">
 <link href="${cp }/Resources/css/bootstrap.min.css" rel="stylesheet">
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -122,14 +123,14 @@
 	}	
 	
 </script>
-<body onload="aacc()">
+<body onload="aacc()" id="body">
 <!-- style="text-align: center;" -->
 						<!-- 아이디 찾기 -->
-<div class="container show-grid">											<!-- 전체 감싸는 div -->
+<div id="div_findUser" class="container show-grid">											<!-- 전체 감싸는 div -->
 	<div class="row">
-	
+
 	<div class="col-md-6">			<!-- 아이디만 감싸는 div 1 -->
-		<div class="col-md-6">						<!-- 아이디 감싸는 div 2 -->
+		<div id="div_find_id" class="col-md-6 col-md-offset-5">						<!-- 아이디 감싸는 div 2 -->
 			<form method="post">
 				<h4>아이디 찾기</h4>
 				<label>이름</label>
@@ -163,7 +164,7 @@
 		
 								<!-- 비밀번호 찾기 -->
 	<div class="col-md-6">		<!-- 비밀번호 감싸는 div -->
-		<div class="col-md-6">					<!-- 비밀번호 감싸는 div -->
+		<div id="div_find_pwd" class="col-md-6 col-md-offset-1">					<!-- 비밀번호 감싸는 div -->
 			<h4>비밀번호 찾기</h4>
 			<form method="post" >
 				<label>아이디</label>
@@ -201,6 +202,10 @@
 	</div>
 	</div>
 </div>
-<a href="${cp }/login/login.jsp">메인으로 돌아가기</a>
+<div class="container">
+	<div class="row">
+		<a class="col-md-4 col-md-offset-4" style="text-align: center;" href="${cp }/login/login.jsp">메인으로 돌아가기</a>
+	</div>
+</div>
 </body>
 </html>

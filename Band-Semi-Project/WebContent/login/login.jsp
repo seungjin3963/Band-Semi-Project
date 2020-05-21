@@ -13,16 +13,29 @@
     src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${cp }/Resources/js/bootstrap.min.js"></script>
 </head>
-<body onload="check_login_member()">
+<body style="background-color: #f6f6f6">
 <script type="text/javascript">
 
 	// 시퀀스 없음 loginDao , UserinfoController 수정해야함
-	function check_login_member(){
-		var code = ${requestScope.code};
-		var img = document.getElementById("img1");
-		if(code != 1 || code != null || code != ""){
-			img.setAttribute("src","./images/bandLoginImg.PNG");
-			alert("회원이 아닙니다.");
+	var xhr = null;
+	// 회원가입 확인
+	function check_login(){
+		var inputId1 = document.getElementById("inputId1");
+		var inputPassword = document.getElementById("inputPassword");
+		xhr = new XMLHttpRequest();
+		xhr.onreadystatechange=getLogin;
+		xhr.open('get','${cp}/loginOk.do?loginId='+inputId1+'&loginPwd='+inputPassword,true);
+		xhr.send();
+	}
+	function getLogin(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var xml = xhr.responseXML;
+			var code = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
+			if(code == "code"){
+				alert("가입되지 않은 회원입니다.");
+				return flase;
+			}
+			return true;
 		}
 	}
 	
@@ -78,13 +91,13 @@
 	}
 	
 	// 아이디 중복 확인
-	var xhr = null;
 	function check_id(){
 		var inputId2 = document.getElementById("inputId2").value;
 		if(inputId2 == "" || inputId2 == null){
 			alert("다시 입력해 주세요");
 			return false;
 		}
+		alert(inputId2);
 		xhr = new XMLHttpRequest();
 		xhr.onreadystatechange=check_getId;
 		xhr.open('get','${cp}/checkId.do?inputId2='+inputId2,true);
@@ -118,7 +131,7 @@
             <div class="col-md-9 col-lg-8 mx-auto" id="login">
               <h3 class="login-heading mb-4">Welcome back!</h3>
               
-              <form class="form-inline" method="post" action="${cp }/loginOk.do">
+              <form class="form-inline" method="post">
                 <div class="form-label-group">
                   <label for="inputId" class="col-lg-2 control-label">Id</label>
                   <input type="text" id="inputId1" name="loginId" class="form-control" placeholder="Id" required autofocus>
@@ -133,7 +146,7 @@
                   <label class="custom-control-label" for="customCheck1">Remember password</label>
                 </div>
                 <div style="display: inline-block">
-	                <button class="btn btn-primary" type="submit">로그인</button>
+	                <button class="btn btn-primary" type="button" onclick="check_login()">로그인</button>
 	                <input type="button" value="회원가입" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 	            </div>
 	          </form>

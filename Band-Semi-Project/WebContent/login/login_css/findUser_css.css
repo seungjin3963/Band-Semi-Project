@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#body {
+	background-color: #f6f6f6}
+	
+#div_findUser{
+				margin-top: 100px;
+			 }
+	
+#div_find_pwd{
+				box-shadow: 3px 3px 3px 3px #999;
+				background-color: white;
+			 }
+			
+#div_find_id{
+				box-shadow: 3px 3px 3px 3px #999;
+				background-color: white;
+				height: 170px;
+}

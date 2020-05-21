@@ -1,6 +1,7 @@
 package jhta.band.controller.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -27,9 +28,13 @@ public class loginController extends HttpServlet{
 		loginDao dao = new loginDao();
 		long a = dao.select(loginId, loginPwd);
 		if(a <= 0) {
-			int code = 1;
-			req.setAttribute("code", code);
-			req.getRequestDispatcher("/login/login.jsp").forward(req, resp);
+			resp.setContentType("text/xml;charset=utf-8");
+			
+			PrintWriter pw=resp.getWriter();
+			pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+			pw.print("<result>");
+				pw.println("<code>"+"code"+"</code>");
+			pw.print("</result>");
 		}else {
 			HttpSession session = req.getSession();
 			session.setAttribute("login_num", a);
