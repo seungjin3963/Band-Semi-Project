@@ -11,7 +11,7 @@ public class CommentsVo {
 	private int step;
 	private Date comments_date;
 	private int comments_state;
-	
+	private String band_nickname;
 	
 	public CommentsVo() {}
 
@@ -107,6 +107,16 @@ public class CommentsVo {
 
 	public void setComments_state(int comments_state) {
 		this.comments_state = comments_state;
+	}
+
+
+	public String getBand_nickname() {
+		return band_nickname;
+	}
+
+
+	public void setBand_nickname(String band_nickname) {
+		this.band_nickname = band_nickname;
 	}
 	
 	

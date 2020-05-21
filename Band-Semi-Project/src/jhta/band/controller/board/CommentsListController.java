@@ -54,6 +54,7 @@ public class CommentsListController extends HttpServlet{
 				json.put("step", vo.getStep());
 				json.put("comments_date", vo.getComments_date());
 				json.put("comments_state", vo.getComments_state());
+				json.put("band_nickname", vo.getBand_nickname());
 				jarr.put(json);
 			}
 			json_origin.put("json", jarr);

@@ -149,7 +149,7 @@ public class BoardDao {
 		ResultSet rs = null;
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "select * from board where band_num=? and board_states!=2 order by board_redate DESC ";
+			String sql = "select aa.*,(select band_nickname from band_userinfo) band_nickname  from board aa where band_num=? and board_states!=2 order by board_redate DESC ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, band_num);
 						
@@ -169,6 +169,7 @@ public class BoardDao {
 								rs.getDate("board_redate"), 
 								rs.getInt("board_states")
 						);
+				vo.setBand_nickname(rs.getString("band_nickname"));
 				list.add(vo);
 			}while(rs.next());
 			

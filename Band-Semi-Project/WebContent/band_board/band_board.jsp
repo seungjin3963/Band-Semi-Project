@@ -86,7 +86,7 @@
 			user_info.setAttribute("class","col-sm-8")
 			
 			let user_name = document.createElement("label");
-			let name = document.createTextNode("박규진"); 
+			let name = document.createTextNode(data[i].band_nickname); 
 			user_name.appendChild(name);
 			user_info.appendChild(user_name);
 			
@@ -94,7 +94,7 @@
 			user_info.appendChild(bb);
 			
 			let user_date = document.createElement("label");
-			let date = document.createTextNode("박규진"); 
+			let date = document.createTextNode(data[i].board_redate); 
 			user_date.appendChild(date);		
 			user_info.appendChild(user_date);
 			
@@ -311,7 +311,7 @@
 			 		
 			 		
 			 		let user_name = document.createElement("label");
-					let name = document.createTextNode("박규진"); 
+					let name = document.createTextNode(comments[j].band_nickname); 
 					user_name.appendChild(name);
 					info.appendChild(user_name);
 					
@@ -473,7 +473,7 @@
 						 		
 						 		
 						 		let user_name = document.createElement("label");
-								let name = document.createTextNode("박규진"); 
+								let name = document.createTextNode(data.json[y].band_nickname); 
 								user_name.appendChild(name);
 								info.appendChild(user_name);
 								

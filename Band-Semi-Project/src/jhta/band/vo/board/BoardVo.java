@@ -9,6 +9,7 @@ public class BoardVo {
 	private String board_content;
 	private Date board_redate;
 	private int board_states;
+	private String band_nickname;
 	
 	public BoardVo() {}
 
@@ -69,6 +70,14 @@ public class BoardVo {
 
 	public void setBoard_states(int board_states) {
 		this.board_states = board_states;
+	}
+
+	public String getBand_nickname() {
+		return band_nickname;
+	}
+
+	public void setBand_nickname(String band_nickname) {
+		this.band_nickname = band_nickname;
 	}
 	
 	

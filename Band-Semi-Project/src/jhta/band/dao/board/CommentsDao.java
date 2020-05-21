@@ -170,7 +170,10 @@ public class CommentsDao {
 			con = JDBCUtil.getConn();
 			String sql = "select *  from " + 
 					"(" + 
-					"    select aa.*,rownum rnum from " + 
+					"    select aa.*,rownum rnum," + 
+					"    (" + 
+					"        select band_nickname from band_userinfo" + 
+					"    ) band_nickname from " + 
 					"    (" + 
 					"        select * from comments where board_num=? and comments_state!=1 order by ref,step" + 
 					"    )aa" + 
@@ -199,7 +202,7 @@ public class CommentsDao {
 						rs.getDate("comments_date"),
 						rs.getInt("comments_state")
 					);
-						
+				vo.setBand_nickname(rs.getString("band_nickname"));
 				list.add(vo);
 				
 			}while(rs.next());

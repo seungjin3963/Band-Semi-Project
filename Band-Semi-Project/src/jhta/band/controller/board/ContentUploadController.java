@@ -42,6 +42,7 @@ public class ContentUploadController extends HttpServlet{
 					json.put("userband_num", vo.getUserband_num());
 					json.put("board_content", vo.getBoard_content());
 					json.put("board_redate", vo.getBoard_redate());
+					json.put("band_nickname", vo.getBand_nickname());
 					
 					ArrayList<ImgBoardVo> img = new ImgBoardDao().select(vo.getBoard_num());
 					if(img != null) {
@@ -71,6 +72,8 @@ public class ContentUploadController extends HttpServlet{
 							json_com.put("ref", com.getRef());
 							json_com.put("step", com.getStep());
 							json_com.put("comments_date", com.getComments_date());
+							json_com.put("band_nickname", com.getBand_nickname());
+							
 							jarr_com.put(json_com);   
 						}
 						json.put("comments",jarr_com);
