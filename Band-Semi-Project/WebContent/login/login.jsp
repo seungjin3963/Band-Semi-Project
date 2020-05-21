@@ -16,6 +16,13 @@
 <body style="background-color: #f6f6f6">
 <script type="text/javascript">
 
+	$(document).ready(function(){
+		$("#inputPassword").keydown(function(e){
+			if(e.keyCode==13){
+				check_login();
+			}
+		});
+	});
 	// 시퀀스 없음 loginDao , UserinfoController 수정해야함
 	var xhr = null;
 	// 회원가입 확인

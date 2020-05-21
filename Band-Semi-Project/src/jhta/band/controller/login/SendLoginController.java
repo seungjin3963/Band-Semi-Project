@@ -20,7 +20,7 @@ import jhth.band.vo.MakeBandVo.BandListVo;
 public class SendLoginController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-req.setCharacterEncoding("utf-8");
+		req.setCharacterEncoding("utf-8");
 		
 		String loginId = req.getParameter("loginId");
 		String loginPwd = req.getParameter("loginPwd");

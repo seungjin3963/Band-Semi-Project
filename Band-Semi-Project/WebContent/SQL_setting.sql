@@ -21,12 +21,14 @@ DROP TABLE tag_name CASCADE CONSTRAINTS;
 drop sequence seq_board;
 drop sequence seq_comments;
 drop sequence seq_imgboard;
-drop sequence sqe_tmpimg;
+drop sequence seq_tmpimg;
+drop sequence seq_login;
 
 create sequence seq_board;
 create sequence seq_comments;
 create sequence seq_imgboard;
-create sequence sqe_tmpimg;
+create sequence seq_tmpimg;
+create sequence seq_login;
 
 
 /* Create Tables */
