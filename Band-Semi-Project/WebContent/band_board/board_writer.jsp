@@ -28,6 +28,18 @@
 				        }
 		        }
 		  });
+		  $('#myButtons1').attr("disabled", true);
+		  
+		  $('#summernote').on('summernote.keyup', function(we, e) {
+			  var code = $('#summernote').summernote('code');
+			  if(code == "<p><br></p>" || code ==""){
+				  $('#myButtons1').attr("disabled", true);
+			  }else{
+				  $('#myButtons1').attr("disabled", false);
+			  }
+		  });
+		
+		  
 		  $("#myButtons1").click(function (e){
 			 var code = $('#summernote').summernote('code');
 			 var userband_num = $('#userband_num').val();

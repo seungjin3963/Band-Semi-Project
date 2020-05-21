@@ -127,7 +127,7 @@
 				li1.appendChild(a1);
 				
 				$(li1).on('click',function(){
-					$('#myModal').modal({
+					$('#writeModal').modal({
 	     				backdrop : 'static',
 	                  	remote : '${cp}/band_board/board_writer.jsp'
 	          		});
@@ -263,7 +263,7 @@
 			comments_cnt.setAttribute("class","col-sm-2 text-center");
 			console.log(data[i].comments_cnt);
 			comments_cnt.innerText = "댓글 : " + data[i].comments_cnt;
-			comments_cnt.setAttribute('style', 'font-weight:bold;');
+			comments_cnt.setAttribute('style', 'font-weight:bold; padding-left:14px');
 			
 			let comments_icon = document.createElement("div");
 			comments_icon.setAttribute("class", "col-sm-12 text-center");
@@ -362,6 +362,8 @@
 					comment_textarea.setAttribute("rows","1");
 					comment_textarea.setAttribute("placeholder","  댓글을 남겨주세요.");
 					comment_textarea.setAttribute("style","display: inline-block; overflow: hidden; height: 32px; width:100%");
+
+					
 					
 					comment_col.appendChild(comment_textarea)
 					
@@ -370,8 +372,16 @@
 					let comment_send = document.createElement("button");
 					comment_send.setAttribute("class", "btn");
 					comment_send.setAttribute("style", "background :#b9b9b9; color:white;   outline: none;  border-radius: 13px;");
-					
+					comment_send.setAttribute("disabled", "false");
 					comment_send.innerText = "보내기";
+					
+					$(comment_textarea).on('keyup',function(){		
+						if(comment_textarea.value == "" || comment_textarea.value == null){
+							$(comment_send).attr('disabled',true);
+						}else{
+							$(comment_send).attr('disabled',false);
+						}
+					})
 					
 					
 					let board_num = data[i].board_num;
