@@ -55,7 +55,11 @@
 
 .band_main_page2_Img{
 	width: 100%; height: 
-	180px; background-color: white;}		/* 로그인 일때 m1 css*/	
+	180px; background-color: white;}
+.band_main_page2_Img img{
+	width: 100%; height: 
+	180px; background-color: white;}	
+			/* 로그인 일때 m1 css*/	
 .band_main_page2_w p{
 	display: inline-block; }
 .band_main_page2_w a{

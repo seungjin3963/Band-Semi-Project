@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="band_main_page_h2">
-	<a href="">전체 글</a>
+	<a href="${cp }/rladudsh.do">전체 글</a>
 	<a href="">사진첩</a>
 	<a href="${cp }/calender.con">일정</a>
 	<a href="${cp }/member_select.do">맴버</a>	

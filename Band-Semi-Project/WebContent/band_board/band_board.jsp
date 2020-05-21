@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
 	String cp = request.getContextPath();
 %>
@@ -9,27 +10,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<!-- include libraries(jQuery, bootstrap) -->
-<%-- <script src="<%=cp%>/Resources/js/jquery.min.js"></script> --%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link href="${cp}/Resources/css/bootstrap.css" rel="stylesheet">
-<script src="${cp }/Resources/js/bootstrap.js"></script>
-
-<!-- include summernote css/js-->
-<link href="${cp }/summernote/summernote.css" rel="stylesheet">
-<script src="${cp }/summernote/summernote.js"></script>
-
-<!-- include summernote-ko-KR -->
-<script src="${cp }/summernote/lang/summernote-ko-KR.js"></script>
-
 <link rel="stylesheet" href="${cp }/band_board/board.css">
 <title>글쓰기</title>
 
 <script>
 	$(function(){
 	    $("#contentEditor").on('click', function(){
-	        $('#myModal').modal({
+	        $('#writeModal').modal({
 	        				backdrop : 'static',
 	                     	remote : '${cp }/band_board/board_writer.jsp'
 	             		});
@@ -658,7 +645,7 @@
 	</section>
 	
 	<!-- writer 모달 content--> 
-		<div id="myModal" class="modal fade" >
+		<div id="writeModal" class="modal fade" >
 			<div class="modal-dialog">
 				<div class="modal-content">
 				</div>

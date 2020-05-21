@@ -6,12 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>band_main_page</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!--  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <link rel="stylesheet" type="text/css" href="${cp }/band_main_page/band_main_page_css/band_main_page_css.css">
+<!-- include libraries(jQuery, bootstrap) -->
+<%-- <script src="<%=cp%>/Resources/js/jquery.min.js"></script> --%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="${cp}/Resources/css/bootstrap.css" rel="stylesheet">
+<script src="${cp }/Resources/js/bootstrap.js"></script>
 
+<!-- include summernote css/js-->
+<link href="${cp }/summernote/summernote.css" rel="stylesheet">
+<script src="${cp }/summernote/summernote.js"></script>
+
+<!-- include summernote-ko-KR -->
+<script src="${cp }/summernote/lang/summernote-ko-KR.js"></script>
 </head>
 <body>
 <div class="band_main_page">
