@@ -13,7 +13,6 @@ var temp=0;
 		var input_now_pwd = document.getElementById("input_now_pwd");
 		var input_new_pwd = document.getElementById("input_new_pwd");
 		var input_new_pwdOk = document.getElementById("input_new_pwdOk");
-		console.log(temp);
 		if(temp == 1){
 			return true;
 		}else{
@@ -404,6 +403,7 @@ var temp=0;
 			<div class="col-md-2">생일</div>
 			
 			<div id="birthInfo">
+				<div class="col-md-5"></div>
 				<div id="changebirth">
 					<div class="col-md-5" id="now_birth">${requestScope.joinVo.user_birth }</div>
 					<div class="col-md-2">
@@ -417,6 +417,7 @@ var temp=0;
 			<div class="col-md-2 col-md-offset-3">성별</div>
 			
 			<div id="genderInfo">
+				<div class="col-md-5"></div>
 				<div id="changegender">
 					<div class="col-md-5" id="now_gender">
 						<c:choose>
@@ -445,6 +446,7 @@ var temp=0;
 			<div class="col-md-2">휴대폰 번호</div>
 			
 			<div id="phoneInfo">
+				<div class="col-md-5"></div>
 				<div id="changephone">
 					<div class="col-md-5" id="now_phone">${requestScope.joinVo.user_phone }</div>	
 					<div class="col-md-2">
