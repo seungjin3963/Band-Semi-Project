@@ -2,6 +2,7 @@ package jhth.band.dao.MakeBandDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import jhta.band.db.JDBCUtil;
@@ -11,26 +12,34 @@ import oracle.jdbc.OracleConnection.CommitOption;
 public class MakebandDao {
 	public int makeband(MakebandVo vo,long loginNum) {
 		Connection con=null;
-		PreparedStatement pstmt=null;
+		PreparedStatement pstmt1=null;
+		PreparedStatement pstmt2=null;
+		ResultSet rs=null;
 
 		int g=0;
 		int f=0;
-		int num=2;
+		long num=0;
 
 		try {
 			con=JDBCUtil.getConn();
 			
-			pstmt=con.prepareStatement("INSERT INTO BAND VALUES(?,?,?,?,?,?,SYSDATE,1)");
-			pstmt.setLong(1, num);
-			pstmt.setInt(2, vo.getScategoryNum());
-			pstmt.setInt(3, vo.getBand_imgNum());
-			pstmt.setString(4, vo.getBand_name());
-			pstmt.setInt(5, vo.getBand_publicwhe());
-			pstmt.setString(6,vo.getBand_introductio());
+			pstmt1=con.prepareStatement("INSERT INTO BAND VALUES(BAND_SEQ.NEXTVAL,?,?,?,?,?,SYSDATE,1)");
+			pstmt1.setInt(1, vo.getScategoryNum());
+			pstmt1.setInt(2, vo.getBand_imgNum());
+			pstmt1.setString(3, vo.getBand_name());
+			pstmt1.setInt(4, vo.getBand_publicwhe());
+			pstmt1.setString(5,vo.getBand_introductio());
 			
-			int n=pstmt.executeUpdate();
+			int n=pstmt1.executeUpdate();
 			
-			if(n>0) {
+			pstmt2=con.prepareStatement("SELECT BAND_NUM FROM BAND ORDER BY BAND_NUM DESC");
+			rs=pstmt2.executeQuery();
+			if(rs.next()) {
+				num=rs.getLong("band_num");
+			}
+			
+			if(n>0 && num>0) {
+				
 				f=bandinfo(num,loginNum);
 				if(f>0) {
 					g=bandListinfo(num, loginNum);
@@ -42,11 +51,12 @@ public class MakebandDao {
 			System.out.println(se.getMessage());
 			return -1;
 		}finally {
-			JDBCUtil.close(null , pstmt, con);
+			JDBCUtil.close(rs , pstmt2, null);
+			JDBCUtil.close(null, pstmt1, con);
 		}
 	}
 	
-	public int bandinfo(int num,long loginNum) {
+	public int bandinfo(long num,long loginNum) {
 		
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -55,7 +65,7 @@ public class MakebandDao {
 		
 		try {
 			con=JDBCUtil.getConn();
-			pstmt=con.prepareStatement("INSERT INTO BAND_USERINFO VALUES(2,?,?,?,1,SYSDATE)");
+			pstmt=con.prepareStatement("INSERT INTO BAND_USERINFO VALUES(BANDUSERINFO_SEQ.NEXTVAL,?,?,?,1,SYSDATE)");
 			pstmt.setLong(1, num);
 			pstmt.setLong(2, loginNum);
 			pstmt.setString(3, bandleader);
@@ -69,14 +79,14 @@ public class MakebandDao {
 		}
 	}
 	
-	public int bandListinfo(int num,long loginNum) {
+	public int bandListinfo(long num,long loginNum) {
 		
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		
 		try {
 			con=JDBCUtil.getConn();
-			pstmt=con.prepareStatement("INSERT INTO BANDLIST VALUES(6,?,?,1,SYSDATE)");
+			pstmt=con.prepareStatement("INSERT INTO BANDLIST VALUES(BANDLIST.NEXTVAL,?,?,1,SYSDATE)");
 			pstmt.setLong(1, num);
 			pstmt.setLong(2, loginNum);
 			int n=pstmt.executeUpdate();

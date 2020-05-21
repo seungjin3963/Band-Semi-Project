@@ -23,17 +23,18 @@ public class MakeBand_final extends HttpServlet {
 		
 		long loginnum=Long.parseLong(req.getParameter("loginnum"));
 		
-		System.out.println(loginnum);
+		
 		
 		MakebandVo data=new MakebandVo(0,scategory,bandname,open,bandintroduct,bandcoverimg,null,0);
 		
 		MakebandDao dao=new MakebandDao();
 		int n=dao.makeband(data,loginnum);
-//		
-//		if(n>0) {
-//			System.out.println("성공");
-//		}else {
-//			System.out.println("실패");
-//		}
+		
+		if(n>0) {
+			req.setAttribute("file", "/BandList/bandList.jsp");
+			req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req,resp);
+		}else {
+			System.out.println("실패");
+		}
 	}	
 }

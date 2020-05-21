@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="category" style="text-align: center;">
-	<form method="post" action="<%=request.getContextPath() %>/bandcover.do" style="margin: auto;">
+	<form method="post" action="${cp }/bandcover.do" style="margin: auto;">
 	<h2 style="display: inline-block;">카테고리 분류</h2>
 		<input type="button" id="cabefor" onclick="cbeforpage()" value="<">
 		<input type="hidden" value="1" id="beforassi">
@@ -40,7 +40,7 @@
 			num=11;
 		}
 		
-		xhr.open('post','<%=request.getContextPath() %>/category.do',true);
+		xhr.open('post','${cp }/category.do',true);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.send('category='+num);
 		beforassi.value=num;
@@ -57,7 +57,7 @@
 		}else if(num>26){
 			num=1;
 		}
-		xhr.open('post','<%=request.getContextPath() %>/category.do',true);
+		xhr.open('post','${cp }/category.do',true);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.send('category='+num);
 		nextassi.value=num+9;
@@ -84,7 +84,7 @@
 		var bnum=arraynum[6].split('.');
 		xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=stitle;
-		xhr.open("get", '<%=request.getContextPath() %>/scategory.do?bcategorynum='+bnum[0], true);
+		xhr.open("get", '${cp }/scategory.do?bcategorynum='+bnum[0], true);
 		xhr.send();
  	}
 	
@@ -108,6 +108,7 @@
 				div.style.display="inline-block";
 				div.style.border="1px solid black";
 				div.style.margin="20px";
+				div.style.fontSize="20px";
 				div.className="divclass";
 				
 				div.innerHTML=json[i].category_stitle;

@@ -15,7 +15,8 @@ public class BandListDao {
 		PreparedStatement pstmt1=null;
 		PreparedStatement pstmt2=null;
 		PreparedStatement pstmt3=null;
-		ResultSet rs=null;
+		ResultSet rs1=null;
+		ResultSet rs2=null;
 		
 		ArrayList<BandListVo> bandlist = new ArrayList<BandListVo>();
 		
@@ -23,27 +24,27 @@ public class BandListDao {
 			con=JDBCUtil.getConn();
 			pstmt1=con.prepareStatement("SELECT BAND_NUM FROM BANDLIST WHERE LOGIN_NUM=?");
 			pstmt1.setLong(1, loginnum);
-			rs=pstmt1.executeQuery();
-			while(rs.next()) {
-				long band_num = rs.getLong("band_num");
-				int bandcnt=0;
+			rs1=pstmt1.executeQuery();
+			while(rs1.next()) {
+				long band_num = rs1.getLong("band_num");
+				long bandcnt=0;
 				String bandname=null;
 				String bandimg=null;
 				
 				
-				pstmt2=con.prepareStatement("SELECT COUNT(?) cnt FROM BANDLIST");
+				pstmt2=con.prepareStatement("SELECT COUNT(BAND_NUM) cnt FROM BANDLIST WHERE BAND_NUM=?");
 				pstmt2.setLong(1, band_num);
-				rs=pstmt2.executeQuery();
-				if(rs.next()) {
-					bandcnt=rs.getInt("cnt");
+				rs2=pstmt2.executeQuery();
+				if(rs2.next()) {
+					bandcnt=rs2.getLong("cnt");
 				}
 				
 				pstmt3=con.prepareStatement("SELECT BAND_NAME,BANDIMG FROM BAND ,BANDIMG WHERE BAND.BAND_NUM=? AND BAND.BANDIMGNUM=BANDIMG.BANDIMGNUM");
 				pstmt3.setLong(1, band_num);
-				rs=pstmt3.executeQuery();
-				if(rs.next()) {
-					bandname=rs.getString("band_name");
-					bandimg=rs.getString("bandimg");
+				rs2=pstmt3.executeQuery();
+				if(rs2.next()) {
+					bandname=rs2.getString("band_name");
+					bandimg=rs2.getString("bandimg");
 				}
 				
 				BandListVo vo=new BandListVo(band_num, bandname, bandimg, bandcnt);
@@ -59,7 +60,8 @@ public class BandListDao {
 		}finally {
 			JDBCUtil.close(pstmt3);
 			JDBCUtil.close(pstmt2);
-			JDBCUtil.close(rs, pstmt1, con);
+			JDBCUtil.close(rs2);
+			JDBCUtil.close(rs1, pstmt1, con);
 		}
 	}
 }

@@ -42,7 +42,7 @@ window.addEventListener('load',function(){
 </script>
 <div id="bandLisgheader">
 <fieldset id="bandList4">
-	<a href="" id="a1">
+	<a href="${cp }/loginOk.do" id="a1">
 		&nbsp BAND &nbsp 
 	</a>
 </fieldset>
@@ -54,7 +54,7 @@ window.addEventListener('load',function(){
 	<button type="button" class="bandList1" id="mypage"><i class="icon-user"></i><i id="bandList_triangle">▼</i></button>
 </div>
 
-<div id="div2">
+<div id="div2_makeband">
 	<ul>
 		<li class="bandList3"><a href="${cp }/MyPage.do" id="a1">마이페이지</a></li>
     	<li class="bandList3"><a href="${cp }/logout.do" id="a1">로그아웃</a></li>

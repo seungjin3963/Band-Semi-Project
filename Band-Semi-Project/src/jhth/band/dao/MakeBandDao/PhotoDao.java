@@ -3,10 +3,7 @@ package jhth.band.dao.MakeBandDao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +14,7 @@ import jhta.band.db.JDBCUtil;
 import jhth.band.vo.MakeBandVo.PhotoVo;
 
 public class PhotoDao {
-	public int imgInput(String location) {
+	public int imgInput(String location,long loginnum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		FileInputStream fis = null;
@@ -26,9 +23,9 @@ public class PhotoDao {
 			fis = new FileInputStream(file);
 
 			con = JDBCUtil.getConn();
-			pstmt = con.prepareStatement("INSERT INTO BCATEGORY VALUES(1,?,?)");
-			pstmt.setString(1, "ÄÄÇ»ÅÍ");
-			pstmt.setBinaryStream(2, fis, file.length());
+			pstmt = con.prepareStatement("UPDATE USERINFO SET USER_IMG=? WHERE LOGIN_NUM = ?");
+			pstmt.setBinaryStream(1, fis, file.length());
+			pstmt.setLong(2, loginnum);
 
 			int n = pstmt.executeUpdate();
 
