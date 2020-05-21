@@ -21,6 +21,8 @@
 	                     	remote : '${cp }/band_board/board_writer.jsp'
 	             		});
 	        $('#summernote').summernote('reset');
+	        console.log('${userband_num}');
+	        console.log('${b_n}');
 	        $('#userband_num').val('${userband_num}');
 	        $('#band_num').val('${b_n}');
 	    })
@@ -41,10 +43,14 @@
 		    url: '${cp }/contentUpload.do',
 		    success: list_view
 		})
+		
 	}
 	
 	
  	function list_view(data) {
+ 		console.log('${userband_num}');
+ 		console.log('${b_n}');
+ 		
  		deleteList();
 		let board = document.getElementById("boardList");
 		
@@ -655,10 +661,10 @@
 	
 </body>
 <script type="text/javascript">
-$('#myModal').modal({
+$('#writeModal').modal({
 	backdrop : 'static',
   	remote : '${cp}/band_board/board_writer.jsp'
 	});
-$('#myModal').modal('hide');
+$('#writeModal').modal('hide');
 </script>
 </html>

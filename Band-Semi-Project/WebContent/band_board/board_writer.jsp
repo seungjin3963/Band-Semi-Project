@@ -31,7 +31,7 @@
 		  $("#myButtons1").click(function (e){
 			 var code = $('#summernote').summernote('code');
 			 var userband_num = $('#userband_num').val();
-			 var band_num = $('#b_n').val();
+			 var band_num = $('#band_num').val();
 			 var boardState = 0;
 			 var check = $('#noticeChk').is(":checked");
 			    if(check){
@@ -52,7 +52,7 @@
 							  boardState:boardState
 						  },
 	                  type: "POST",
-	                  url: '<%=cp%>/board/boardupdate.do',
+	                  url: '${cp}/board/boardupdate.do',
 	                  success: getBoardList,
 	                  error: function () {
 	                      alert("server error");
@@ -66,7 +66,7 @@
 							  boardState:boardState
 						  },
 	                  type: "POST",
-	                  url: '<%=cp%>/board/BoardUpload.do',
+	                  url: '${cp}/board/BoardUpload.do',
 	                  cache: false,
 	                  success: getBoardList,
 	                  error: function () {
@@ -79,7 +79,7 @@
 	
 	
 	function deleteFile(src) {
-		var userband_num = 1;
+		var userband_num = '${userband_num}';
 	    $.ajax({
 	        data: {src : src,userband_num:userband_num},
 	        type: "POST",
@@ -94,12 +94,12 @@
 	function sendFile(file,el){
 		var form_data = new FormData();
 		form_data.append('file',file);
-		var userband_num = 1;
+		var userband_num = '${userband_num}';
 		form_data.append('userband_num',userband_num);
 		$.ajax({
 			data: form_data,
 			type:"POST",
-			url: '<%=cp%>/summernoteUpload.do',
+			url: '${cp}/summernoteUpload.do',
 			dataType: "text",
 			cache: false,
 			contentType: false,
@@ -115,14 +115,13 @@
 	$('#closeBtn').on('click',function(){
 		 var board_num = $('#board_num').val();
 		 if(board_num >0){
-			 console.log(board_num);
 			 $('#myModalLabel').text('글쓰기'); 
 		 }
-		var userband_num = 1;
+		var userband_num = '${userband_num}';
 		var url = $('#summernote').summernote('code');
 		$.ajax({
 		    type: "post",
-		    url: '<%=cp%>/resetDelete.do',
+		    url: '${cp}/resetDelete.do',
 		    data: {text: url,userband_num:userband_num},
 		    success: function() {
 		    }
@@ -135,11 +134,11 @@
 			 console.log(board_num);
 			 $('#myModalLabel').text('글쓰기'); 
 		 }
-		var userband_num = 1;
+		var userband_num = '${userband_num}';
 		var url = $('#summernote').summernote('code');
 		$.ajax({
 		    type: "post",
-		    url: '<%=cp%>/resetDelete.do',
+		    url: '${cp}/resetDelete.do',
 		    data: {text: url,userband_num:userband_num},
 		    success: function() {
 		    }

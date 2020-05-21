@@ -41,7 +41,7 @@ public class ImgUploadSummernote extends HttpServlet{
 			
 			String uploadPath = upload +"/"+save_filename;
 			
-			String path = "../upload/" + save_filename;
+			String path = "./upload/" + save_filename;
 			
 			TempImgeDao dao = new TempImgeDao();
 			System.out.println(multi.getParameter("userband_num"));
@@ -51,7 +51,7 @@ public class ImgUploadSummernote extends HttpServlet{
 			int n = dao.insert(vo);
 			
 			resp.setContentType("application/json;charset=utf-8");
-			resp.getWriter().print("../upload/"+save_filename);
+			resp.getWriter().print("./upload/"+save_filename);
 			
 		}catch (Exception e) {
 			e.getStackTrace();
