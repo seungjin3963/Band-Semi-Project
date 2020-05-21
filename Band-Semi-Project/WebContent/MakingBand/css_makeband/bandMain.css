@@ -8,14 +8,14 @@
 #wrap {
 	width: 1890px;
 	height: 1400px;
-	background-color: #999;
+	background-color: white;
 }
 
 #header {
 	height: 7%;
 	position: fixed;
 	top: 0px;
-	background-color: white;
+	background-color: #4de22f;
 }
 
 #header #headerbar {
@@ -26,7 +26,6 @@
 #main {
 	height: 86%;
 	margin-top: 3%;
-	background-color: orange;
 }
 
 #main #mainbar {
@@ -59,6 +58,13 @@
 	color: black;
 }
 
+#a3{
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+}
+
 #bandList3 {
 	display: inline-block;
 }
@@ -67,16 +73,16 @@
 	display: inline-block;
 	border-radius: 40px;
 	background-color: transparent;
-	border: 2px solid black;
+	border: 2px solid white;
 	height: 28px;
 }
 
-#div1 {
+#div1_makeband {
 	display: inline-block;
 	float: right;
 }
 
-#div2 {
+#div2_makeband {
 	border: 1px solid black;
 	text-align: left;
 	width: 200px;
@@ -103,22 +109,34 @@
 }
 
 #makeband {
-	background-color: #c0c0c0;
+	background-color: #a1a1a1;
 	width: 180px;
 	height: 200px;
 	text-align: center;
 	display: inline-block;
+	line-height: 200px;
+}
+
+.join_band{
+	display: inline-block; 
+	width: 180px; 
+	height: 200px; 
+	margin-left: 20px;
+	font-size: 15px;
+}
+
+.join_band #membersoo{
+	color: gray;
 }
 
 #add {
-	font-size: 100px;
+	width:180px;
+	height: 185px;
+	text-align:center;
 	background-color: #f0f0f0;
-	border-radius: 50%;
+	overflow:hidden;
 	display: inline-block;
-	height: 60px;
-	padding-top: 20px;
-	margin-top: 50px;
-	margin-bottom: 10px;
+	background-color: orange;
 }
 
 #category {
