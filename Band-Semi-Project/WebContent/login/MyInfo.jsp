@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <link href="${cp }/Resources/css/bootstrap.min.css" rel="stylesheet">
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="./Resources/js/bootstrap.min.js"></script>
-</head>
+
 <script type="text/javascript">
 var temp=0;
 	function check_input_new_pwd(){
@@ -396,8 +392,8 @@ var temp=0;
 		}
 	}
 </script>
-<body>
-<div class="container-fluid">
+
+<div class="container-fluid" style="width: 100%">
 	<div class="row no-gutter">
 		<h4>내 정보</h4>
 		<div>	<!-- 사용중인 프로필 -->
@@ -416,7 +412,8 @@ var temp=0;
 				</div>
 					<form id="form1" method="post" style="display: hidden;"></form>
 			</div>
-			
+		</div>
+		<div class="row">
 			<div class="col-md-2 col-md-offset-3">성별</div>
 			
 			<div id="genderInfo">
@@ -441,6 +438,7 @@ var temp=0;
 				
 				<form id="form2" method="post" style="display: hidden;"></form>
 			</div>
+		</div>
 		<br>
 		<div class="row">	<!-- 로그인 계정 -->
 			<div class="col-md-3" style="text-align: center;">로그인 계정</div>
@@ -455,8 +453,8 @@ var temp=0;
 				</div>
 					<form id="form3" method="post" style="display: hidden;"></form>
 			</div>
-			
-			
+		</div>
+		<div class="row">
 			<div id="emailInfo">	
 				<div class="col-md-2 col-md-offset-3">이메일</div>
 				
@@ -470,6 +468,8 @@ var temp=0;
 					<form id="form4" method="post" style="display: hidden;"></form>
 				</div>
 			</div>
+		</div>
+		<div class="row">
 				<div id="pwdInfo">
 					<div class="col-md-2 col-md-offset-3">비밀번호</div>
 					<div id="changepwd">
@@ -483,16 +483,14 @@ var temp=0;
 						<form id="form5" method="post" style="display: hidden;" onsubmit="return check_input_new_pwd()"></form>
 					</div>
 				</div>
-				
+		</div>
+		<div class="row">
 				<div class="col-md-2 col-md-offset-3">탈퇴</div>
 				<div class="col-md-2 col-md-offset-5">
 					<input class="btn btn-primary btn-xs" type="button" value="탈퇴" onclick="change_state()">
 				</div>
-			</div>
 		</div>
-		<br>
-		<br>
 	</div>
+	<br>
+	<br>
 </div>
-</body>
-</html>

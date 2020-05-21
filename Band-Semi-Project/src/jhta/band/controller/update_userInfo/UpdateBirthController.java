@@ -37,16 +37,15 @@ public class UpdateBirthController extends HttpServlet{
 		loginDao dao1 = new loginDao();
 		JoinVo vo = dao1.selectInfo(login_num);		// JoinVo¾ò¾î¿È
 		
-		req.setAttribute("joinVo", vo);
-/*		
-		resp.setContentType("text/xml;charset=utf-8");
+		String file = req.getParameter("file");
 		
-		PrintWriter pw=resp.getWriter();
-		pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-		pw.print("<result>");
-			pw.println("<birth>"+update_birth+"</birth>");
-		pw.print("</result>");
-*/
-		req.getRequestDispatcher("/login/MyInfo.jsp").forward(req,resp);
+		if(file == null) {
+			req.setAttribute("file", "/login/MyInfo.jsp");
+		}else {
+			req.setAttribute("file",file);
+		}
+		session.setAttribute("header", "bandList_header.jsp");
+		req.setAttribute("joinVo", vo);
+		req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req,resp);
 	}
 }

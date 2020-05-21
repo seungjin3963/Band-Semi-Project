@@ -16,7 +16,7 @@ import jhta.band.vo.JoinVo;
 public class CancleController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-req.setCharacterEncoding("utf-8");
+		req.setCharacterEncoding("utf-8");
 		
 		HttpSession session = req.getSession();
 		long login_num = (long)session.getAttribute("login_num");
@@ -24,7 +24,15 @@ req.setCharacterEncoding("utf-8");
 		loginDao dao = new loginDao();
 		JoinVo vo = dao.selectInfo(login_num);
 		
+		String file = req.getParameter("file");
+		
+		if(file == null) {
+			req.setAttribute("file", "/login/MyInfo.jsp");
+		}else {
+			req.setAttribute("file",file);
+		}
+		session.setAttribute("header", "bandList_header.jsp");
 		req.setAttribute("joinVo", vo);
-		req.getRequestDispatcher("/login/MyInfo.jsp").forward(req,resp);
+		req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req,resp);
 	}
 }
