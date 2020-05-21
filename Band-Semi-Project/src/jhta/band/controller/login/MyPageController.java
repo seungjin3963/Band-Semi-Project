@@ -23,7 +23,16 @@ public class MyPageController extends HttpServlet{
 		loginDao dao = new loginDao();
 		JoinVo vo = dao.selectInfo(login_num);
 		
+		String file = req.getParameter("file");
+		
+		if(file == null) {
+			req.setAttribute("file", "/login/MyInfo.jsp");
+		}else {
+			req.setAttribute("file", file);
+		}
+		
+		session.setAttribute("header", "bandList_header.jsp");
 		req.setAttribute("joinVo", vo);
-		req.getRequestDispatcher("/login/MyInfo.jsp").forward(req,resp);
+		req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req,resp);
 	}
 }
