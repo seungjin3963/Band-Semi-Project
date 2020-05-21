@@ -36,6 +36,10 @@
 			if(code == "fail"){
 				alert("가입되지 않은 회원입니다.");
 				return false;
+			}else{
+				var inputId1 = document.getElementById("inputId1");
+				var inputPassword = document.getElementById("inputPassword");
+				location.href='${cp}/SendLogin.do?loginId='+inputId1.value+'&loginPwd='+inputPassword.value;
 			}
 			return true;
 		}
