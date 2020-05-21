@@ -31,6 +31,6 @@ public class UpdatePhoneController extends HttpServlet{
 		JoinVo vo = dao1.selectInfo(login_num);
 		
 		req.setAttribute("joinVo", vo);
-		req.getRequestDispatcher("MyInfo.jsp").forward(req,resp);
+		req.getRequestDispatcher("/login/MyInfo.jsp").forward(req,resp);
 	}
 }

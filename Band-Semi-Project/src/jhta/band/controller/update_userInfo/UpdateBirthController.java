@@ -47,6 +47,6 @@ public class UpdateBirthController extends HttpServlet{
 			pw.println("<birth>"+update_birth+"</birth>");
 		pw.print("</result>");
 */
-		req.getRequestDispatcher("MyInfo.jsp").forward(req,resp);
+		req.getRequestDispatcher("/login/MyInfo.jsp").forward(req,resp);
 	}
 }

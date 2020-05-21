@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${cp }/Resources/css/bootstrap.min.css" rel="stylesheet">
-<link href="${cp }/Resources/css/custom.css" rel="stylesheet">
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="./Resources/js/bootstrap.min.js"></script>

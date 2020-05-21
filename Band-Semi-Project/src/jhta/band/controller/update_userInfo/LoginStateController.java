@@ -22,6 +22,6 @@ public class LoginStateController extends HttpServlet{
 		UpdateInfoDao dao = new UpdateInfoDao();
 		int n = dao.updateState(login_num);
 		
-		req.getRequestDispatcher("/login.jsp").forward(req,resp);
+		req.getRequestDispatcher("/login/login.jsp").forward(req,resp);
 	}
 }

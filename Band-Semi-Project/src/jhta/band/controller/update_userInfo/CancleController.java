@@ -25,6 +25,6 @@ req.setCharacterEncoding("utf-8");
 		JoinVo vo = dao.selectInfo(login_num);
 		
 		req.setAttribute("joinVo", vo);
-		req.getRequestDispatcher("MyInfo.jsp").forward(req,resp);
+		req.getRequestDispatcher("/login/MyInfo.jsp").forward(req,resp);
 	}
 }
