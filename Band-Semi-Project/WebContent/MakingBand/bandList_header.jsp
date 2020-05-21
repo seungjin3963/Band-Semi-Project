@@ -44,7 +44,7 @@ window.addEventListener('load',function(){
 <div id="div2">
 	<ul>
 		<li class="bandList3"><a href="${cp }/MyPage.do" id="a1">마이페이지</a></li>
-    	<li class="bandList3"><a href="#" id="a1">로그아웃</a></li>
+    	<li class="bandList3"><a href="${cp }/logout.do" id="a1">로그아웃</a></li>
     </ul>
 </div>
 </div>
