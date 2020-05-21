@@ -42,7 +42,7 @@ public class HomeController1 extends HttpServlet {
 		paramBANDinfo.setAttribute("band_intoroductio", dvo.getBand_intoroductio());
 		
 		//ÀÎ¿ø¼ö
-		//int bandmembers=dao.dlsdnjstn(BANDNUM);
+	//	int bandmembers=dao.memberscount(BANDNUM);
 		
 		if(vo.getBand_approved()==0) {
 		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);

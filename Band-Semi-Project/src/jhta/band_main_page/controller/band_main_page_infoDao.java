@@ -61,6 +61,9 @@ public class band_main_page_infoDao {
 			}
 			return null;
 		}
+		/*public int memberscount(int num) {
+			
+		}*/
 		
 	}
 
