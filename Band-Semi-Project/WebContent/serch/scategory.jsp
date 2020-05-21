@@ -66,7 +66,6 @@
 
 	
 	for(var i=0;i<list.length;i++){
-		console.log("테스트.jsp1");
 		var div1=document.createElement("div");
 		var div2=document.createElement("div");
 		div1.innerHTML="밴드사진"

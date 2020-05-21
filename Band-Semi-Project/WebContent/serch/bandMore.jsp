@@ -94,7 +94,6 @@
 			
 			
 			for(var i=0;i<json.length;i++){
-				console.log("테스트.jsp1");
 				var div=document.createElement("div");
 				//div1.innerHTML="밴드사진"
 				

@@ -24,7 +24,7 @@
 	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
 		<td colspan="8" >멤버수:   /   리더:</td>
 	</tr>
-	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}&loginnum=${vo.login_num}' ">
+	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
 		
 		<td colspan="8">밴드 더보기</td>
 	</tr>

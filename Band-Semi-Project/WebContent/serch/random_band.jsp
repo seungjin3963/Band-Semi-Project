@@ -33,15 +33,11 @@
 </div>
 <script type="text/javascript">
 
-	console.log("테스트.jsp1");
 	var bandList1=document.getElementById("bandList1");
 	var bandList2=document.getElementById("bandList2");
 	var cnt=0;
 	for(var i=0;i<list.length;i++){
-		console.log("테스트.jsp1");
-		console.log("테스트.jsp1");
-		console.log("테스트.jsp1");
-		console.log("테스트.jsp1");
+		
 		if(i%2==0){
 			var div11=document.createElement("div");
 			var div22=document.createElement("div");
