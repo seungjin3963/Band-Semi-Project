@@ -1,0 +1,85 @@
+
+iframe{
+	width:100%
+}
+
+.comment_textarea {
+	outline: none;
+    width: 300px;
+    height: 300px;
+    border-radius: 13px;
+    border: 1px solid #999;
+    resize: none;
+}
+
+#img_preview{
+	position: relative; top:0; left: 0;
+	width: 250px;
+	height: 250px; 
+	
+}
+
+.boardList{
+	
+	height:auto;
+	background: #e0e0e0;
+	display: block;
+	margin-bottom: 11px; 
+}
+#searchFrom{
+	padding: 22px;
+}
+
+#searchInput{
+	box-shadow: 0 4px 2px -2px #bbbbbb;
+}
+
+#searchBtn{
+	box-shadow: 0 4px 2px -2px #bbbbbb;
+}
+
+#postWrite{
+	padding: 22px;
+}
+
+#board_view{
+	padding: 22px;
+}
+
+#writeContent{
+	width:100%;
+	padding:11px;
+	min-height: 100px;
+    background: #fff;
+    border-radius: 2px;
+    line-height: 1.5;
+    outline: 0;
+    box-shadow: 0 4px 2px -2px #bbbbbb;
+}
+
+#content_view{
+	margin : 11px;	
+}
+
+#contentEditor{
+	width:100%;
+	padding:11px;
+	min-height: 100px;
+    background: #fff;
+    border-radius: 2px;
+    line-height: 1.5;
+    outline: 0;
+    box-shadow: 0 4px 2px -2px #bbbbbb;
+}
+
+.contentEx{
+	color : #999;
+}
+
+#searchTxt{
+	width: 100%
+}
+
+span .btn.btn-default{
+	height: 100%;
+}

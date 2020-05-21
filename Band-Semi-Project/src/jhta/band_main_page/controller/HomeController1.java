@@ -55,7 +55,8 @@ public class HomeController1 extends HttpServlet {
 			req.setAttribute("file", "/band_main_page/band_main_page_m1/band_page_data0.jsp");
 		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
 		}else {
-		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
+			req.setAttribute("file", "/band_board/band_board.jsp");
+			req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
 		}
 	}
 }
