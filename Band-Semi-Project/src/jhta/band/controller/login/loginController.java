@@ -27,13 +27,14 @@ public class loginController extends HttpServlet{
 		
 		loginDao dao = new loginDao();
 		long a = dao.select(loginId, loginPwd);
+		String code = "success";
 		if(a <= 0) {
+			code = "fail";
 			resp.setContentType("text/xml;charset=utf-8");
-			
 			PrintWriter pw=resp.getWriter();
 			pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			pw.print("<result>");
-				pw.println("<code>"+"code"+"</code>");
+				pw.println("<code>"+code+"</code>");
 			pw.print("</result>");
 		}else {
 			HttpSession session = req.getSession();

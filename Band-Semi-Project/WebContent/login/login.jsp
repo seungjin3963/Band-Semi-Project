@@ -24,16 +24,18 @@
 		var inputPassword = document.getElementById("inputPassword");
 		xhr = new XMLHttpRequest();
 		xhr.onreadystatechange=getLogin;
-		xhr.open('get','${cp}/loginOk.do?loginId='+inputId1+'&loginPwd='+inputPassword,true);
-		xhr.send();
+		xhr.open('post','${cp}/loginOk.do',true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.send('loginId='+inputId1.value+'&loginPwd='+inputPassword.value);
 	}
 	function getLogin(){
 		if(xhr.readyState==4 && xhr.status==200){
 			var xml = xhr.responseXML;
 			var code = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
-			if(code == "code"){
+			console.log(code);
+			if(code == "fail"){
 				alert("가입되지 않은 회원입니다.");
-				return flase;
+				return false;
 			}
 			return true;
 		}
@@ -97,7 +99,6 @@
 			alert("다시 입력해 주세요");
 			return false;
 		}
-		alert(inputId2);
 		xhr = new XMLHttpRequest();
 		xhr.onreadystatechange=check_getId;
 		xhr.open('get','${cp}/checkId.do?inputId2='+inputId2,true);
@@ -146,7 +147,7 @@
                   <label class="custom-control-label" for="customCheck1">Remember password</label>
                 </div>
                 <div style="display: inline-block">
-	                <button class="btn btn-primary" type="button" onclick="check_login()">로그인</button>
+	                <button class="btn btn-primary" type="button" onclick="return check_login()">로그인</button>
 	                <input type="button" value="회원가입" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 	            </div>
 	          </form>
