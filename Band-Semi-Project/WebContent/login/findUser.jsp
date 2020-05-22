@@ -204,7 +204,7 @@
 </div>
 <div class="container">
 	<div class="row">
-		<a class="col-md-4 col-md-offset-4" style="text-align: center;" href="${cp }/login/login.jsp">메인으로 돌아가기</a>
+		<a id="go_main" class="col-md-4 col-md-offset-4" style="text-align: center;" href="${cp }/login/login.jsp">메인으로 돌아가기</a>
 	</div>
 </div>
 </body>

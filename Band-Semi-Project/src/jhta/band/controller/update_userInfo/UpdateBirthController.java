@@ -3,6 +3,7 @@ package jhta.band.controller.update_userInfo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,6 +37,19 @@ public class UpdateBirthController extends HttpServlet{
 		
 		loginDao dao1 = new loginDao();
 		JoinVo vo = dao1.selectInfo(login_num);		// JoinVo¾ò¾î¿È
+		
+		SimpleDateFormat year1 = new SimpleDateFormat("yyyy");
+		SimpleDateFormat month1 = new SimpleDateFormat("MM");
+		SimpleDateFormat date1 = new SimpleDateFormat("dd");
+		
+		String year_string = year1.format(update_birth);
+		String month_string = month1.format(update_birth);
+		String date_string = date1.format(update_birth);
+		
+		req.setAttribute("year", year_string);
+		req.setAttribute("month", month_string);
+		req.setAttribute("date", date_string);		
+		req.setAttribute("joinVo", vo);
 		
 		String file = req.getParameter("file");
 		

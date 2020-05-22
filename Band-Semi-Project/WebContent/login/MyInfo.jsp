@@ -60,6 +60,9 @@ var temp=0;
 			year_value.setAttribute("value",i);
 			year_value.innerHTML=i;
 			year_select.appendChild(year_value);
+			if(year_value.value == ${year}){
+				year_value.setAttribute("selected","selected");
+			}
 		}
 		
 		var month_select = document.createElement("select");
@@ -70,6 +73,9 @@ var temp=0;
 			month_value.setAttribute("value",i);
 			month_value.innerHTML=i;
 			month_select.appendChild(month_value);
+			if(month_value.value == ${month}){
+				month_value.setAttribute("selected","selected");
+			}
 		}
 		
 		var date_select = document.createElement("select");
@@ -80,6 +86,9 @@ var temp=0;
 			date_value.setAttribute("value",i);
 			date_value.innerHTML = i;
 			date_select.appendChild(date_value);
+			if(date_value.value == ${date}){
+				date_value.setAttribute("selected","selected");
+			}
 		}
 		div1.appendChild(year_select);
 		div1.appendChild(month_select);
@@ -99,7 +108,7 @@ var temp=0;
 		button2.setAttribute("class","btn btn-info btn-xs");
 		button2.setAttribute("type","submit");
 		button2.setAttribute("value","취소");
-		button2.setAttribute("formaction","${cp}/Cancle.do");
+		button2.setAttribute("formaction","${cp}/CancleBirth.do");
 		button2.innerHTML = "취소";
 		
 		div2.appendChild(button1);
@@ -260,7 +269,7 @@ var temp=0;
 		div7.setAttribute("class","col-md-5");
 		
 		var Email = document.createElement("input");
-		Email.setAttribute("type","email");
+		Email.setAttribute("type","text");
 		Email.setAttribute("name","Email");
 		Email.setAttribute("placeholder","이메일을 입력해 주세요.");	
 		

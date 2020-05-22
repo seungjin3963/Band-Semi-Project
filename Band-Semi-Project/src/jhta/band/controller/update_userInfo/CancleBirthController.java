@@ -1,4 +1,4 @@
-package jhta.band.controller.login;
+package jhta.band.controller.update_userInfo;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -14,10 +14,11 @@ import javax.servlet.http.HttpSession;
 import jhta.band.dao.loginDao;
 import jhta.band.vo.JoinVo;
 
-@WebServlet("/MyPage.do")
-public class MyPageController extends HttpServlet{
+@WebServlet("/CancleBirth.do")
+public class CancleBirthController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		
 		HttpSession session = req.getSession();
 		long login_num = (long)session.getAttribute("login_num");
@@ -46,8 +47,9 @@ public class MyPageController extends HttpServlet{
 		req.setAttribute("month", month);
 		req.setAttribute("date", date);
 		
-		session.setAttribute("header", "bandList_header.jsp");
 		req.setAttribute("joinVo", vo);
+		
+		session.setAttribute("header", "bandList_header.jsp");
 		req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req,resp);
 	}
 }
