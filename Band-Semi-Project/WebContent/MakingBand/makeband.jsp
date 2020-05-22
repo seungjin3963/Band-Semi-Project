@@ -8,7 +8,7 @@
 	<div>
 		<h2 id="bandname">밴드 이름</h2>
 		<form style="width: 1300px; height: 1000px;" method="post"
-			action="<%=request.getContextPath()%>/band/makeband_end.do">
+			action="<%=request.getContextPath()%>/makeband_end.do">
 			<div class="group">
 				<input type="text" placeholder="밴드 이름 입력" id="textinput"
 					name="bandname">

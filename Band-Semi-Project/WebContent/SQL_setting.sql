@@ -25,12 +25,20 @@ drop sequence seq_tmpimg;
 drop sequence seq_login;
 drop sequence seq_calender;
 
+drop sequence seq_band;
+drop sequence seq_banduserinfo;
+drop sequence seq_bandlist;
+
 create sequence seq_board;
 create sequence seq_comments;
 create sequence seq_imgboard;
 create sequence seq_tmpimg;
 create sequence seq_login;
 create sequence seq_calender;
+
+create sequence seq_band;
+create sequence seq_banduserinfo;
+create sequence seq_bandlist;
 
 /* Create Tables */
 
@@ -71,7 +79,7 @@ CREATE TABLE band_userinfo
 (
 	userBand_num number(20) NOT NULL,
 	band_num number(20) NOT NULL,
-	login_num number(20) NOT NULL UNIQUE,
+	login_num number(20) NOT NULL,
 	band_nickname varchar2(40),
 	band_approved number(3),
 	band_redate date,
