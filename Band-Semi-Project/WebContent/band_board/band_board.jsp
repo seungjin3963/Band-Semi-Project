@@ -92,7 +92,8 @@
 			user_info.appendChild(bb);
 			
 			let user_date = document.createElement("label");
-			let date = document.createTextNode(data[i].board_redate); 
+			let date = document.createTextNode(data[i].board_redate);
+			user_date.setAttribute("style","color:#999; font-size:12px");
 			user_date.appendChild(date);		
 			user_info.appendChild(user_date);
 			
@@ -177,6 +178,7 @@
 			let con = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
 			
 			let result = con.split("<br>");
+
 			
 			for(let z = 0; z <result.length; z++){
 				if(result[z] !== ""){
@@ -325,6 +327,7 @@
 					
 					let user_date = document.createElement("label");
 					let date = document.createTextNode(comments[j].comments_date); 
+					user_date.setAttribute("style","color:#999; font-size:11px");
 					user_date.appendChild(date);		
 					info.appendChild(user_date);
 					info.setAttribute("style", "border-bottom:1px solid #999");
@@ -486,7 +489,8 @@
 								info.appendChild(cc);
 								
 								let user_date = document.createElement("label");
-								let date = document.createTextNode(data.json[y].comments_date); 
+								let date = document.createTextNode(data.json[y].comments_date);
+								user_date.setAttribute("style","color:#999; font-size:11px");
 								user_date.appendChild(date);		
 								info.appendChild(user_date);
 								info.setAttribute("style", "border-bottom:1px solid #999");
@@ -667,6 +671,14 @@
 			</div>
 		</div>
 	
+	<!-- 게시글 모 -->
+		<div id="boardModal" class="modal fade" >
+			<div class="modal-dialog">
+				<div class="modal-content">
+				</div>
+			</div>
+		</div>
+		
 	
 </body>
 <script type="text/javascript">

@@ -265,3 +265,7 @@ commit;
 alter table userinfo
     add foreign key (login_num)
     references login (login_num);
+    
+alter session set nls_date_format = 'YYYY-MM-DD';
+
+alter session set nls_timestamp_format = 'YYYY-MM-DD HH:MI:SS';

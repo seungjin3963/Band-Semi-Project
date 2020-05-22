@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import jhta.band.db.JDBCUtil;
 import jhta.band.vo.board.CommentsVo;
@@ -110,7 +111,7 @@ public class CommentsDao {
 		ResultSet rs = null;
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "insert into comments values(seq_comments.nextval,?,?,?,?,?,sysdate,?)";
+			String sql = "insert into comments values(seq_comments.nextval,?,?,?,?,?,SYSTIMESTAMP,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, vo.getUserband_num());
@@ -200,7 +201,7 @@ public class CommentsDao {
 						rs.getString("comments_cotent"), 
 						rs.getLong("ref"), 
 						rs.getInt("step"), 
-						rs.getDate("comments_date"),
+						new Date(rs.getTimestamp("comments_date").getTime()),
 						rs.getInt("comments_state")
 					);
 				vo.setBand_nickname(rs.getString("band_nickname"));

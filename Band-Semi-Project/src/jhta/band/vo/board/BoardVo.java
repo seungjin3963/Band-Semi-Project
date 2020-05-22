@@ -1,6 +1,6 @@
 package jhta.band.vo.board;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class BoardVo {
 	private long board_num;

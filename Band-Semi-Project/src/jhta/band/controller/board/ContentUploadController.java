@@ -2,6 +2,7 @@ package jhta.band.controller.board;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -30,7 +31,7 @@ public class ContentUploadController extends HttpServlet{
 		ArrayList<BoardVo> list = new ArrayList<BoardVo>();
 		list = dao.select(band_num);
 		System.out.println(band_num);
-		
+		SimpleDateFormat fm=new SimpleDateFormat("yyyy³â MM¿ù dd a hh:mm"); 
 		
 			JSONArray jarr = new JSONArray();
 			if(list !=null) {
@@ -41,7 +42,10 @@ public class ContentUploadController extends HttpServlet{
 					json.put("board_states", vo.getBoard_states());
 					json.put("userband_num", vo.getUserband_num());
 					json.put("board_content", vo.getBoard_content());
-					json.put("board_redate", vo.getBoard_redate());
+				     
+					String sDate=fm.format(vo.getBoard_redate()); 
+
+					json.put("board_redate", sDate);
 					json.put("band_nickname", vo.getBand_nickname());
 					
 					ArrayList<ImgBoardVo> img = new ImgBoardDao().select(vo.getBoard_num());
@@ -71,7 +75,9 @@ public class ContentUploadController extends HttpServlet{
 							json_com.put("comments_content", com.getComments_content());
 							json_com.put("ref", com.getRef());
 							json_com.put("step", com.getStep());
-							json_com.put("comments_date", com.getComments_date());
+						     
+							String date=fm.format(com.getComments_date()); 
+							json_com.put("comments_date",date);
 							json_com.put("band_nickname", com.getBand_nickname());
 							
 							jarr_com.put(json_com);   

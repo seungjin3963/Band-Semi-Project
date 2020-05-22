@@ -2,6 +2,7 @@ package jhta.band.controller.board;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -41,7 +42,7 @@ public class CommentsListController extends HttpServlet{
 		
 		ArrayList<CommentsVo> list = dao.select(board_num,startPageNum,endPageNum);
 		System.out.println(board_num);
-		
+		SimpleDateFormat fm=new SimpleDateFormat("yyyy³â MM¿ù dd a hh:mm"); 
 		if(list != null) {
 			JSONArray jarr = new JSONArray();
 			for(CommentsVo vo : list) {
@@ -52,7 +53,8 @@ public class CommentsListController extends HttpServlet{
 				json.put("comments_content", vo.getComments_content());
 				json.put("ref", vo.getRef());
 				json.put("step", vo.getStep());
-				json.put("comments_date", vo.getComments_date());
+				String date=fm.format(vo.getComments_date()); 
+				json.put("comments_date",date);
 				json.put("comments_state", vo.getComments_state());
 				json.put("band_nickname", vo.getBand_nickname());
 				jarr.put(json);

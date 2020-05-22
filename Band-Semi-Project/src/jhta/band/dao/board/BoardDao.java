@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import jhta.band.db.JDBCUtil;
 import jhta.band.vo.board.BoardVo;
@@ -100,7 +101,7 @@ public class BoardDao {
 		
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "insert into board values(seq_board.nextval,?,?,?,sysdate,?)";
+			String sql = "insert into board values(seq_board.nextval,?,?,?,SYSTIMESTAMP,?)";
 			
 			con.setAutoCommit(false);
 			
@@ -170,7 +171,7 @@ public class BoardDao {
 								rs.getLong("band_num"), 
 								rs.getLong("userband_num"), 
 								rs.getString("board_content"), 
-								rs.getDate("board_redate"), 
+								new Date(rs.getTimestamp("board_redate").getTime()), 
 								rs.getInt("board_states")
 						);
 				vo.setBand_nickname(rs.getString("band_nickname"));
