@@ -24,7 +24,7 @@ public class BoardUpdateController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		System.out.println("updateboard");
 		String userband_num = req.getParameter("userband_num");
-
+		System.out.println(userband_num);
 		String band_num = req.getParameter("band_num");
 		String board_content = req.getParameter("code");
 		String board_num = req.getParameter("board_num");

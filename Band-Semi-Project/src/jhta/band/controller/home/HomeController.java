@@ -17,3 +17,4 @@ public class HomeController extends HttpServlet{
 		resp.sendRedirect(req.getContextPath()+"/login/login.jsp"); // login Page move!!!
 	}
 }
+

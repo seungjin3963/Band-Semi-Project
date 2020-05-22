@@ -21,8 +21,6 @@
 	                     	remote : '${cp }/band_board/board_writer.jsp'
 	             		});
 	        $('#summernote').summernote('reset');
-	        console.log('${userband_num}');
-	        console.log('${b_n}');
 	        $('#userband_num').val('${userband_num}');
 	        $('#band_num').val('${b_n}');
 	    })
@@ -103,7 +101,7 @@
 			let btn_col = document.createElement("div");
 			btn_col.setAttribute("class","col-sm-2");
 			
-			if(data[i].userband_num == '${userband_num}'){
+			if(data[i].userband_num == '${userband_num}' || '${band_approved}' == 1){
 				// 수정 삭제...
 				let btn = document.createElement("button");
 				btn.setAttribute("type","button");
