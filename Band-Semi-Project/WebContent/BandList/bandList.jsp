@@ -3,20 +3,6 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bandMain.css">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
-window.onload=function(){	
-	makeband=document.getElementById("makeband");
-	
-/* 	makeband.addEventListener("mouseover", function() {
-		makeband.style.boxShadow="5px 5px 5px 5px";
-	});
- */
- 
-/* 	makeband.addEventListener("mouseout", function() {
-		makeband.style.boxShadow="none";
-	});
- */
- 
- }
  	function inshodow(band){
  		var choose = document.getElementById(band);
  		choose.style.boxShadow="3px 3px 3px 3px #999";
@@ -38,7 +24,7 @@ window.onload=function(){
 			</span>
 		</a>
 		<c:forEach var="list" items="${requestScope.bandlist }">
-			<a href="" id="a2" >
+			<a href="${cp }/rladudsh.do?band_numnum=${list.band_num }" id="a2" >
 				<div class="join_band" id="joinband${list.band_num }" onmouseover="inshodow(this.id)" onmouseout="outshodow(this.id)">
 					<img src="${list.bandimg }" style="width: 180px; height: 149px;"><br>
 					<span>${list.bandname }</span><br>

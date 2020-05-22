@@ -1,0 +1,47 @@
+@charset "EUC-KR";
+#bandList4 {
+	display: inline-block;
+	border-radius: 40px;
+	background-color: transparent;
+	border: 2px solid white;
+	height: 28px;
+}
+
+#a1 {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#bandList3 {
+	display: inline-block;
+}
+
+#div1_makeband {
+	display: inline-block;
+	float: right;
+}
+
+#div2_makeband {
+	border: 1px solid black;
+	text-align: left;
+	width: 200px;
+	clear: right;
+	float: right;
+	display: none;
+	z-index: 200;
+	background-color: white;
+}
+
+.bandList1 {
+	background-color: transparent;
+	border: none;
+}
+
+#bandListheader{
+	height: 7%;
+	position: fixed;
+	top: 0px;
+	background-color: #4de22f;
+}

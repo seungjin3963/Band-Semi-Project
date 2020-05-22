@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="${cp }/MakingBand/css_makeband/band_header.css">
 <script>
 function noSpaceForm(){                        
    	var keyword=document.getElementById("bandList2");
@@ -19,7 +20,7 @@ window.addEventListener('load',function(){
 	var mypage=document.getElementById("mypage");
 	
 	var triangle=document.getElementById("bandList_triangle");
-	var div2=document.getElementById("div2");
+	var div2=document.getElementById("div2_makeband");
 	
 	mypage.addEventListener("click", function(e) {
 		if(on == false){
@@ -40,9 +41,9 @@ window.addEventListener('load',function(){
 	});
 });
 </script>
-<div id="bandLisgheader">
+<div id="bandListheader">
 <fieldset id="bandList4">
-	<a href="${cp }/loginOk.do" id="a1">
+	<a href="${cp }/SendLogin.do" id="a1">
 		&nbsp BAND &nbsp 
 	</a>
 </fieldset>
@@ -50,7 +51,7 @@ window.addEventListener('load',function(){
 	<input type="text" name="keyword" class="search-query" id="bandList2" placeholder="밴드명, 소개글 검색">
     	<button type="submit" class="bandList1"> <i class="icon-search"></i> </button>
 </form>
-<div id="div1">
+<div id="div1_makeband">
 	<button type="button" class="bandList1" id="mypage"><i class="icon-user"></i><i id="bandList_triangle">▼</i></button>
 </div>
 
