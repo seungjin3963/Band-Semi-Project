@@ -73,7 +73,7 @@ public class bandDao {
 		ResultSet rs=null;
 		try {
 			con=JDBCUtil.getConn();
-			String sql="select NVL(count(*),0) cnt from band where band_name like '%"+keyword+"%' or band_intoroductio like '%"+keyword+"%'";
+			String sql="select NVL(count(*),0) cnt from band where (band_name like '%"+keyword+"%' or band_intoroductio like '%"+keyword+"%') and band_publicwhe!=3";
 			
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
