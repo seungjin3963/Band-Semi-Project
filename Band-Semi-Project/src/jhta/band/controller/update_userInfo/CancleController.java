@@ -1,6 +1,8 @@
 package jhta.band.controller.update_userInfo;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +33,22 @@ public class CancleController extends HttpServlet{
 		}else {
 			req.setAttribute("file",file);
 		}
+		
+		SimpleDateFormat year1 = new SimpleDateFormat("yyyy");
+		SimpleDateFormat month1 = new SimpleDateFormat("MM");
+		SimpleDateFormat date1 = new SimpleDateFormat("dd");
+		Date birth = vo.getUser_birth();
+		
+		String year = year1.format(birth);
+		String month = month1.format(birth);
+		String date = date1.format(birth);
+		
+		req.setAttribute("year", year);
+		req.setAttribute("month", month);
+		req.setAttribute("date", date);
+		
+		req.setAttribute("joinVo", vo);
+		
 		session.setAttribute("header", "bandList_header.jsp");
 		req.setAttribute("joinVo", vo);
 		req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req,resp);
