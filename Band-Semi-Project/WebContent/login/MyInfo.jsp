@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link href="${cp }/Resources/css/bootstrap.min.css" rel="stylesheet">
 <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="./Resources/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
@@ -395,33 +395,39 @@ var temp=0;
 <div class="container-fluid" style="width: 100%">
 	<div class="row no-gutter">
 		<h4>내 정보</h4>
-		<div class="row">	<!-- 사용중인 프로필 -->
+		<div class="row">
+			<!-- 사용중인 프로필 -->
 			<div class="col-md-3" style="text-align: center;">사용중인 프로필</div>
 			<!-- 밑에 div에 사진 -->
-			<div class="col-md-2"></div>
+			<div class="col-md-2">
+				<img src="">
+			</div>
 			<div class="col-md-5">${requestScope.joinVo.user_name }</div>
 			<div class="col-md-2">
-				<input class="btn btn-primary btn-xs" type="button" value="변경">
+				<input class="btn btn-primary btn-xs" type="button" value="변경"
+					data-toggle="modal" data-target="#profileChange">
 			</div>
 		</div>
-		<div class="row">	<!-- 개인정보  -->
-			<div class="col-md-3"  style="text-align: center;">개인 정보</div>
+		<div class="row">
+			<!-- 개인정보  -->
+			<div class="col-md-3" style="text-align: center;">개인 정보</div>
 			<div class="col-md-2">생일</div>
-			
+
 			<div id="birthInfo">
 				<div class="col-md-5"></div>
 				<div id="changebirth">
 					<div class="col-md-5" id="now_birth">${requestScope.joinVo.user_birth }</div>
 					<div class="col-md-2">
-						<input class="btn btn-primary btn-xs" type="button" value="변경" onclick="change_birth()">
+						<input class="btn btn-primary btn-xs" type="button" value="변경"
+							onclick="change_birth()">
 					</div>
 				</div>
-					<form id="form1" method="post" style="display: hidden;"></form>
+				<form id="form1" method="post" style="display: hidden;"></form>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-2 col-md-offset-3">성별</div>
-			
+
 			<div id="genderInfo">
 				<div class="col-md-5"></div>
 				<div id="changegender">
@@ -439,38 +445,42 @@ var temp=0;
 						</c:choose>
 					</div>
 					<div class="col-md-2">
-						<input class="btn btn-primary btn-xs" type="button" value="변경" onclick="change_gender()">
+						<input class="btn btn-primary btn-xs" type="button" value="변경"
+							onclick="change_gender()">
 					</div>
 				</div>
-				
+
 				<form id="form2" method="post" style="display: hidden;"></form>
 			</div>
 		</div>
 		<br>
-		<div class="row">	<!-- 로그인 계정 -->
+		<div class="row">
+			<!-- 로그인 계정 -->
 			<div class="col-md-3" style="text-align: center;">로그인 계정</div>
 			<div class="col-md-2">휴대폰 번호</div>
-			
+
 			<div id="phoneInfo">
 				<div class="col-md-5"></div>
 				<div id="changephone">
-					<div class="col-md-5" id="now_phone">${requestScope.joinVo.user_phone }</div>	
+					<div class="col-md-5" id="now_phone">${requestScope.joinVo.user_phone }</div>
 					<div class="col-md-2">
-						<input class="btn btn-primary btn-xs" type="button" value="변경" onclick="change_phone()">
+						<input class="btn btn-primary btn-xs" type="button" value="변경"
+							onclick="change_phone()">
 					</div>
 				</div>
-					<form id="form3" method="post" style="display: hidden;"></form>
+				<form id="form3" method="post" style="display: hidden;"></form>
 			</div>
 		</div>
 		<div class="row">
-			<div id="emailInfo">	
+			<div id="emailInfo">
 				<div class="col-md-2 col-md-offset-3">이메일</div>
-				
+
 				<div id="emailInfo">
 					<div id="changeEmail">
 						<div class="col-md-5" id="now_email">${requestScope.joinVo.user_email }</div>
 						<div class="col-md-2">
-							<input class="btn btn-primary btn-xs" type="button" value="변경" onclick="change_email()">
+							<input class="btn btn-primary btn-xs" type="button" value="변경"
+								onclick="change_email()">
 						</div>
 					</div>
 					<form id="form4" method="post" style="display: hidden;"></form>
@@ -478,27 +488,51 @@ var temp=0;
 			</div>
 		</div>
 		<div class="row">
-				<div id="pwdInfo">
-					<div class="col-md-2 col-md-offset-3">비밀번호</div>
-					<div id="changepwd">
-						<div class="col-md-5" id="now_pwd">${requestScope.joinVo.login_pwd }</div>
-						<div class="col-md-2">
-							<input class="btn btn-primary btn-xs" type="button" value="변경" onclick="change_pwd()">
-						</div>
-					</div>
-					
-					<div id="pwdInfo2">
-						<form id="form5" method="post" style="display: hidden;" onsubmit="return check_input_new_pwd()"></form>
+			<div id="pwdInfo">
+				<div class="col-md-2 col-md-offset-3">비밀번호</div>
+				<div id="changepwd">
+					<div class="col-md-5" id="now_pwd">${requestScope.joinVo.login_pwd }</div>
+					<div class="col-md-2">
+						<input class="btn btn-primary btn-xs" type="button" value="변경"
+							onclick="change_pwd()">
 					</div>
 				</div>
+
+				<div id="pwdInfo2">
+					<form id="form5" method="post" style="display: hidden;"
+						onsubmit="return check_input_new_pwd()"></form>
+				</div>
+			</div>
 		</div>
 		<div class="row">
-				<div class="col-md-2 col-md-offset-3">탈퇴</div>
-				<div class="col-md-2 col-md-offset-5">
-					<input class="btn btn-primary btn-xs" type="button" value="탈퇴" onclick="change_state()">
-				</div>
+			<div class="col-md-2 col-md-offset-3">탈퇴</div>
+			<div class="col-md-2 col-md-offset-5">
+				<input class="btn btn-primary btn-xs" type="button" value="탈퇴"
+					onclick="change_state()">
+			</div>
 		</div>
 	</div>
-	<br>
-	<br>
+	<br> <br>
+</div>
+<div class="modal fade" id="profileChange" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<form action="${cp }/upload.jsp" method="post"
+					enctype="multipart/form-data" style="text-align: center;">
+					<label for="selectimg"> 
+					<img src="${cp }/MakingBand/bandcover/1.jpg"
+						style="width: 130px; height: 130px; border-radius: 70%; overflow: hiddin;"
+						id="profileimg">
+					</label><br> <input type="text" name="nickname"
+						style="margin-top: 10px;"><br> <input type="file"
+						name="potofile" id="selectimg"
+						accept="image/git, image/jpeg, image/png" style="display: none;">
+					<input type="hidden" value="${sessionScope.login_num }"
+						name="login_num"> <input type="submit" value="확인"
+						style="margin-top: 10px; width: 100px; height: 40px; background-color: black; color: white;">
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
