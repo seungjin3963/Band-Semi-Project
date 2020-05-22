@@ -26,8 +26,8 @@
 </head>
 <body>
 <div class="band_main_page">
- 
- 로그인 번호:${sessionScope.login_num}<br>
+
+ <!--  로그인 번호:${sessionScope.login_num}<br>
  
  등급:${sessionScope.band_approved }<br>
  
@@ -42,7 +42,8 @@
 소개글 : &{sessionScope.band_intoroductio}<br>
 
 인원수 : &{sessionScope.memberscount}<br>
- 
+   -->
+
 
 	
 	

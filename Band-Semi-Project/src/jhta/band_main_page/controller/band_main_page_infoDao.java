@@ -82,8 +82,28 @@ public class band_main_page_infoDao {
 			}
 			return -1;
 		}	
-		
+		public String dudmembersselect(long login_num , int bnum) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = JDBCUtil.getConn();
+				String sql = "select USER_NAME from userinfo where LOGIN_NUM=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setLong(1,login_num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					return rs.getString("USER_NAME");
+				}
+			}catch(SQLException se) {
+				se.printStackTrace();
+				return null;
+			}finally {
+				JDBCUtil.close(rs,pstmt,con);
+			}
+			return null;
+		}	
+	}
 	
 	
 
-}

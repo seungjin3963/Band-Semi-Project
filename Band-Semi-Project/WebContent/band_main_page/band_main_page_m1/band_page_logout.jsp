@@ -22,7 +22,7 @@
 <div class="band_main_page1_w">
 <h1> ${band_name }</h1>
 <p>맴버</p>&nbsp;<p>${memberscount }명</p>
-&nbsp;&nbsp;<button type="button" data-toggle="modal" data-target="#myModal">밴드 가입하기</button><br>
+&nbsp;&nbsp;<button type="button" data-toggle="modal" data-target="#myModal" >밴드 가입하기</button><br>
 <br>
 <p>${band_intoroductio}</p><br>
 <p>▷</p><a href="${cp }/mainpagedata.do">밴드 정보 보기</a><br>
@@ -47,7 +47,7 @@
         <div class="modal-body" >
 			<div class="band_page_logout_madal">
 				<div class="band_page_logout_Img" > <!-- 프로필 이미지 -->  </div>
-				<h4 id="rkdlqname">김영노</h4>
+				<h4 id="rkdlqname">${dudname}</h4>
 				<input type="radio" > <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
 			</div>
 			<br>
@@ -88,7 +88,9 @@
 	}
 	function band_rkdlqgkrl_value() {
 		if(xhr.readyState==4 && xhr.status==200){
-			alert("밴드 가입 요청이 완료되었습니다");	
+			var xml=xhr.responseXML;
+			var values=xml.getElementsByTagName("values")[0].firstChild.nodeValue;
+			alert(values);	
 		}
 	}
 </script>

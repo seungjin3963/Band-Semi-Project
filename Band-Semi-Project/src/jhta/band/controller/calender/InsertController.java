@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public class InsertController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int calender_num=6;//시컨스
+		//int calender_num=6;//시컨스
 		
 		HttpSession session=req.getSession();//밴드 번호
 		int band_n=(int) session.getAttribute("b_n");
@@ -22,7 +22,7 @@ public class InsertController extends HttpServlet{
 		String calender_title=req.getParameter("calender_title");
 		String calender_content=req.getParameter("calender_content");
 		String calender_date=req.getParameter("calender_date");
-		CalenderDvo vo=new CalenderDvo(calender_num,band_n,calender_title,calender_date,calender_content);
+		CalenderDvo vo=new CalenderDvo(1,band_n,calender_title,calender_date,calender_content);
 		CalenderDao dao=new CalenderDao();
 		dao.CalenderInsert(vo);
 		

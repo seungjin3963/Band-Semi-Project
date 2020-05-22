@@ -212,7 +212,36 @@ public class memberslistDao {
 	}
 		return -1;
 	}
-}
+	public int dudmembersinsert(int bn, long ln, String dudname) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		
+		try {
+			con=JDBCUtil.getConn();
+			String sql="insert into band_userinfo values(BANDUSERINFO_SEQ.nextval,?,?,?,3,sysdate)";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setInt(1, bn);
+			pstmt.setLong(2, ln);
+			pstmt.setString(3, dudname);
+			int n=pstmt.executeUpdate();
+			
+			return n;
+			
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+		}finally {
+			try {
+			if(pstmt!=null) {pstmt.close();}
+			if(con!=null) {con.close();}
+			}catch(SQLException see) {
+				System.out.println(see.getMessage());
+		}
+	}
+		return -1;
+	}
+	}
+
 
 
 
