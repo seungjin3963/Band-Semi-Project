@@ -42,8 +42,8 @@
 		  
 		  $("#myButtons1").click(function (e){
 			 var code = $('#summernote').summernote('code');
-			 var userband_num = $('#userband_num').val();
-			 var band_num = $('#band_num').val();
+			 var userband_num = '${userband_num}'
+			 var band_num = '${b_n}'
 			 var boardState = 0;
 			 var check = $('#noticeChk').is(":checked");
 			    if(check){
@@ -95,7 +95,7 @@
 	    $.ajax({
 	        data: {src : src,userband_num:userband_num},
 	        type: "POST",
-	        url: '<%=cp%>/summernoteDelete.do',
+	        url: '${cp}/summernoteDelete.do',
 	        cache: false,
 	        success: function(resp) {
 	            console.log(resp);
