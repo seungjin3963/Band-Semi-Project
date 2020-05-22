@@ -515,7 +515,7 @@ var temp=0;
 	<br> <br>
 </div>
 <!-- 질문 
- --><div class="modal fade" id="profileChange" tabindex="-1" role="dialog">
+ --><div class="modal fade" id="profileChange" role="dialog" aria-labelledby="myCenterModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-body">
