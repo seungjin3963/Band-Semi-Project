@@ -1,6 +1,7 @@
 package jhta.band.controller.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 
 import javax.servlet.ServletException;
@@ -34,7 +35,8 @@ public class UserinfoController extends HttpServlet{
 		String user_quiz = req.getParameter("user_quiz");	// 만들어져있는 퀴즈
 		String user_quiz1 = req.getParameter("user_quiz1");	// 직접 입력하는 퀴즈
 		String quiz_direct = req.getParameter("quiz_direct");// 직접 입력 할 건지 radio로 체크
-		if(quiz_direct != null) {
+		
+		if(quiz_direct.equals("true")) {
 			user_quiz = user_quiz1;
 		}
 		
@@ -46,13 +48,17 @@ public class UserinfoController extends HttpServlet{
 		
 		loginDao dao = new loginDao();
 		int n = dao.insert(loginvo, uservo);
-		String code = "sucess";
+		String code = "success";
 		if(n <= 0) {
 			code="fail";
 		}
 		
 		// 전송해야 할 위치
-		req.setAttribute("code", code);
-		req.getRequestDispatcher("/login/join.jsp").forward(req,resp);
+		resp.setContentType("text/xml;charset=utf-8");
+		PrintWriter pw=resp.getWriter();
+		pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+		pw.print("<result>");
+		pw.println("<code>"+code+"</code>");
+		pw.print("</result>");
 	}
 }

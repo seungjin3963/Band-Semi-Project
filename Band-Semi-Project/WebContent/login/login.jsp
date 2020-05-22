@@ -14,123 +14,7 @@
 <script src="${cp }/Resources/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #f6f6f6">
-<script type="text/javascript">
 
-	$(document).ready(function(){
-		$("#inputPassword").keydown(function(e){
-			if(e.keyCode==13){
-				check_login();
-			}
-		});
-	});
-	// 시퀀스 없음 loginDao , UserinfoController 수정해야함
-	var xhr = null;
-	// 회원가입 확인
-	function check_login(){
-		var inputId1 = document.getElementById("inputId1");
-		var inputPassword = document.getElementById("inputPassword");
-		xhr = new XMLHttpRequest();
-		xhr.onreadystatechange=getLogin;
-		xhr.open('post','${cp}/loginOk.do',true);
-		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		xhr.send('loginId='+inputId1.value+'&loginPwd='+inputPassword.value);
-	}
-	function getLogin(){
-		if(xhr.readyState==4 && xhr.status==200){
-			var xml = xhr.responseXML;
-			var code = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
-			console.log(code);
-			if(code == "fail"){
-				alert("가입되지 않은 회원입니다.");
-				return false;
-			}else{
-				var inputId1 = document.getElementById("inputId1");
-				var inputPassword = document.getElementById("inputPassword");
-				location.href='${cp}/SendLogin.do?loginId='+inputId1.value+'&loginPwd='+inputPassword.value;
-			}
-			return true;
-		}
-	}
-	
-	var year = document.getElementsByName("year");
-	var month = document.getElementsByName("month");
-	var date = document.getElementsByName("date");
-	var gender = document.getElementsByName("user_gender");
-	
-	// 생년월일, 성별이 선택 안되었을 때 alert를 띄워줌
-	function check_form(){
-		var inputPwd = document.getElementById("inputPwd");
-		var inputPwdOk = document.getElementById("inputPwdOk");
-		
-		if(inputPwd.value != inputPwdOk.value){
-			alert("비밀번호확인이 다릅니다.");
-			return false;
-		}
-		if(year[0].value == 0 || month[0].value == 0 || date[0].value == 0){
-			alert("생년월일을 입력해주세요");
-			return false;
-		}
-		if(gender[0].checked == false && gender[1].checked == false){
-			alert("성별을 입력해주세요");
-			return false;
-		}
-		if(inputPwd.value != inputPwdOk.value){
-			alert("비밀번호와 비밀번호 확인이 다릅니다.");
-			return false;
-		}
-		
-		var quiz_direct = document.getElementsByName("quiz_direct");
-		var user_quiz1 = document.getElementById("user_quiz1");
-		var user_quiz = document.getElementById("user_quiz");
-		if(quiz_direct[0].checked == true && user_quiz1.value == ""){
-			alert("퀴즈를 내주세요");
-			return false;
-		}
-		return true;
-	}
-	
-	// 문제 직접 선택일 경우 바뀌는거
-	function quiz_directa(num){
-		var user_quiz = document.getElementById("user_quiz"); // 입력되어있는 칸
-		var user_quiz1 = document.getElementById("user_quiz1"); // 입력해야하는 칸
-		if(num == "1"){ // 직접입력 선택할 경우
-			user_quiz.style.display = "none";
-			user_quiz1.style.display = "inline-block";
-			
-		}else{
-			user_quiz.style.display = "inline-block";
-			user_quiz1.style.display = "none";
-		}
-	}
-	
-	// 아이디 중복 확인
-	function check_id(){
-		var inputId2 = document.getElementById("inputId2").value;
-		if(inputId2 == "" || inputId2 == null){
-			alert("다시 입력해 주세요");
-			return false;
-		}
-		xhr = new XMLHttpRequest();
-		xhr.onreadystatechange=check_getId;
-		xhr.open('get','${cp}/checkId.do?inputId2='+inputId2,true);
-		xhr.send();
-	}
-	
-	function check_getId(){
-		if(xhr.readyState==4 && xhr.status==200){
-			var xml = xhr.responseXML;
-			var check_getId = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
-			var join_user = document.getElementById("join_user");
-			if(check_getId == "success"){
-				alert("사용 가능한 아이디 입니다.");
-				join_user.disabled="";
-			}else{
-				alert("사용 불가능한 아이디 입니다.");
-				join_user.disabled="true";
-			}
-		}
-	}
-</script>
 <div class="container-fluid">
   <div class="row no-gutter">
     <div style="position: relative; margin-top: 50px; text-align: right;" class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
@@ -165,7 +49,7 @@
 	          
 	          
 	          
-	            <form class="form-inline" method="post" action="${cp }/Users.do" onsubmit="return check_form();">
+	            <form class="form-inline" method="post">
 	                <!-- 모달영역 -->
 	                <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 	                	<div class="modal-dialog" role="document">
@@ -246,7 +130,7 @@
 		                					</div>
 		                			</div>
 		                			<div class="modal-fotter">
-		                				<button type="submit" id="join_user" class="btn btn-primary" disabled="disabled">확인</button>
+		                				<button type="button" id="join_user" class="btn btn-primary" disabled="disabled" onclick="return check_form()">확인</button>
 		                				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 		                			</div>
 	                		</div>
@@ -265,5 +149,145 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$("#inputPassword").keydown(function(e){
+			if(e.keyCode==13){
+				check_login();
+			}
+		});
+	});
+	var xhr = null;
+	// 회원가입 확인
+	function check_login(){
+		var inputId1 = document.getElementById("inputId1");
+		var inputPassword = document.getElementById("inputPassword");
+		xhr = new XMLHttpRequest();
+		xhr.onreadystatechange=getLogin;
+		xhr.open('post','${cp}/loginOk.do',true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.send('loginId='+inputId1.value+'&loginPwd='+inputPassword.value);
+	}
+	function getLogin(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var xml = xhr.responseXML;
+			var code = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
+			console.log(code);
+			if(code == "fail"){
+				alert("가입되지 않은 회원입니다.");
+				return false;
+			}else{
+				var inputId1 = document.getElementById("inputId1");
+				var inputPassword = document.getElementById("inputPassword");
+				location.href='${cp}/SendLogin.do?loginId='+inputId1.value+'&loginPwd='+inputPassword.value;
+			}
+			return true;
+		}
+	}
+	
+	var year = document.getElementsByName("year");
+	var month = document.getElementsByName("month");
+	var date = document.getElementsByName("date");
+	var gender = document.getElementsByName("user_gender");
+	
+	// 생년월일, 성별이 선택 안되었을 때 alert를 띄워줌
+	function check_form(){
+		var inputPwd = document.getElementById("inputPwd");
+		var inputPwdOk = document.getElementById("inputPwdOk");
+		
+		if(inputPwd.value != inputPwdOk.value){
+			alert("비밀번호확인이 다릅니다.");
+			return false;
+		}
+		if(year[0].value == 0 || month[0].value == 0 || date[0].value == 0){
+			alert("생년월일을 입력해주세요");
+			return false;
+		}
+		if(gender[0].checked == false && gender[1].checked == false){
+			alert("성별을 입력해주세요");
+			return false;
+		}
+		if(inputPwd.value != inputPwdOk.value){
+			alert("비밀번호와 비밀번호 확인이 다릅니다.");
+			return false;
+		}
+		
+		var quiz_direct = document.getElementsByName("quiz_direct");
+		var user_quiz1 = document.getElementById("user_quiz1");
+		var user_quiz = document.getElementById("user_quiz");
+		if(quiz_direct[0].checked == true && user_quiz1.value == ""){
+			alert("퀴즈를 내주세요");
+			return false;
+		}
+		
+		var inputId2 = document.getElementById("inputId2");
+		var user_name = document.getElementsByName("user_name");
+		var user_answer = document.getElementsByName("user_answer");
+		
+		xhr= new XMLHttpRequest();
+		xhr.onreadystatechange=getform;
+		xhr.open('post','${cp}/Users.do',true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.send('login_id='+inputId2.value+'&login_pwd='+inputPwd.value+'&user_name='+user_name[0].value+
+				'&year='+year[0].value+'&month='+month[0].value+'&date='+date[0].value+
+				'&user_gender='+gender[0].value+'&user_quiz='+user_quiz.value+
+				'&user_quiz1='+user_quiz1.value+'&quiz_direct='+quiz_direct[0].checked+'&user_answer='+user_answer[0].value);
+	}
+	function getform(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var xml = xhr.responseXML;
+			var code = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
+			var inputId1 = document.getElementById("inputId2");
+			var inputPassword = document.getElementById("inputPwd");
+			console.log(code);
+			if(code == "success"){
+				location.href='${cp}/SendLogin.do?loginId='+inputId1.value+'&loginPwd='+inputPassword.value;
+			}
+		}
+	}
+	
+	// 문제 직접 선택일 경우 바뀌는거
+	function quiz_directa(num){
+		var user_quiz = document.getElementById("user_quiz"); // 입력되어있는 칸
+		var user_quiz1 = document.getElementById("user_quiz1"); // 입력해야하는 칸
+		if(num == "1"){ // 직접입력 선택할 경우
+			user_quiz.style.display = "none";
+			user_quiz1.style.display = "inline-block";
+			
+		}else{
+			user_quiz.style.display = "inline-block";
+			user_quiz1.style.display = "none";
+		}
+	}
+	
+	// 아이디 중복 확인
+	function check_id(){
+		var inputId2 = document.getElementById("inputId2").value;
+		if(inputId2 == "" || inputId2 == null){
+			alert("다시 입력해 주세요");
+			return false;
+		}
+		xhr = new XMLHttpRequest();
+		xhr.onreadystatechange=check_getId;
+		xhr.open('get','${cp}/checkId.do?inputId2='+inputId2,true);
+		xhr.send();
+	}
+	
+	function check_getId(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var xml = xhr.responseXML;
+			var check_getId = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
+			var join_user = document.getElementById("join_user");
+			if(check_getId == "success"){
+				alert("사용 가능한 아이디 입니다.");
+				join_user.disabled="";
+			}else{
+				alert("사용 불가능한 아이디 입니다.");
+				join_user.disabled="true";
+			}
+		}
+	}
+</script>
 </body>
 </html>

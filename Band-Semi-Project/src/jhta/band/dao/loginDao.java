@@ -235,26 +235,24 @@ public class loginDao {
 		Connection con = null;
 		PreparedStatement pstmt1 = null;
 		PreparedStatement pstmt2 = null;
-		String sql1 = "insert into login values(?,?,?,sysdate,?)";
-		String sql2 = "insert into userinfo values(?,?,?,?,?,?,?,null,?)";
+		String sql1 = "insert into login values(seq_login.nextval,?,?,sysdate,?)";
+		String sql2 = "insert into userinfo values(seq_login.currval,?,?,?,?,?,?,null,?)";
 		try {
 			con = JDBCUtil.getConn();
 			pstmt1 = con.prepareStatement(sql1);
-			pstmt1.setLong(1, vo1.getLogin_num());
-			pstmt1.setString(2, vo1.getLogin_id());
-			pstmt1.setString(3, vo1.getLogin_pwd());
-			pstmt1.setInt(4, vo1.getLogin_state());
+			pstmt1.setString(1, vo1.getLogin_id());
+			pstmt1.setString(2, vo1.getLogin_pwd());
+			pstmt1.setInt(3, vo1.getLogin_state());
 			int n1 = pstmt1.executeUpdate();
 			if( n1 > 0) {
 				pstmt2 = con.prepareStatement(sql2);
-				pstmt2.setLong(1, vo2.getLogin_num());
-				pstmt2.setString(2, vo2.getUser_name());
-				pstmt2.setString(3, vo2.getUser_phone());
-				pstmt2.setString(4, vo2.getUser_email());
-				pstmt2.setString(5, vo2.getUser_gender());
-				pstmt2.setString(6, vo2.getUser_quiz());
-				pstmt2.setString(7, vo2.getUser_anser());
-				pstmt2.setDate(8, vo2.getBirth());
+				pstmt2.setString(1, vo2.getUser_name());
+				pstmt2.setString(2, vo2.getUser_phone());
+				pstmt2.setString(3, vo2.getUser_email());
+				pstmt2.setString(4, vo2.getUser_gender());
+				pstmt2.setString(5, vo2.getUser_quiz());
+				pstmt2.setString(6, vo2.getUser_anser());
+				pstmt2.setDate(7, vo2.getBirth());
 				int n2 = pstmt2.executeUpdate();
 				return n2;
 			}else {
