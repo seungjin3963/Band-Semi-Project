@@ -23,12 +23,12 @@ public class BandMainPageSetController extends HttpServlet{
 		
 		if(aaaaa==1) { //관리자 이면
 			
-			req.setAttribute("file", "band_main_page_m1/band_page_admin.jsp");
+			req.setAttribute("file", "/band_main_page/band_main_page_m1/band_page_admin.jsp");
 			req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
 		}
 		else{ //일반 회원이면
 			
-			req.setAttribute("file", "band_main_page_m1/band_page_notadmin.jsp");
+			req.setAttribute("file", "/band_main_page/band_main_page_m1/band_page_notadmin.jsp");
 			req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);	
 		}
 	}

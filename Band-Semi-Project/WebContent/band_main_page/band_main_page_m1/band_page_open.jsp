@@ -20,19 +20,19 @@
  	<br>
  	<div class="band_page_open1">
  	<h4>비공개 밴드</h4>
- 	<input type="radio" value="1" class="band_page_open1rad">
+ 	<input type="radio" value="3" class="band_page_open1rad" name="vlauesdate">
  	<p>밴드와 게시글이 공개되지 않습니다. 초대를 통해서만 가입할 수 있습니다.</p>
  	</div>
  	<br>
  	<div class="band_page_open1" >
  	<h4>밴드명 공개 밴드</h4>
- 	<input type="radio" value="2" class="band_page_open1rad">
+ 	<input type="radio" value="2" class="band_page_open1rad" name="vlauesdate">
  	<p>누구나 밴드를 검색으로 찾아 밴드 소개를 볼 수 있지만, 게시글은 멤버만 볼 수 있습니다.</p>
  	</div>
  	<br>
  	<div class="band_page_open1">
  	<h4>공개 밴드</h4>
- 	<input type="radio" value="3" class="band_page_open1rad">
+ 	<input type="radio" value="1" class="band_page_open1rad" name="vlauesdate">
  	<p>누구나 밴드를 검색해 찾을 수 있고, 밴드 소개와 게시글을 볼 수 있습니다.</p>
  	</div>
  	<br>
@@ -45,4 +45,18 @@
  	<br>
 </div>
 </body>
+<script type="text/javascript">
+	var val=0;
+	var input=document.getElementById("input");
+	input.addEventListener('click' , function(e){
+		for (var i = 0; i < 3; i++) {
+		var values=document.getElementsByClassName("band_page_open1rad")[i]
+			if(values.checked==true){
+				val=values.value;
+			}
+		}
+		
+		location.href ="<%=request.getContextPath()%>/rhdrotjfwjd.do?values="+val;
+	})
+</script>
 </html>

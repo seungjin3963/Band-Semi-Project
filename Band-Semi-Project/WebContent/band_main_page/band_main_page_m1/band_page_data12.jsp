@@ -23,8 +23,8 @@
 		<br>
 		<h4>이 밴드의 활동 정보</h4>
 		 <ul>
-		 	<li>개설일 &nbsp; yyyy/mm/dd</li>
-		 	<li>게시글 &nbsp; n 건</li>
+		 	<li>개설일 &nbsp; ${band_Date}</li>
+		 	<li>게시글 &nbsp; ${countboaed} 건</li>
 		 	<li>밴드 가입 &nbsp; &{memberscount} 명</li>
 		 </ul>
 		 <br>

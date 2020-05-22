@@ -122,7 +122,7 @@
         <div class="modal-footer">
 
           <input type="button" class="btn btn-default" data-dismiss="modal"  value="취소">
-           <input type="button" class="btn btn-default" data-dismiss="modal"  value="삭제하기">
+           <input type="button" class="btn btn-default" data-dismiss="modal"  value="삭제하기" onclick="banddelete()">
 
         </div>
 
@@ -145,6 +145,9 @@
 		$("#myModal_band_delete1").modal("show"); 
 	});
 	
+	function banddelete() {
+		location.href ="<%=request.getContextPath()%>/deleteband.do";
+	}
 	
 	
 </script>

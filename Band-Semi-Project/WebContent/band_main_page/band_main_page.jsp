@@ -41,7 +41,6 @@
 
 소개글 : &{sessionScope.band_intoroductio}<br>
 
-인원수 : &{sessionScope.memberscount}<br>
    -->
 
 

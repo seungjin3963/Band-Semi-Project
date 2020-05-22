@@ -21,6 +21,7 @@ public class MembersrkdlqController extends HttpServlet{
 		long login_num=(long)session.getAttribute("login_num");
 		String dudname=(String)session.getAttribute("dudname");
 		
+		System.out.println(login_num);
 		
 		//System.out.println(bnadnum);
 	//	System.out.println(dudname);
@@ -29,11 +30,13 @@ public class MembersrkdlqController extends HttpServlet{
 		memberslistDao dao=new memberslistDao();
 		int n=dao.dudmembersinsert(bnadnum , login_num ,dudname);
 		
+		int a=dao.bandListinfo1(bnadnum, login_num);
+		
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw=resp.getWriter();
 		pw.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		pw.println("<result>");
-		if(n==1) {	
+		if(n==1 && a==1) {	
 			pw.println("<values>가입 신청 되었습니다.</values>");
 		}else {
 			pw.println("<values>가입 신청에 실패했습니다.</values>");

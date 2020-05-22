@@ -103,7 +103,54 @@ public class band_main_page_infoDao {
 			}
 			return null;
 		}	
-	}
+		
+		public int countboard(int num) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = JDBCUtil.getConn();
+				String sql = "select count(board_num) c from board where band_num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setLong(1,num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					return rs.getInt("c");
+				}
+			}catch(SQLException se) {
+				se.printStackTrace();
+				return 0;
+			}finally {
+				JDBCUtil.close(rs,pstmt,con);
+			}
+			return 0;
+		}	
+		public String banddate(int num) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = JDBCUtil.getConn();
+				String sql = "select band_signdate from bandlist where band_num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1,num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					return rs.getString("band_signdate");
+				}
+			}catch(SQLException se) {
+				se.printStackTrace();
+				return null;
+			}finally {
+				JDBCUtil.close(rs,pstmt,con);
+			}
+			return null;
+		}
+
+}
+
+
+	
 	
 	
 

@@ -23,12 +23,12 @@ public class HomeController1 extends HttpServlet {
 		int BANDNUM=Integer.parseInt(req.getParameter("band_numnum"));
 		HttpSession paramBANDinfo = req.getSession();
 		paramBANDinfo.setAttribute("b_n", BANDNUM);
-		System.out.println("gggg   :"+BANDNUM);
+		
 		
 		//로그인 num
 		//int login_num=Integer.parseInt(req.getParameter("loginnum"));
 		long login_num=(long)paramBANDinfo.getAttribute("login_num");
-		System.out.println(login_num);
+		
 		
 		
 		
@@ -46,18 +46,24 @@ public class HomeController1 extends HttpServlet {
 		//인원수
 		int bandmembers=dao.memberscount(BANDNUM);
 		paramBANDinfo.setAttribute("memberscount", bandmembers);
+		
+		String date=dao.banddate(BANDNUM);
+		int n=dao.countboard(BANDNUM);	
+		paramBANDinfo.setAttribute("countboard", n);
+		paramBANDinfo.setAttribute("band_Date", date);
+		
 		paramBANDinfo.setAttribute("vo", vo);
 		if(vo==null || vo.getBand_approved()==3) {
 			String dudname=dao.dudmembersselect(login_num ,BANDNUM);
 			//비회원 이름
 			paramBANDinfo.setAttribute("dudname", dudname);
-			System.out.println("비회원 이름  : "+ dudname);
+			
 			req.setAttribute("file", "/band_main_page/band_main_page_m1/band_page_data0.jsp");
 		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
 		}else {
 			//등급 관리자:1  회원:2  / 대기중 3  비회원0  
 			paramBANDinfo.setAttribute("band_approved", vo.getBand_approved());
-			System.out.println("등급  "+ vo.getBand_approved());
+		
 			//유저 번호
 			paramBANDinfo.setAttribute("userband_num", vo.getUser_Band_num());
 			req.setAttribute("file", "/band_board/band_board.jsp");

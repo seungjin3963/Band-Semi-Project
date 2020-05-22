@@ -240,7 +240,27 @@ public class memberslistDao {
 	}
 		return -1;
 	}
+	public int bandListinfo1(int num,long loginNum) {
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		
+		try {
+			con=JDBCUtil.getConn();
+			pstmt=con.prepareStatement("INSERT INTO BANDLIST VALUES(SEQ_BANDLIST.NEXTVAL,?,?,1,SYSDATE)");
+			pstmt.setInt(1, num);
+			pstmt.setLong(2, loginNum);
+			int n=pstmt.executeUpdate();
+			return n;
+		} catch (SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JDBCUtil.close(null, pstmt, con);
+		}
 	}
+	
+}
 
 
 

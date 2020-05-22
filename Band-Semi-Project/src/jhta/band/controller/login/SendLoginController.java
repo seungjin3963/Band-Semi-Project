@@ -38,10 +38,13 @@ public class SendLoginController extends HttpServlet{
 			
 			ArrayList<BandListVo>bandlist=listdao.band_list(a);
 			
+			System.out.println(a);
+
 			String file=req.getParameter("file");
 			
 			req.getSession().setAttribute("header", "bandList_header.jsp");
 			req.setAttribute("bandlist", bandlist);
+			
 			
 			if(file == null) {
 				req.setAttribute("file", "/BandList/bandList.jsp");
