@@ -9,10 +9,16 @@
 <br>
 <br>
 <br>
-<h2>밴드·페이지  <strong>${getcount }</strong></h2>
+<style>
+	.serch01
+	{
+		margin-left:200px; 
+	}
+</style>
+<h2 class="serch01">밴드·페이지  <strong>${getcount }</strong></h2>
 <!--  <table border="2" width="1200">-->
 <c:forEach var="vo" items="${list}" >
-<table   style=" border:1px solid white;  "  >
+<table  class="serch01" style=" border:1px solid white;  "  >
 	
 	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
 <%-- 		<td colspan="5" rowspan="4"><img src="${vo.bandimg }" style="height: 100px;"></td>
@@ -43,7 +49,7 @@
 	</tr>
 </table>
 </c:forEach>
-<div>
+<div class="serch01" >
 <c:choose>
 	<c:when test="${startPage>3 }">
 		<a href="${cp }/bandSerch?pageNum=${startPage-1 }&keyword=${keyword}">[이전]</a>
