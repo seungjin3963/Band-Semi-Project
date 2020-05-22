@@ -220,9 +220,19 @@
 			alert("퀴즈를 내주세요");
 			return false;
 		}
+		var user_name = document.getElementsByName("user_name");
+		
+		var user_name_value = document.getElementsByName("user_name")[0].value;
+		
+		var pattern_num = /[0-9]/;
+		var pattern_spc = /[~!@#$%^&*()_+|<>?:{}]/;
+		var pattern_eng = /[a-z]/;
+		if(pattern_num.test(user_name_value)||pattern_spc.test(user_name_value)||pattern_eng.test(user_name_value)){
+			alert("한글만 입력 가능합니다.");
+			return false;
+		}
 		
 		var inputId2 = document.getElementById("inputId2");
-		var user_name = document.getElementsByName("user_name");
 		var user_answer = document.getElementsByName("user_answer");
 		
 		xhr= new XMLHttpRequest();

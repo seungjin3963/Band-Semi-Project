@@ -260,7 +260,7 @@ var temp=0;
 		div7.setAttribute("class","col-md-5");
 		
 		var Email = document.createElement("input");
-		Email.setAttribute("type","text");
+		Email.setAttribute("type","email");
 		Email.setAttribute("name","Email");
 		Email.setAttribute("placeholder","이메일을 입력해 주세요.");	
 		
