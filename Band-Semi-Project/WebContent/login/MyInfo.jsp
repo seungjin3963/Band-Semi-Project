@@ -216,7 +216,7 @@ var temp=0;
 		div5.setAttribute("class","col-md-5");
 		
 		var phoneNumber = document.createElement("input");
-		phoneNumber.setAttribute("type","text");
+		phoneNumber.setAttribute("type","number");
 		phoneNumber.setAttribute("name","phoneNumber");
 		phoneNumber.setAttribute("placeholder","숫자만 입력해 주세요.");		
 		

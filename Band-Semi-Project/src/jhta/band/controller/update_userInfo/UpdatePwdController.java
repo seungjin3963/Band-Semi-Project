@@ -1,6 +1,8 @@
 package jhta.band.controller.update_userInfo;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +31,22 @@ public class UpdatePwdController extends HttpServlet{
 		
 		loginDao dao1 = new loginDao();
 		JoinVo vo = dao1.selectInfo(login_num);
+		
+		SimpleDateFormat year1 = new SimpleDateFormat("yyyy");
+		SimpleDateFormat month1 = new SimpleDateFormat("MM");
+		SimpleDateFormat date1 = new SimpleDateFormat("dd");
+		
+		Date birth = vo.getUser_birth();
+		
+		String year_string = year1.format(birth);
+		String month_string = month1.format(birth);
+		String date_string = date1.format(birth);
+		
+		req.setAttribute("year", year_string);
+		req.setAttribute("month", month_string);
+		req.setAttribute("date", date_string);		
+		req.setAttribute("joinVo", vo);
+		
 		String file = req.getParameter("file");
 		
 		if(file == null) {
