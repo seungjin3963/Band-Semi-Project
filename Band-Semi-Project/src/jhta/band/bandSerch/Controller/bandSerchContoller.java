@@ -26,6 +26,7 @@ public class bandSerchContoller extends HttpServlet {
 		int endRow=startRow+2;
 		bandDao dao=new bandDao();
 		ArrayList<bandSerchVo> list=dao.serch1(startRow,endRow,keyword);
+		int getcount=dao.getCount(keyword);
 		int pageCount=(int)Math.ceil(dao.getCount(keyword)/3.0);	
 		int startPage=(pageNum-1)/3*3+1;
 		int endPage=startPage+2;
@@ -35,6 +36,7 @@ public class bandSerchContoller extends HttpServlet {
 		req.setAttribute("startPage",startPage);
 		req.setAttribute("endPage",endPage);
 		req.setAttribute("pageNum",pageNum);
+		req.setAttribute("getcount",getcount);
 		System.out.println(keyword);
 		
 		//req.setAttribute("list", list);

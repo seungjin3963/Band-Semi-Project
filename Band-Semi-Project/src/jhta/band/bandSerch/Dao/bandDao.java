@@ -161,7 +161,7 @@ public class bandDao {
 		ArrayList<bandVo> list=new ArrayList<bandVo>();
 		 //sql="select * from band1 where band_num>0 and band_num<11";
 		 //sql="select * from band1 where band_num in(?,?,?,?,?,?,?,?,?,?) and band_publicwhe!=3";
-		 sql="select * from band where band_num in(?,?,?,?,?,?,?,?,?,?)";
+		 sql="select * from band where band_num in(?,?,?,?,?,?,?,?,?,?) order by dbms_random.value";
 		try {
 			con=JDBCUtil.getConn();
 			pstmt=con.prepareStatement(sql);
