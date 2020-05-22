@@ -106,7 +106,7 @@ public class bandDao {
 					"    where aa.band_num=bb.band_num and cc.login_num=bb.login_num" + 
 					") " + 
 					"where rnum>=? and  rnum<=?";
-			String sql2="select a1,a2,a3,b1,d1 from( select aa.band_num a1 , aa.band_name a2, aa.band_intoroductio a3, bb.login_num b1,dd.bandimg d1, rownum rnum from  ( select * from  band where (band_name  like '%"+keyword+"%' or band_intoroductio like '%"+keyword+"%') and band_publicwhe!=3  order by band_num desc  ) aa,band_userinfo bb,bandimg dd  where aa.band_num=bb.band_num and dd.bandimgNum=aa.bandimgNum) where rnum>=? and  rnum<=?";
+			String sql2="select a1,a2,a3,d1 from( select aa.band_num a1 , aa.band_name a2, aa.band_intoroductio a3, dd.bandimg d1, rownum rnum from  ( select * from  band where (band_name  like '%"+keyword+"%' or band_intoroductio like '%"+keyword+"%') and band_publicwhe!=3  order by band_num desc  ) aa,bandimg dd  where  dd.bandimgNum=aa.bandimgNum) where rnum>=? and  rnum<=?";
 			con=JDBCUtil.getConn();
 			String sql=null;
 			
@@ -128,8 +128,8 @@ public class bandDao {
 				String band_name=rs.getString("a2");
 				String band_intoroductio=rs.getString("a3");
 				String bandimg=rs.getString("d1");
-				int login_num=rs.getInt("b1");
-				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, 0, bandimg));
+				
+				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg));
 			}
 			return list;
 		}catch(SQLException se) {
