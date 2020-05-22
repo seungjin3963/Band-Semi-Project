@@ -149,8 +149,11 @@ public class BoardDao {
 		ResultSet rs = null;
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "select aa.*,bb.band_nickname from board aa,(select band_nickname from band_userinfo) bb where band_num=? and" + 
-					"board_states!=2 order by board_redate DESC";
+			String sql = "select aa.*,band_nickname from band_userinfo bb,\n" + 
+					"(\n" + 
+					"    select * from board where band_num=? and board_states!=2 order by board_redate DESC\n" + 
+					")aa\n" + 
+					"where aa.userband_num=bb.userband_num";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, band_num);
 						
