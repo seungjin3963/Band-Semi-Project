@@ -168,17 +168,17 @@ public class CommentsDao {
 		
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "select * from " + 
-					" " + 
-					"    select aa.*,rownum rnum,bb.band_nickname" + 
-					"   from" + 
-					"    (" + 
-					"        select * from comments where board_num=? and comments_state!=1 order by ref,step" + 
-					"    )aa,\" +\r\n" + 
-					"    (\" +\r\n" + 
-					"        select band_nickname from band_userinfo" + 
-					"    )bb" + 
-					") "+
+			String sql = "select * from\n" + 
+					"(   \n" + 
+					"    select aa.*,rownum rnum,bb.band_nickname\n" + 
+					"    from\n" + 
+					"    (\n" + 
+					"        select * from comments where board_num=? and comments_state!=1 order by ref,step\n" + 
+					"    )aa,\n" + 
+					"    (\n" + 
+					"        select userband_num,band_nickname from band_userinfo\n" + 
+					"    )bb\n where aa.userband_num=bb.userband_num"  + 
+					")\n" + 
 					"where rnum >=? and rnum <=?";
 			
 			pstmt = con.prepareStatement(sql);
