@@ -5,36 +5,58 @@ public class bandSerchVo {
 	private String band_name;
 	private String band_intoroductio;
 	private int login_num;
-	public bandSerchVo(int band_num, String band_name, String band_intoroductio, int login_num) {
+	private String bandimg;
+	public bandSerchVo() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public bandSerchVo(int band_num, String band_name, String band_intoroductio, int login_num, String bandimg) {
 		super();
 		this.band_num = band_num;
 		this.band_name = band_name;
 		this.band_intoroductio = band_intoroductio;
 		this.login_num = login_num;
+		this.bandimg = bandimg;
 	}
+
 	public int getBand_num() {
 		return band_num;
 	}
+
 	public void setBand_num(int band_num) {
 		this.band_num = band_num;
 	}
+
 	public String getBand_name() {
 		return band_name;
 	}
+
 	public void setBand_name(String band_name) {
 		this.band_name = band_name;
 	}
+
 	public String getBand_intoroductio() {
 		return band_intoroductio;
 	}
+
 	public void setBand_intoroductio(String band_intoroductio) {
 		this.band_intoroductio = band_intoroductio;
 	}
+
 	public int getLogin_num() {
 		return login_num;
 	}
+
 	public void setLogin_num(int login_num) {
 		this.login_num = login_num;
+	}
+
+	public String getBandimg() {
+		return bandimg;
+	}
+
+	public void setBandimg(String bandimg) {
+		this.bandimg = bandimg;
 	}
 	
 	
