@@ -67,7 +67,33 @@ public class bandmainpagesetdao {
 			}
 		return -1;
 		}	
+	
+	public int bandout(int bandnum,int unum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt1 = null;
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "delete from band_userinfo where USERBAND_NUM=? and BAND_NUM=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,unum);
+			pstmt.setInt(2,bandnum);	
+			pstmt.executeUpdate();
+			String sql1 = "delete from bandlist where USERBAND_NUM=? and BAND_NUM=?";
+			pstmt1 = con.prepareStatement(sql1);
+			pstmt1.setInt(1,unum);
+			pstmt1.setInt(2,bandnum);
+			int n=pstmt.executeUpdate();
+			return n;
+			}catch(SQLException se) {
+				se.printStackTrace();		
+			}finally {
+				JDBCUtil.close(null,pstmt,con);
+			}
+		return -1;
+		}
 	}
+
 
 
 

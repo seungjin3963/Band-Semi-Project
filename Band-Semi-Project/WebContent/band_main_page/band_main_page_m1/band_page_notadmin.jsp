@@ -67,7 +67,7 @@
         <div class="modal-footer">
 
           <input type="button" class="btn btn-default" data-dismiss="modal"  value="취소">
-           <input type="button" class="btn btn-default" data-dismiss="modal"  value="탈퇴하기">
+           <input type="button" class="btn btn-default" data-dismiss="modal"  value="탈퇴하기" onclick="bandout()">
 
         </div>
 
@@ -77,4 +77,9 @@
 
   </div>
 </body>
+<script type="text/javascript">
+	function bandout() {
+		location.href ="<%=request.getContextPath()%>/bandout.do";
+	}
+</script>
 </html>

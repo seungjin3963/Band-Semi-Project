@@ -83,7 +83,7 @@
         <div class="modal-footer">
 
           <input type="button" class="btn btn-default" data-dismiss="modal"  value="취소">
-           <input type="button" class="btn btn-default" data-dismiss="modal"  value="탈퇴하기">
+           <input type="button" class="btn btn-default" data-dismiss="modal"  value="탈퇴하기" onclick="bandxkfxhl()">
 
         </div>
 
@@ -148,6 +148,11 @@
 	function banddelete() {
 		location.href ="<%=request.getContextPath()%>/deleteband.do";
 	}
+	function bandxkfxhl() {
+		
+		location.href ="<%=request.getContextPath()%>/deleteband.do";
+		
+		}
 	
 	
 </script>
