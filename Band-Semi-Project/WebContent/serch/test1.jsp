@@ -12,11 +12,12 @@
 <h1>밴드·페이지  35142111</h1>
 <!--  <table border="2" width="1200">-->
 <c:forEach var="vo" items="${list}" >
-<table   style="width:800px; border:1px solid white;  "  >
+<table   style=" border:1px solid white;  "  >
 	
 	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
-		<td colspan="5" rowspan="4"><img src="${vo.bandimg }" style="width: 60px; height: 40px;"></td>
-		<td colspan="8" >밴드이름: ${vo.band_name}</td>
+<%-- 		<td colspan="5" rowspan="4"><img src="${vo.bandimg }" style="height: 100px;"></td>
+ --%>		<td  colspan="1" rowspan="4"><img src="${vo.bandimg }" style="height: 100px;"></td>
+ 		<td colspan="8" >밴드이름: ${vo.band_name}</td>
 	</tr >
 	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
 		<td colspan="8" >밴드소개글: ${vo.band_intoroductio}</td>
@@ -29,10 +30,6 @@
 		<td colspan="8">밴드 더보기</td>
 	</tr>
 	<tr >
-		<td >&nbsp; </td>
-		<td >&nbsp; </td>
-		<td >&nbsp; </td>
-		<td >&nbsp; </td>
 		<td >&nbsp; </td>
 		<td >&nbsp; </td>
 		<td >&nbsp; </td>
