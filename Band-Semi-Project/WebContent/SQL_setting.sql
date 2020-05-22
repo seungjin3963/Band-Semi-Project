@@ -103,7 +103,7 @@ CREATE TABLE board
 	band_num number(20) NOT NULL,
 	userBand_num number(20) NOT NULL,
 	board_content varchar2(1000) NOT NULL,
-	board_redate date NOT NULL,
+	board_redate timestamp NOT NULL,
 	board_states number(3) NOT NULL,
 	PRIMARY KEY (board_num)
 );
@@ -129,7 +129,7 @@ CREATE TABLE comments
 	comments_cotent varchar2(100) NOT NULL,
 	ref number(20) NOT NULL,
 	step number(5) NOT NULL,
-	comments_date date NOT NULL,
+	comments_date timestamp NOT NULL,
     comments_state number(5),
 	PRIMARY KEY (comments_Num)
 );
@@ -266,6 +266,3 @@ alter table userinfo
     add foreign key (login_num)
     references login (login_num);
     
-alter session set nls_date_format = 'YYYY-MM-DD';
-
-alter session set nls_timestamp_format = 'YYYY-MM-DD HH:MI:SS';
