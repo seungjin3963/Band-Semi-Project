@@ -216,7 +216,7 @@ var temp=0;
 		div5.setAttribute("class","col-md-5");
 		
 		var phoneNumber = document.createElement("input");
-		phoneNumber.setAttribute("type","number");
+		phoneNumber.setAttribute("type","text");
 		phoneNumber.setAttribute("name","phoneNumber");
 		phoneNumber.setAttribute("placeholder","숫자만 입력해 주세요.");		
 		
@@ -229,7 +229,22 @@ var temp=0;
 		var button1 = document.createElement("button");
 		button1.setAttribute("class","btn btn-info btn-xs");
 		button1.setAttribute("type","submit");
-		button1.setAttribute("formaction","${cp}/Phone.do");
+		button1.addEventListener("click",function(e){
+			if(phoneNumber.value ==""||phoneNumber.value == null){
+				alert("전화번호를 입력해 주세요.");
+				return false;
+			}else if(!pattern_num.test(phoneNumber.value)){
+				alert("숫자만 입력해야 합니다.");
+				return false;
+			}else if(phoneNumber.value.length != 11){
+				alert("핸드폰 번호를 입력해 주세요. (길이가 맞지 않습니다.)");
+				return false;
+			}
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange=getPhone;
+			xhr.open('get','${cp}/Phone.do?phoneNumber='+phoneNumber.value,true);
+			xhr.send();
+		});
 		button1.innerHTML = "확인";
 		
 		var button2 = document.createElement("button");
@@ -282,7 +297,19 @@ var temp=0;
 		var button1 = document.createElement("button");
 		button1.setAttribute("class","btn btn-info btn-xs");
 		button1.setAttribute("type","submit");
-		button1.setAttribute("formaction","${cp}/Email.do");
+		button1.addEventListener("click",function(e){
+			if(Email.value =="" || Email.value == null){
+				alert("이메일을 입력해 주세요.");
+				return false;
+			}else if(!pattern_email.test(Email.value)){
+				alert("이메일을 입력해 주세요. (@가 없습니다.)");
+				return false;
+			}
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange=getPhone;
+			xhr.open('get','${cp}/Email.do?Email='+Email.value,true);
+			xhr.send();
+		});
 		button1.innerHTML = "확인";
 		
 		var button2 = document.createElement("button");

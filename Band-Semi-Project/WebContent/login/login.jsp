@@ -228,7 +228,7 @@
 		var pattern_spc = /[~!@#$%^&*()_+|<>?:{}]/;
 		var pattern_eng = /[a-z]/;
 		if(pattern_num.test(user_name_value)||pattern_spc.test(user_name_value)||pattern_eng.test(user_name_value)){
-			alert("한글만 입력 가능합니다.");
+			alert("이름은 한글만 입력 가능합니다.");
 			return false;
 		}
 		
