@@ -11,6 +11,42 @@ import jhta.band.vo.board.ImgBoardVo;
 
 public class ImgBoardDao {
 	
+	public ImgBoardVo selectModal(long imgboard_num,long band_num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "select * from\n" + 
+					"(" + 
+					"    select img_url,img_num, lead(img_num) over(order by img_num) next, lag(img_num,1) over(order by img_num) prev from imgboard where band_num=?" + 
+					")" + 
+					"where img_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, band_num);
+			pstmt.setLong(2, imgboard_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				ImgBoardVo vo = new ImgBoardVo();
+				vo.setImg_url(rs.getString("img_url"));
+				vo.setPrevNum(rs.getLong("prev"));
+				vo.setNextNum(rs.getLong("next"));
+				return vo;
+			}else {
+				return null;
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		
+	}
+	
 	public int delete(Long board_num,Connection con) {
 		PreparedStatement pstmt = null;
 		
@@ -152,7 +188,7 @@ public ArrayList<ImgBoardVo> select(long band_num,int startNum, int endNum){
 					"(" + 
 					"    select aa.*,rownum rnum from " + 
 					"    (" + 
-					"        select * from imgboard where band_num=? and img_states!=1 order by img_regdate desc" + 
+					"        select * from imgboard where band_num=? and img_states!=1 order by img_regdate asc" + 
 					"    ) aa" + 
 					") where rnum >=? and rnum <=?";
 			pstmt = con.prepareStatement(sql);
@@ -188,6 +224,8 @@ public ArrayList<ImgBoardVo> select(long band_num,int startNum, int endNum){
 		
 	}
 	
+	
+
 	public int getImgCount(long band_num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;

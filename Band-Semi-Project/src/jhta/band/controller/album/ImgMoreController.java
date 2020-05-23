@@ -45,6 +45,7 @@ public class ImgMoreController extends HttpServlet{
 			for(ImgBoardVo vo:list) {
 				JSONObject json_img = new JSONObject();
 				json_img.put("img_url", vo.getImg_url());
+				json_img.put("img_num", vo.getImg_num());
 				jarr_img.put(json_img);
 			}
 			resp.setContentType("test/palin;charset=utf-8");

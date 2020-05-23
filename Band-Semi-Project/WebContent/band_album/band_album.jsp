@@ -66,7 +66,7 @@
     	width: 164px;
     	height: 164px;
     }
-    
+
 </style>
 <script type="text/javascript">
 var imgPage = 0;
@@ -86,7 +86,7 @@ $(document).ready(function ()
 				  },
 		         type: "POST",
 		         dataType:'JSON',
-		         url: '<%=cp%>/board/imgview.do',
+		         url: '${cp}/board/imgview.do',
 		         success: moreImg,
 			})
 		}
@@ -101,7 +101,7 @@ function setImg_view() {
 		  },
         type: "POST",
         dataType:'JSON',
-        url: '<%=cp%>/board/imgview.do',
+        url: '${cp}/board/imgview.do',
         success: function(data){
        	 
        		 deleteImg();
@@ -111,6 +111,13 @@ function setImg_view() {
 	        			let li = document.createElement("li");
 	        			let img = document.createElement("img");
 	        			img.setAttribute("src", data[i].img_url);
+	        			$(img).on('click',function(){
+	        				$('#img_num').val(data[i].img_num);	
+	        				$('#albumModal').modal({
+	        					backdrop : 'static',
+	        	             	remote : '${cp }/band_album/albumModal.jsp'
+	        	     		});
+	        			})
 	        			li.appendChild(img);
 	        			albumImg.appendChild(li);
 	        		}
@@ -148,7 +155,7 @@ function setMoreImg(){
 			  },
 	         type: "POST",
 	         dataType:'JSON',
-	         url: '<%=cp%>/board/imgview.do',
+	         url: '${cp}/board/imgview.do',
 	         success: moreImg,
 	         error: function () {
 	             alert("server error");
@@ -167,8 +174,16 @@ function moreImg(data){
 		let li = document.createElement("li");
 		let img = document.createElement("img");
 		img.setAttribute("src", data[i].img_url);
+		$(img).on('click',function(){
+			$('#img_num').val(data[i].img_num);	
+			$('#albumModal').modal({
+				backdrop : 'static',
+             	remote : '${cp}/band_album/albumModal.jsp'
+     		});
+		});
 		li.appendChild(img);
 		albumImg.appendChild(li);
+		
 		changeImg();
 	}
 	var morehide = document.getElementById('morehide');
@@ -237,6 +252,19 @@ function deleteImg(){
 	</div>
 </div>
 
-
+<!-- 앨범 모달 -->
+<div id="albumModal" class="modal fade">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	</div>
+	</div>
+</div>
 </body>
+<script type="text/javascript">
+$('#albumModal').modal({
+	backdrop : 'static',
+ 	remote : '${cp }/band_album/albumModal.jsp'
+});
+$('#albumModal').modal('hide');
+</script>
 </html>

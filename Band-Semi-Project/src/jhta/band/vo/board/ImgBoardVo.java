@@ -9,6 +9,9 @@ public class ImgBoardVo {
 	private String img_url;
 	private Date img_regdate;
 	private int img_states;
+	private long prevNum;
+	private long nextNum;
+	
 	
 	public ImgBoardVo() {}
 
@@ -68,6 +71,22 @@ public class ImgBoardVo {
 
 	public void setImg_states(int img_states) {
 		this.img_states = img_states;
+	}
+
+	public long getPrevNum() {
+		return prevNum;
+	}
+
+	public void setPrevNum(long prevNum) {
+		this.prevNum = prevNum;
+	}
+
+	public long getNextNum() {
+		return nextNum;
+	}
+
+	public void setNextNum(long nextNum) {
+		this.nextNum = nextNum;
 	}
 	
 	
