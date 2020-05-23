@@ -267,6 +267,15 @@
 						img_col1.appendChild(img_url1);
 						img_row.appendChild(img_col1);
 					}
+					$(img_col1).on('click',function(){
+						$('#imgboard_num').val(data[i].board_num);	
+						$('#imgboard_url').val(jarr[j].img_url);
+						$('#imgModal').modal({
+							backdrop : 'static',
+	                     	remote : '${cp }/band_board/imgModal.jsp'
+	             		});
+					})
+					
 				}
 				img_list.appendChild(img_row);
 				writeContent.appendChild(img_list);
@@ -713,13 +722,25 @@
 				</div>
 			</div>
 		</div>
-	
+		
+		<div id="imgModal" class="modal fade">
+			<div class="modal-dialog">
+			<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true" id="closeBtn1">×</button>
+				<div class="modal-content">
+				</div>
+			</div>
+		</div>
 </body>
 <script type="text/javascript">
 $('#writeModal').modal({
 	backdrop : 'static',
   	remote : '${cp}/band_board/board_writer.jsp'
 	});
+$('#imgModal').modal({
+  	remote : '${cp}/band_board/imgModal.jsp'
+	});
+$('#imgModal').modal('hide');
 $('#writeModal').modal('hide');
 </script>
 </html>
