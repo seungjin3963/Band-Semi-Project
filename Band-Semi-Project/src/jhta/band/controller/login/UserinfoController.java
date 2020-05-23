@@ -15,7 +15,7 @@ import jhta.band.vo.UserinfoVo;
 import jhta.band.vo.loginVo;
 @WebServlet("/Users.do")
 public class UserinfoController extends HttpServlet{
-	// È¸¿ø°¡ÀÔ
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
@@ -32,9 +32,9 @@ public class UserinfoController extends HttpServlet{
 		Date birth = Date.valueOf(birth1);
 		
 		String user_gender = req.getParameter("user_gender");
-		String user_quiz = req.getParameter("user_quiz");	// ¸¸µé¾îÁ®ÀÖ´Â ÄûÁî
-		String user_quiz1 = req.getParameter("user_quiz1");	// Á÷Á¢ ÀÔ·ÂÇÏ´Â ÄûÁî
-		String quiz_direct = req.getParameter("quiz_direct");// Á÷Á¢ ÀÔ·Â ÇÒ °ÇÁö radio·Î Ã¼Å©
+		String user_quiz = req.getParameter("user_quiz");	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
+		String user_quiz1 = req.getParameter("user_quiz1");	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
+		String quiz_direct = req.getParameter("quiz_direct");// ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ radioï¿½ï¿½ Ã¼Å©
 		
 		if(quiz_direct.equals("true")) {
 			user_quiz = user_quiz1;
@@ -42,7 +42,7 @@ public class UserinfoController extends HttpServlet{
 		
 		String user_answer = req.getParameter("user_answer");
 		
-		UserinfoVo uservo = new UserinfoVo(1,user_name,null,"email1",user_gender,
+		UserinfoVo uservo = new UserinfoVo(1,user_name,null,null,user_gender,
 											user_quiz,user_answer,null,birth);
 		loginVo loginvo = new loginVo(1,login_id,login_pwd,null,1);
 		
@@ -53,7 +53,9 @@ public class UserinfoController extends HttpServlet{
 			code="fail";
 		}
 		
-		// Àü¼ÛÇØ¾ß ÇÒ À§Ä¡
+		//System.out.println();
+		
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw=resp.getWriter();
 		pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");

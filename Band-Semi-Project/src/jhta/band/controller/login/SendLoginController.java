@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import jhta.band.bandSerch.Dao.bandDao;
 import jhta.band.bandSerch.Vo.bandVo;
 import jhta.band.dao.loginDao;
+import jhta.band.vo.JoinVo;
+import jhta.band.vo.loginVo;
 import jhth.band.dao.MakeBandDao.BandListDao;
 import jhth.band.vo.MakeBandVo.BandListVo;
 @WebServlet("/SendLogin.do")

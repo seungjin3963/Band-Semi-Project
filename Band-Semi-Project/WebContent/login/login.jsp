@@ -199,6 +199,9 @@
 		if(inputPwd.value != inputPwdOk.value){
 			alert("비밀번호확인이 다릅니다.");
 			return false;
+		}else if(inputPwd.value.length < 7){
+			alert("비밀번호는 7자리 이상 해주세요");
+			return false;
 		}
 		if(year[0].value == 0 || month[0].value == 0 || date[0].value == 0){
 			alert("생년월일을 입력해주세요");
@@ -235,13 +238,20 @@
 		var inputId2 = document.getElementById("inputId2");
 		var user_answer = document.getElementsByName("user_answer");
 		
+		var check_gender;
+		for(var i = 0; i<gender.length; i++){
+			if(gender[i].checked == true){
+				check_gender = gender[i].value;
+			}
+		}
+		
 		xhr= new XMLHttpRequest();
 		xhr.onreadystatechange=getform;
 		xhr.open('post','${cp}/Users.do',true);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.send('login_id='+inputId2.value+'&login_pwd='+inputPwd.value+'&user_name='+user_name[0].value+
 				'&year='+year[0].value+'&month='+month[0].value+'&date='+date[0].value+
-				'&user_gender='+gender[0].value+'&user_quiz='+user_quiz.value+
+				'&user_gender='+check_gender+'&user_quiz='+user_quiz.value+
 				'&user_quiz1='+user_quiz1.value+'&quiz_direct='+quiz_direct[0].checked+'&user_answer='+user_answer[0].value);
 	}
 	function getform(){
@@ -276,6 +286,9 @@
 		var inputId2 = document.getElementById("inputId2").value;
 		if(inputId2 == "" || inputId2 == null){
 			alert("다시 입력해 주세요");
+			return false;
+		}else if(inputId2.length < 7){
+			alert("아이디는 7자리 이상 입력해주세요");
 			return false;
 		}
 		xhr = new XMLHttpRequest();

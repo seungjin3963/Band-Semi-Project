@@ -108,7 +108,7 @@ var temp=0;
 		button2.setAttribute("class","btn btn-info btn-xs");
 		button2.setAttribute("type","submit");
 		button2.setAttribute("value","취소");
-		button2.setAttribute("formaction","${cp}/CancleBirth.do");
+		button2.setAttribute("formaction","${cp}/Cancle.do");
 		button2.innerHTML = "취소";
 		
 		div2.appendChild(button1);

@@ -118,7 +118,7 @@ public class loginDao {
 		}
 	}
 	
-	// ºñ¹Ð¹øÈ£ Ã£±â
+	// ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½ï¿½
 	public String findPwd(String id, String answer) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -146,7 +146,7 @@ public class loginDao {
 			JDBCUtil.close(rs,pstmt,con);
 		}
 	}
-	// ÄûÁî Ã£±â
+	// ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½
 	public String findQuiz(String id, String name, Date birth) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -176,7 +176,7 @@ public class loginDao {
 			JDBCUtil.close(rs,pstmt,con);
 		}
 	}
-	// ÀÌ¸§, »ý³â¿ùÀÏ ÀÔ·ÂÇÏ°í ¾ÆÀÌµð Ã£±â
+	// ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ Ã£ï¿½ï¿½
 	public String findId(String name, Date birth) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -230,7 +230,7 @@ public class loginDao {
 			JDBCUtil.close(con);
 		}
 	}
-	// È¸¿ø°¡ÀÔ(Ãß°¡)
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ß°ï¿½)
 	public int insert( loginVo vo1, UserinfoVo vo2) {
 		Connection con = null;
 		PreparedStatement pstmt1 = null;
@@ -253,6 +253,7 @@ public class loginDao {
 				pstmt2.setString(5, vo2.getUser_quiz());
 				pstmt2.setString(6, vo2.getUser_anser());
 				pstmt2.setDate(7, vo2.getBirth());
+				System.out.println(vo2.getUser_gender());
 				int n2 = pstmt2.executeUpdate();
 				return n2;
 			}else {
