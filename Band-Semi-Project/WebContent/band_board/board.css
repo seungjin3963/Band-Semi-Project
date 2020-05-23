@@ -25,6 +25,14 @@ iframe{
 	display: block;
 	margin-bottom: 11px; 
 }
+
+#notice{
+	height:auto;
+	background-color:#ececec;
+	display: block;
+	margin-bottom: 11px; 
+}
+
 #searchFrom{
 	padding: 22px;
 }
@@ -60,6 +68,23 @@ iframe{
 	margin : 11px;	
 }
 
+
+
+#noticWrap{
+	margin: 11px;
+	padding:8px;
+    background: #fff;
+    border-radius: 2px;
+    line-height: 1.5;
+    outline: 0;
+    box-shadow: 0 4px 2px -2px #bbbbbb;
+}
+
+#notictitle{
+	margin-bottom: 5px;
+	border-bottom: 1px solid #999;
+}
+
 #contentEditor{
 	width:100%;
 	padding:11px;
@@ -81,4 +106,23 @@ iframe{
 
 span .btn.btn-default{
 	height: 100%;
+}
+
+.notic_li{
+	font-weight: 400;
+	display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border-top: 1px solid #f5f5f5;
+    font-size: 14px;
+}
+
+.notic_strong{
+	font-weight: 400;
+	    color: #21c700!important;
 }

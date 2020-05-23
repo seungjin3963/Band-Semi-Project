@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String cp = request.getContextPath();
 %>
@@ -177,7 +178,10 @@
         	<input type="hidden" id="userband_num" value="0">
         	<input type="hidden" id="band_num" value="0">
         	<input type="hidden" id="board_num" value="0">
-        	<input type="checkbox" value="1" id="noticeChk"/>공지사항
+        	<c:if test="${band_approved ==1}">
+        		<input type="checkbox" value="1" id="noticeChk"/>공지사항
+        	</c:if>
+        	
         	<button type="button" class="btn btn-default" data-dismiss="modal" id="closeBtn">닫기</button>
 			<button type="submit" class="btn btn-primary" id="myButtons1">저장</button>
     	</form>

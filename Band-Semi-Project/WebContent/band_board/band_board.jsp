@@ -135,6 +135,13 @@
 					
 					$('#myModalLabel').text('글수정');
 					$('#board_num').val(data[i].board_num);
+					
+					if(data[i].board_states == 3){
+						$(('#noticeChk')).prop("checked", true);
+					}else{
+						$(('#noticeChk')).prop("checked", false);
+					}
+					
 				})
 				
 				
@@ -179,6 +186,22 @@
 			
 			let result = con.split("<br>");
 
+			console.log("공지"+data[i].board_states );
+			if(data[i].board_states == 3){
+				let notic = document.createElement("li");
+				notic.setAttribute("class", "notic_li");
+				
+				let strong = document.createElement("strong");
+				strong.setAttribute("class", "notic_strong");
+				strong.innerText = "[ 중요 ]  ";
+				notic.appendChild(strong);
+				notic.innerHTML += text;
+				$('#notic').append(notic);
+			}
+			
+			
+			
+			
 			
 			for(let z = 0; z <result.length; z++){
 				if(result[z] !== ""){
@@ -650,12 +673,24 @@
 		<!-- 글쓰기 템플릿 -->
 		<div class="form-horizontal">
 			<div class="row" id="postWrite">
-				<div class="col-sm-4 container" id="contentEditor">
+				<div class="col-sm-4" id="contentEditor">
 					<span class="contentEx">새로운 소식을 남겨보세요.</span>
 				</div>
 			</div>
 		</div>
 		
+		<!-- 공지사항 -->
+		<div id="notic_view">
+			<div id="noticWrap">
+				
+				<div id="notictitle" >
+					<h4>공지사항</h4>
+				</div>	
+				<ul id="notic"> 
+				</ul>
+			</div>
+			
+		</div>
 
 		<!-- 게시글 출력 -->
 		
@@ -678,7 +713,6 @@
 				</div>
 			</div>
 		</div>
-		
 	
 </body>
 <script type="text/javascript">
