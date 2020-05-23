@@ -42,8 +42,8 @@
                   <label class="custom-control-label" for="customCheck1">Remember password</label>
                 </div>
                 <div style="display: inline-block">
-	                <button class="btn btn-primary" type="button" onclick="return check_login()">로그인</button>
-	                <input type="button" value="회원가입" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+	                <button class="btn btn-success" type="button" onclick="return check_login()">로그인</button>
+	                <input type="button" value="회원가입" class="btn btn-success" data-toggle="modal" data-target="#myModal">
 	            </div>
 	          </form>
 	          
@@ -66,7 +66,7 @@
 		                					<div class="row">
 		                						<label for="inputId" class="col-xs-6 col-sm-4">아이디</label>
 		                						<input type="text" name="login_id" id="inputId2" class="form-control" placeholder="아이디" required autofocus>
-		                						<button type="button" class="btn btn-primary btn-xs" onclick="check_id();">중복확인</button>
+		                						<button type="button" class="btn btn-success btn-xs" onclick="check_id();">중복확인</button>
 		                					</div>
 		                					<div class="row">
 		                						<label for="inputpwd" class="col-xs-6 col-sm-4">비밀번호</label>
@@ -130,7 +130,7 @@
 		                					</div>
 		                			</div>
 		                			<div class="modal-fotter">
-		                				<button type="button" id="join_user" class="btn btn-primary" disabled="disabled" onclick="return check_form()">확인</button>
+		                				<button type="button" id="join_user" class="btn btn-success" disabled="disabled" onclick="return check_form()">확인</button>
 		                				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 		                			</div>
 	                		</div>

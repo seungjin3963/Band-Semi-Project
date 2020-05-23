@@ -99,13 +99,13 @@ var temp=0;
 		div2.setAttribute("class","col-md-2");
 		
 		var button1 = document.createElement("button");
-		button1.setAttribute("class","btn btn-info btn-xs");
+		button1.setAttribute("class","btn btn-success btn-xs");
 		button1.setAttribute("type","submit");
 		button1.setAttribute("formaction","${cp}/Birth.do");
 		button1.innerHTML = "확인";
 		
 		var button2 = document.createElement("button");
-		button2.setAttribute("class","btn btn-info btn-xs");
+		button2.setAttribute("class","btn btn-success btn-xs");
 		button2.setAttribute("type","submit");
 		button2.setAttribute("value","취소");
 		button2.setAttribute("formaction","${cp}/Cancle.do");
@@ -169,13 +169,13 @@ var temp=0;
 		div4.setAttribute("class","col-md-2");
 		
 		var button1 = document.createElement("button");
-		button1.setAttribute("class","btn btn-info btn-xs");
+		button1.setAttribute("class","btn btn-success btn-xs");
 		button1.setAttribute("type","submit");
 		button1.setAttribute("formaction","${cp}/Gender.do");
 		button1.innerHTML = "확인";
 		
 		var button2 = document.createElement("button");
-		button2.setAttribute("class","btn btn-info btn-xs");
+		button2.setAttribute("class","btn btn-success btn-xs");
 		button2.setAttribute("type","submit");
 		button2.setAttribute("formaction","${cp}/Cancle.do");
 		button2.innerHTML = "취소";
@@ -227,7 +227,7 @@ var temp=0;
 		div6.setAttribute("class","col-md-2");
 		
 		var button1 = document.createElement("button");
-		button1.setAttribute("class","btn btn-info btn-xs");
+		button1.setAttribute("class","btn btn-success btn-xs");
 		button1.setAttribute("type","submit");
 		button1.addEventListener("click",function(e){
 			if(phoneNumber.value ==""||phoneNumber.value == null){
@@ -248,7 +248,7 @@ var temp=0;
 		button1.innerHTML = "확인";
 		
 		var button2 = document.createElement("button");
-		button2.setAttribute("class","btn btn-info btn-xs");
+		button2.setAttribute("class","btn btn-success btn-xs");
 		button2.setAttribute("type","submit");
 		button2.setAttribute("formaction","${cp}/Cancle.do");
 		button2.innerHTML = "취소";
@@ -295,7 +295,7 @@ var temp=0;
 		div8.setAttribute("class","col-md-2");
 		
 		var button1 = document.createElement("button");
-		button1.setAttribute("class","btn btn-info btn-xs");
+		button1.setAttribute("class","btn btn-success btn-xs");
 		button1.setAttribute("type","submit");
 		button1.addEventListener("click",function(e){
 			if(Email.value =="" || Email.value == null){
@@ -313,7 +313,7 @@ var temp=0;
 		button1.innerHTML = "확인";
 		
 		var button2 = document.createElement("button");
-		button2.setAttribute("class","btn btn-info btn-xs");
+		button2.setAttribute("class","btn btn-success btn-xs");
 		button2.setAttribute("type","submit");
 		button2.setAttribute("formaction","${cp}/Cancle.do");
 		button2.innerHTML = "취소";
@@ -378,13 +378,13 @@ var temp=0;
 		div11.setAttribute("class","col-md-2");
 		
 		var button1 = document.createElement("button");
-		button1.setAttribute("class","btn btn-info btn-xs");
+		button1.setAttribute("class","btn btn-success btn-xs");
 		button1.setAttribute("type","submit");
 		button1.setAttribute("formaction","${cp}/Pwd.do");
 		button1.innerHTML = "확인";
 		
 		var button2 = document.createElement("button");
-		button2.setAttribute("class","btn btn-info btn-xs");
+		button2.setAttribute("class","btn btn-success btn-xs");
 		button2.setAttribute("type","submit");
 		button2.setAttribute("formaction","${cp}/Cancle.do");
 		button2.innerHTML = "취소";
@@ -422,8 +422,6 @@ var temp=0;
 		if(result){
 			alert("탈퇴 되었습니다.");
 			location.href="${cp}/Login_state.do";
-		}else{
-			alert("탈퇴 실패");
 		}
 	}
 </script>
@@ -440,7 +438,7 @@ var temp=0;
 			</div>
 			<div class="col-md-5">${requestScope.joinVo.user_name }</div>
 			<div class="col-md-2">
-				<input class="btn btn-primary btn-xs" type="button" value="변경"
+				<input class="btn btn-success btn-xs" type="button" value="변경"
 					data-toggle="modal" data-target="#profileChange">
 			</div>
 		</div>
@@ -454,7 +452,7 @@ var temp=0;
 				<div id="changebirth">
 					<div class="col-md-5" id="now_birth">${requestScope.joinVo.user_birth }</div>
 					<div class="col-md-2">
-						<input class="btn btn-primary btn-xs" type="button" value="변경"
+						<input class="btn btn-success btn-xs" type="button" value="변경"
 							onclick="change_birth()">
 					</div>
 				</div>
@@ -481,7 +479,7 @@ var temp=0;
 						</c:choose>
 					</div>
 					<div class="col-md-2">
-						<input class="btn btn-primary btn-xs" type="button" value="변경"
+						<input class="btn btn-success btn-xs" type="button" value="변경"
 							onclick="change_gender()">
 					</div>
 				</div>
@@ -500,7 +498,7 @@ var temp=0;
 				<div id="changephone">
 					<div class="col-md-5" id="now_phone">${requestScope.joinVo.user_phone }</div>
 					<div class="col-md-2">
-						<input class="btn btn-primary btn-xs" type="button" value="변경"
+						<input class="btn btn-success btn-xs" type="button" value="변경"
 							onclick="change_phone()">
 					</div>
 				</div>
@@ -515,7 +513,7 @@ var temp=0;
 					<div id="changeEmail">
 						<div class="col-md-5" id="now_email">${requestScope.joinVo.user_email }</div>
 						<div class="col-md-2">
-							<input class="btn btn-primary btn-xs" type="button" value="변경"
+							<input class="btn btn-success btn-xs" type="button" value="변경"
 								onclick="change_email()">
 						</div>
 					</div>
@@ -529,7 +527,7 @@ var temp=0;
 				<div id="changepwd">
 					<div class="col-md-5" id="now_pwd">${requestScope.joinVo.login_pwd }</div>
 					<div class="col-md-2">
-						<input class="btn btn-primary btn-xs" type="button" value="변경"
+						<input class="btn btn-success btn-xs" type="button" value="변경"
 							onclick="change_pwd()">
 					</div>
 				</div>
@@ -543,7 +541,7 @@ var temp=0;
 		<div class="row">
 			<div class="col-md-2 col-md-offset-3">탈퇴</div>
 			<div class="col-md-2 col-md-offset-5">
-				<input class="btn btn-primary btn-xs" type="button" value="탈퇴"
+				<input class="btn btn-success btn-xs" type="button" value="탈퇴"
 					onclick="change_state()">
 			</div>
 		</div>
