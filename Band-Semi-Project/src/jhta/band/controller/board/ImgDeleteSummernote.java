@@ -38,7 +38,7 @@ public class ImgDeleteSummernote extends HttpServlet{
 		int userband_num = Integer.parseInt(req.getParameter("userband_num"));
 	    TempImgeDao dao = new TempImgeDao();
 	    System.out.println("../upload"+src.substring(index + 6));
-	    TmpImgVo vo = new TmpImgVo(0,userband_num,"../upload"+src.substring(index + 6),0);
+	    TmpImgVo vo = new TmpImgVo(0,userband_num,"./upload"+src.substring(index + 6),0);
 	    
 	    int n = dao.delete(vo);
 	    if(n<=0) {

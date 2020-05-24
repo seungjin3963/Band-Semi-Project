@@ -97,9 +97,12 @@ img {
      box-shadow: none;
      border: none;
 	}
+	
+	
 </style>
 <script>
 
+	// 앨범 페이지에서 이미지 클릭시 이미지 번호를 받아와 이미지 세팅 Ajax
 	$('#albumModal').on('show.bs.modal', function() {
 		var img_num = $('#img_num').val();
 		$.ajax({
@@ -118,6 +121,8 @@ img {
 
 	})
 	
+	
+	// Ajax 호출후 성공하 이미지 세팅 함수..
 	function getAlbum(data) {
 		
 		let prevNum = data.prevNum;
@@ -126,9 +131,13 @@ img {
 		console.log(nextNum);
 		
 		$("#imgSrc").attr("src", data.img_url);
-
+		
+		
+		//Controller 에서 이전 다음 페이지 번호 받아와 세팅...
 		$('#prevNum').val(prevNum);
 		$('#nextNum').val(nextNum);
+		
+		// 다음 번호 밑 이전 번호가 없으면 버튼 숨기기..
 		if(nextNum == 0 ||nextNum == null ){
 			
 			$('#nextBtn').hide()
@@ -142,7 +151,7 @@ img {
 		}
 	}
 	
-	
+	// 이전버튼 클릭 이벤트 함수
 	$('#prevBtn').on('click',function(){
 		var img_num = $('#prevNum').val();
 		$.ajax({
@@ -160,6 +169,7 @@ img {
 		});
 	})
 	
+	// 다음 버튼클릭 이벤트 함수
 	$('#nextBtn').on('click',function(){
 		var img_num = $('#nextNum').val();
 		$.ajax({
@@ -181,7 +191,6 @@ img {
 </head>
 <body>
 
-	<div class="modal-content"></div>
 	<button type="button" class="close glyphicon glyphicon-remove"
 		data-dismiss="modal" aria-hidden="true" id="closeBtn1"></button>
 
@@ -201,9 +210,6 @@ img {
 				<button type="button" class="btnNext glyphicon glyphicon-menu-right" id="nextBtn" >
 				</button>
 			</span>
-
-
-
 		</div>
 
 		<input type="hidden" value="" id="img_num"> 

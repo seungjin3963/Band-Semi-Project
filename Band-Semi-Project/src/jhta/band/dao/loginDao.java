@@ -118,7 +118,7 @@ public class loginDao {
 		}
 	}
 	
-	// ��й�ȣ ã��
+	// 占쏙옙橘占싫� 찾占쏙옙
 	public String findPwd(String id, String answer) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -146,7 +146,7 @@ public class loginDao {
 			JDBCUtil.close(rs,pstmt,con);
 		}
 	}
-	// ���� ã��
+	// 占쏙옙占쏙옙 찾占쏙옙
 	public String findQuiz(String id, String name, Date birth) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -176,7 +176,7 @@ public class loginDao {
 			JDBCUtil.close(rs,pstmt,con);
 		}
 	}
-	// �̸�, ������� �Է��ϰ� ���̵� ã��
+	// 占싱몌옙, 占쏙옙占쏙옙占쏙옙占� 占쌉뤄옙占싹곤옙 占쏙옙占싱듸옙 찾占쏙옙
 	public String findId(String name, Date birth) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -230,7 +230,7 @@ public class loginDao {
 			JDBCUtil.close(con);
 		}
 	}
-	// ȸ������(�߰�)
+	// 회占쏙옙占쏙옙占쏙옙(占쌩곤옙)
 	public int insert( loginVo vo1, UserinfoVo vo2) {
 		Connection con = null;
 		PreparedStatement pstmt1 = null;

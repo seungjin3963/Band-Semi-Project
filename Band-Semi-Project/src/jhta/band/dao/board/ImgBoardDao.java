@@ -76,6 +76,7 @@ public class ImgBoardDao {
 			String sql = "update imgboard set img_states=1 where img_url=?";
 			
 			pstmt = con.prepareStatement(sql);
+		System.out.println(url);
 			pstmt.setString(1, url);
 			
 			return pstmt.executeUpdate();		

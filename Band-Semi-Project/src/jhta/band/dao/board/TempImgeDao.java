@@ -19,7 +19,7 @@ public class TempImgeDao {
 		
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "insert into tmp_imgboard values(sqe_tmpimg.nextval,?,?,?)";
+			String sql = "insert into tmp_imgboard values(seq_tmpimg.nextval,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, vo.getUserband_num());
 			pstmt.setString(2, vo.getTmpimg_url());

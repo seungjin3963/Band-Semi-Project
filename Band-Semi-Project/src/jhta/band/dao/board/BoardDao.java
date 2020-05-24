@@ -14,6 +14,51 @@ import jhta.band.vo.board.TmpImgVo;
 
 public class BoardDao {
 	
+	public BoardVo selectModal(long board_num,long band_num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "select aa.*,bb.band_nickname from" + 
+					"(" + 
+					"    select board.*, lead(board_num) over(order by board_num) next, lag(board_num,1) over(order by board_num) prev from board where band_num=?" + 
+					")aa,band_userinfo bb " + 
+					"where board_num=? and aa.userband_num=bb.userband_num";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, band_num);
+			pstmt.setLong(2, board_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				BoardVo vo = new BoardVo(
+						rs.getLong("board_num"), 
+						rs.getLong("band_num"), 
+						rs.getLong("userband_num"), 
+						rs.getString("board_content"), 
+						new Date(rs.getTimestamp("board_redate").getTime()), 
+						rs.getInt("board_states")
+						);
+				vo.setPrevNum(rs.getLong("prev"));
+				vo.setNextNum(rs.getLong("next"));
+				vo.setBand_nickname(rs.getString("band_nickname"));
+				return vo;
+			}else {
+				return null;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+				
+		
+	}
+	
 	public int delete(long board_num, Connection con) {
 		PreparedStatement pstmt = null;
 		
@@ -59,8 +104,10 @@ public class BoardDao {
 				for(TmpImgVo vo : ivo) {
 					System.out.println("stat: " +vo.getTmp_state());
 					if(vo.getTmp_state() == 1) {
+						System.out.println("state = 1");
 						dao.delete(vo.getTmpimg_url());					
 						if(n<=0) {
+							System.out.println("rollbakc");
 							con.rollback();
 							return -1;
 						}	

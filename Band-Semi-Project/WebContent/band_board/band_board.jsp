@@ -47,8 +47,6 @@
 	
 	
  	function list_view(data) {
- 		console.log('${userband_num}');
- 		console.log('${b_n}');
  		
  		deleteList();
 		let board = document.getElementById("boardList");
@@ -127,14 +125,14 @@
 				li1.appendChild(a1);
 				
 				$(li1).on('click',function(){
-					$('#writeModal').modal({
-	     				backdrop : 'static',
-	                  	remote : '${cp}/band_board/board_writer.jsp'
-	          		});
 					$('#summernote').summernote('code',data[i].board_content);
 					
 					$('#myModalLabel').text('글수정');
 					$('#board_num').val(data[i].board_num);
+					$('#writeModal').modal({
+	     				backdrop : 'static',
+	                  	remote : '${cp}/band_board/board_writer.jsp'
+	          		});
 					
 					if(data[i].board_states == 3){
 						$(('#noticeChk')).prop("checked", true);
@@ -186,7 +184,6 @@
 			
 			let result = con.split("<br>");
 
-			console.log("공지"+data[i].board_states );
 			if(data[i].board_states == 3){
 				let notic = document.createElement("li");
 				notic.setAttribute("class", "notic_li");
@@ -214,6 +211,13 @@
 					more.setAttribute("style","outline: none; border: none; padding:0px; background:none;");
 					more.innerHTML="<span style='color:#999;'>...더보기</span>";
 					content_view.appendChild(more);
+					$(more).on('click',function(){
+						$('#board_num').val(data[i].board_num);	
+						$('#boardModal').modal({
+							backdrop : 'static',
+	                     	remote : '${cp }/band_board/boardModal.jsp'
+	             		});
+					})
 					break;
 				}
 			}
@@ -317,7 +321,7 @@
 			
 			// 댓글 list
 			let comments_list = document.createElement("div");
-			comments_list.setAttribute("class", "comments_List")
+			comments_list.setAttribute("class", "comments_List");
 			
 			let comments = data[i].comments;
 			
@@ -629,7 +633,7 @@
 											comments_page: comments_page,
 										},
 										dataType:'JSON',
-									    url: '<%=cp%>/commentsList.do',
+									    url: '${cp}/commentsList.do',
 									    success: commentList
 						 			})	
 						 		}		
@@ -715,9 +719,11 @@
 			</div>
 		</div>
 	
-	<!-- 게시글 모 -->
+	<!-- 게시글 모달 -->
 		<div id="boardModal" class="modal fade" >
 			<div class="modal-dialog">
+
+			
 				<div class="modal-content">
 				</div>
 			</div>
@@ -741,6 +747,10 @@ $('#imgModal').modal({
   	remote : '${cp}/band_board/imgModal.jsp'
 	});
 $('#imgModal').modal('hide');
+$('#boardModal').modal({
+  	remote : '${cp}/band_board/boardModal.jsp'
+	});
+$('#boardModal').modal('hide');
 $('#writeModal').modal('hide');
 </script>
 </html>

@@ -10,6 +10,9 @@ public class BoardVo {
 	private Date board_redate;
 	private int board_states;
 	private String band_nickname;
+	private long prevNum;
+	private long nextNum;
+	
 	
 	public BoardVo() {}
 
@@ -78,6 +81,22 @@ public class BoardVo {
 
 	public void setBand_nickname(String band_nickname) {
 		this.band_nickname = band_nickname;
+	}
+
+	public long getPrevNum() {
+		return prevNum;
+	}
+
+	public void setPrevNum(long prevNum) {
+		this.prevNum = prevNum;
+	}
+
+	public long getNextNum() {
+		return nextNum;
+	}
+
+	public void setNextNum(long nextNum) {
+		this.nextNum = nextNum;
 	}
 	
 	
