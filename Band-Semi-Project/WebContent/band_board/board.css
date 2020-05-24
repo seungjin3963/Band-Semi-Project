@@ -82,7 +82,7 @@ iframe{
 
 #notictitle{
 	margin-bottom: 5px;
-	border-bottom: 11px solid #f5f5f5;
+	border-bottom: 1px solid #f5f5f5;
 }
 
 #contentEditor{
@@ -126,5 +126,4 @@ span .btn.btn-default{
 	font-weight: 400;
 	    color: #21c700!important;
 }
-
 

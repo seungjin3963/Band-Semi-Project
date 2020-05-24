@@ -10,7 +10,7 @@
 </style>
 <script type="text/javascript">
 	$('#imgModal').on('show.bs.modal', function() {
-
+		$('#carousel-example-generic').carousel();
 		var board_num = $('#imgboard_num').val();
 		console.log(board_num);
 		$.ajax({

@@ -127,8 +127,6 @@ img {
 		
 		let prevNum = data.prevNum;
 		let nextNum = data.nextNum;
-		console.log(prevNum);
-		console.log(nextNum);
 		
 		$("#imgSrc").attr("src", data.img_url);
 		

@@ -12,7 +12,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${cp }/band_board/board.css">
 <title>글쓰기</title>
+<style>
+#modalboard{
+	 background-color: transparent !important;
+     box-shadow: none;
+     border: none;
+     height: auto;
+}
 
+</style>
 <script>
 	$(function(){
 	    $("#contentEditor").on('click', function(){
@@ -183,7 +191,14 @@
 			let con = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
 			
 			let result = con.split("<br>");
-
+			
+			$(content_view).on('click',function(){
+				$('#board_num').val(data[i].board_num);	
+				$('#boardModal').modal({
+					backdrop : 'static',
+                 	remote : '${cp }/band_board/boardModal.jsp'
+         		});
+			})
 			if(data[i].board_states == 3){
 				let notic = document.createElement("li");
 				notic.setAttribute("class", "notic_li");
@@ -722,9 +737,7 @@
 	<!-- 게시글 모달 -->
 		<div id="boardModal" class="modal fade" >
 			<div class="modal-dialog">
-
-			
-				<div class="modal-content">
+				<div class="modal-content" id="modalboard">
 				</div>
 			</div>
 		</div>
@@ -743,10 +756,7 @@ $('#writeModal').modal({
 	backdrop : 'static',
   	remote : '${cp}/band_board/board_writer.jsp'
 	});
-$('#imgModal').modal({
-  	remote : '${cp}/band_board/imgModal.jsp'
-	});
-$('#imgModal').modal('hide');
+
 $('#boardModal').modal({
   	remote : '${cp}/band_board/boardModal.jsp'
 	});

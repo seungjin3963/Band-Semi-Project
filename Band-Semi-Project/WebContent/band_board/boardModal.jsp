@@ -90,14 +90,13 @@
 	width: 1px !important;
 	clip: rect(1px, 1px, 1px, 1px) !important;
 }
-
-.modal-content{
-	 background-color: transparent !important;
-     box-shadow: none;
-     border: none;
-     height: auto;
+.modal-backdrop{
+	position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #000;
 }
-
 
 </style>
 <script>
@@ -105,7 +104,7 @@
 	
 	// 앨범 페이지에서 이미지 클릭시 이미지 번호를 받아와 이미지 세팅 Ajax
 	$('#boardModal').on('show.bs.modal', function() {
-		alert("Asd");
+		comments_page =1;
 		var board_num = $('#board_num').val();
 		$.ajax({
 			data : {
@@ -128,6 +127,28 @@
 	// Ajax 호출후 성공하 이미지 세팅 함수..
 	function Modallist_view(data) {
 		$('#boardList2').empty();
+		
+		let prevNum = data.prevNum;
+		let nextNum = data.nextNum;
+		
+		console.log(prevNum);
+		console.log(nextNum);
+		//Controller 에서 이전 다음 페이지 번호 받아와 세팅...
+		$('#prevNum').val(prevNum);
+		$('#nextNum').val(nextNum);
+		
+		// 다음 번호 밑 이전 번호가 없으면 버튼 숨기기..
+		if(nextNum == 0 ||nextNum == null ){
+			$('#nextBtn').hide()
+		}else{
+			$('#nextBtn').show();
+		}
+		if(prevNum == 0 || prevNum == null){
+			$('#prevBtn').hide()
+		}else{
+			$('#prevBtn').show()
+		}
+		
 		
 		let board = document.getElementById("boardList2");
 		
@@ -274,6 +295,67 @@
 		
 		let comments = data.comments;
 		
+		var cnt = data.comments_cnt;
+		var maxpage = data.maxpage;
+		
+		let page_div = document.createElement("div");
+    	page_div.setAttribute("style", "padding:0 22px 0 22px;");
+    	
+    	let page = document.createElement("div");
+    	page.setAttribute("class", "row");
+    	page.setAttribute("style", "border-bottom: 1px solid #999; padding: 0 22px 0 22px;");
+    	
+    	
+    	let comments_prev = document.createElement("div");
+ 		comments_prev.setAttribute("class", "col-sm-6 text-left");
+ 		comments_prev.setAttribute("id","comments_prev");
+ 		
+    	if(comments_page<maxpage){
+    		console.log("asd");
+	 		comments_prev.innerHTML = "이전으로";
+	 		comments_prev.setAttribute("style", "font-weight:bold;font-size:18px; z-index:999;")
+	 		$(comments_prev).on('click',function(){
+	 			comments_page+=1;
+	 			$.ajax({
+	 				type: "post",
+					data: { 
+						board_num: board_num,
+						comments_page: comments_page,
+					},
+					dataType:'JSON',
+				    url: '${cp}/commentsList.do',
+				    success: commentList2
+	 			})
+	 		})
+	 		
+	 	}
+    	page.appendChild(comments_prev);
+    	
+    	let comments_next = document.createElement("div");
+			comments_next.setAttribute("class", "col-sm-6 text-right");
+			comments_next.setAttribute("id","comments_next");
+    	if(comments_page>1){
+ 			comments_next.innerHTML = "다음으로";
+ 			comments_next.setAttribute("style", "font-weight:bold; font-size:18px; z-index:999;");
+ 			$(comments_next).on('click',function(){
+ 				comments_page-=1;
+	 			$.ajax({
+	 				type: "post",
+					data: { 
+						board_num: board_num,
+						comments_page: comments_page,
+					},
+					dataType:'JSON',
+				    url: '${cp}/commentsList.do',
+				    success: commentList2
+	 			})
+	 		})
+  		}
+    	page.appendChild(comments_next);
+    	
+    	page_div.appendChild(page);
+    	comments_list.appendChild(page_div);
+		
 		if(comments !=null){
 			for(let j = 0; j < Object.keys(data.comments).length;j++){
 				let comment_div = document.createElement("div");
@@ -368,8 +450,6 @@
 		})
 		
 		
-		var cnt = data.comments_cnt;
-		var maxpage = data.maxpage;
 		let board_num= data.board_num;
 		 function commentList2(data) {
 		    	$(comments_list).empty();
@@ -391,8 +471,7 @@
 		    	if(comments_page<maxpage){
 		    		console.log("asd");
 			 		comments_prev.innerHTML = "이전으로";
-			 		comments_prev.setAttribute("style", "font-weight:bold;font-size:18px")
-			 		
+			 		comments_prev.setAttribute("style", "font-weight:bold;font-size:18px; z-index:999;")
 			 		$(comments_prev).on('click',function(){
 			 			comments_page+=1;
 			 			$.ajax({
@@ -415,8 +494,7 @@
 	 			comments_next.setAttribute("id","comments_next");
 		    	if(comments_page>1){
 		 			comments_next.innerHTML = "다음으로";
-		 			comments_next.setAttribute("style", "font-weight:bold; font-size:18px");
-		 			
+		 			comments_next.setAttribute("style", "font-weight:bold; font-size:18px; z-index:999;");
 		 			$(comments_next).on('click',function(){
 		 				comments_page-=1;
 			 			$.ajax({
@@ -601,16 +679,18 @@
 	
 	// 이전버튼 클릭 이벤트 함수
 	$('#prevBtn').on('click',function(){
-		var img_num = $('#prevNum').val();
+		comments_page =1;
+		var board_num = $('#prevNum').val();
 		$.ajax({
 			data : {
-				img_num : img_num,
+				comments_page : comments_page,
+				board_num : board_num,
 				band_num : '${b_n}'
 			},
 			type : "POST",
 			dataType : 'JSON',
-			url : '${cp}/albumModal.do',
-			success : getAlbum,
+			url : '${cp}/boardModal.do',
+			success : Modallist_view,
 			error : function() {
 				alert("server error");
 			}
@@ -619,16 +699,18 @@
 	
 	// 다음 버튼클릭 이벤트 함수
 	$('#nextBtn').on('click',function(){
-		var img_num = $('#nextNum').val();
+		var board_num = $('#nextNum').val();
+		comments_page =1;
 		$.ajax({
 			data : {
-				img_num : img_num,
+				comments_page : comments_page,
+				board_num : board_num,
 				band_num : '${b_n}'
 			},
 			type : "POST",
 			dataType : 'JSON',
-			url : '${cp}/albumModal.do',
-			success : getAlbum,
+			url : '${cp}/boardModal.do',
+			success : Modallist_view,
 			error : function() {
 				alert("server error");
 			}
@@ -655,9 +737,9 @@
 			</span>
 		</div>
 
-		<input type="hidden" value="" id="board_num"> <input
-			type="hidden" value="" id="prevNum"> <input type="hidden"
-			value="" id="nextNum">
+		<input type="hidden" value="" id="board_num"> 
+		<input	type="hidden" value="" id="prevNum"> 
+		<input type="hidden" value="" id="nextNum">
 
 	</div>
 
