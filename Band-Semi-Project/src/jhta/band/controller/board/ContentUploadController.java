@@ -27,11 +27,28 @@ public class ContentUploadController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		int band_num = Integer.parseInt(req.getParameter("band_num"));
+		int board_page = Integer.parseInt(req.getParameter("board_page"));
 		BoardDao dao = new BoardDao();
-		ArrayList<BoardVo> list = new ArrayList<BoardVo>();
-		list = dao.select(band_num);
+		
+		int startNum = 1;
+		int endNum = 5;
+		
+		System.out.println(board_page + "boardpage");
+		int maxBoard = dao.getBoardCount(band_num);
+		int maxPage = (int) Math.ceil(maxBoard/5.0);
+		startNum = (board_page - 1)*5 + 1;
+		endNum = startNum + 4;
+		
+		if(endNum> maxBoard) {
+			endNum=maxBoard;
+		}
+	
+		
+		ArrayList<BoardVo> list = dao.select(band_num,startNum,endNum);
 		System.out.println(band_num);
 		SimpleDateFormat fm=new SimpleDateFormat("yyyy³â MM¿ù dd a hh:mm"); 
+		
+		
 		
 			JSONArray jarr = new JSONArray();
 			if(list !=null) {
@@ -42,7 +59,7 @@ public class ContentUploadController extends HttpServlet{
 					json.put("board_states", vo.getBoard_states());
 					json.put("userband_num", vo.getUserband_num());
 					json.put("board_content", vo.getBoard_content());
-				     
+					json.put("maxPage", maxPage);
 					String sDate=fm.format(vo.getBoard_redate()); 
 
 					json.put("board_redate", sDate);

@@ -190,6 +190,79 @@ public class BoardDao {
 		}	
 	}
 	
+	public int getBoardCount(long band_num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "select NVL(count(board_num),0) cnt from board where band_num=? and board_states!=2";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, band_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			} else {
+				return 0;
+			}
+
+		} catch (SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		} finally {
+			JDBCUtil.close(rs, pstmt, con);
+		}
+	}
+	
+	public ArrayList<BoardVo> select(int band_num,int startNum, int endNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "select * from\n" + 
+					"(" + 
+					"select aa.*,band_nickname,rownum rnum from band_userinfo bb," + 
+					"(" + 
+					"select * from board where band_num=? and board_states!=2 order by board_redate DESC" + 
+					")aa " + 
+					"where aa.userband_num=bb.userband_num" + 
+					") " + 
+					"where rnum >= ? and rnum <= ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, band_num);
+			pstmt.setInt(2, startNum);
+			pstmt.setInt(3, endNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(!rs.next()) {
+				return null;
+			}
+			ArrayList<BoardVo> list = new ArrayList<BoardVo>();
+			do{
+				BoardVo vo = new BoardVo
+						(
+								rs.getLong("board_num"), 
+								rs.getLong("band_num"), 
+								rs.getLong("userband_num"), 
+								rs.getString("board_content"), 
+								new Date(rs.getTimestamp("board_redate").getTime()), 
+								rs.getInt("board_states")
+						);
+				vo.setBand_nickname(rs.getString("band_nickname"));
+				list.add(vo);
+			}while(rs.next());
+			
+			return list;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(rs, pstmt, con);
+		}
+	}
 	
 	public ArrayList<BoardVo> select(int band_num) {
 		Connection con = null;
@@ -199,7 +272,7 @@ public class BoardDao {
 			con = JDBCUtil.getConn();
 			String sql = "select aa.*,band_nickname from band_userinfo bb,\n" + 
 					"(\n" + 
-					"    select * from board where band_num=? and board_states!=2 order by board_redate DESC\n" + 
+					"    select * from board where band_num=? and board_states!=2 order by board_redate DESC" + 
 					")aa\n" + 
 					"where aa.userband_num=bb.userband_num";
 			pstmt = con.prepareStatement(sql);

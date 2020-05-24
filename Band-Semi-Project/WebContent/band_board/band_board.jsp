@@ -22,6 +22,19 @@
 
 </style>
 <script>
+
+	var board_page = 0;
+	var max_page = 1;
+	
+	$(window).scroll(function(){
+		
+		var dh = $(document).height();
+		var wh = $(window).height();
+		var wt = $(window).scrollTop();
+		if(dh == (wh + wt) && board_page < max_page){
+			getBoardList();
+		}
+	})
 	$(function(){
 	    $("#contentEditor").on('click', function(){
 	        $('#writeModal').modal({
@@ -35,15 +48,12 @@
 	})
 	
 	
-	function getBoardList(data){
-		if(data !=null){
-			console.log(data.result);
-			console.log('${b_n}')
-		}
-		
+	function getBoardList(){
+		board_page +=1;
 		$.ajax({
 			type: "post",
-			data: { 
+			data: {
+				board_page :board_page,
 				band_num :'${b_n}'			
 			},
 			dataType:'JSON',
@@ -58,9 +68,8 @@
  		
  		deleteList();
 		let board = document.getElementById("boardList");
-		
 		for(let i = 0; i<data.length; i++){
-			
+			maxPage = data.maxpage;
 			let board_view = document.createElement("div");
 			board_view.setAttribute("id", "board_view");
 			board.appendChild(board_view);
