@@ -80,6 +80,15 @@
 			}
 		}
 	}
+	function delAll() {
+		var commList=document.getElementById("commList");
+		var childs=commList.childNodes;//전체 자식노드(모든댓글)얻어오기
+		var len=childs.length;
+		for(var i=len-1;i>=0;i--){
+			var comments=childs.item(i);
+			commList.removeChild(comments);
+		}
+	}
 	function detailcategory2(num2) {
 		xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=stitle2;

@@ -15,7 +15,9 @@
 		margin-left:200px; 
 	}
 </style>
-<h2 class="serch01">밴드·페이지  <strong>${getcount }</strong></h2>
+<h2 class="serch01">이런	밴드는 어때요 <strong>${getcount }</strong></h2>
+<button type="button" style="float:right;" onclick="location.href='${cp}/bandMore' ">더보기 ></button> 
+
 <!--  <table border="2" width="1200">-->
 <c:forEach var="vo" items="${random_list}" >
 <table  class="serch01" style=" border:1px solid white;  "  >
@@ -49,34 +51,4 @@
 	</tr>
 </table>
 </c:forEach>
-<div class="serch01" >
-<c:choose>
-	<c:when test="${startPage>3 }">
-		<a href="${cp }/bandSerch?pageNum=${startPage-1 }&keyword=${keyword}">[이전]</a>
-	</c:when>
-	<c:otherwise>
-		이전
-	</c:otherwise>
-</c:choose>
-	<c:forEach var="i" begin="${startPage }" end="${endPage }">
-		<c:choose>
-			<c:when test="${i==pageNum }">
-				<a href="${cp }/bandSerch?pageNum=${i}&keyword=${keyword}">
-				<span style='color:blue'>[${i }]</span></a>
-			</c:when>
-			<c:otherwise>
-				<a href="${cp }/bandSerch?pageNum=${i}&keyword=${keyword}">
-				<span style='color:#999'>[${i }]</span></a>
-			</c:otherwise>
-		</c:choose>
-	</c:forEach>
-<c:choose>
-	<c:when test="${endPage<pageCount}">
-		<a href="${cp }/bandSerch?pageNum=${endPage+1 }&keyword=${keyword}">[다음]</a>
-	</c:when>
-	<c:otherwise>
-		다음
-	</c:otherwise>
-</c:choose>
-</div>
 

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jhta.band.bandSerch.Dao.bandDao;
+import jhta.band.bandSerch.Vo.bandSerchVo;
 import jhta.band.bandSerch.Vo.bandVo;
 import jhth.band.dao.MakeBandDao.BandListDao;
 import jhth.band.vo.MakeBandVo.BandListVo;
@@ -28,7 +29,7 @@ public class LayoutController extends HttpServlet {
 		req.setAttribute("footer","/serch/random_band.jsp");
 
 		bandDao dao1=new bandDao();
-		ArrayList<bandVo> random_list=dao1.random();
+		ArrayList<bandSerchVo> random_list=dao1.random();
 		req.setAttribute("random_list",random_list);
 		
 		if(file == null) {
