@@ -164,7 +164,7 @@ public class bandDao {
 			JDBCUtil.close(rs, pstmt, con);
 		}
 	}
-	public ArrayList<bandVo> random(){
+	public ArrayList<bandSerchVo> random(){
 		
 		String sql="";
 		Connection con=null;
@@ -183,7 +183,8 @@ public class bandDao {
                 }
             }
         }
-		ArrayList<bandVo> list=new ArrayList<bandVo>();
+        
+		ArrayList<bandSerchVo> list=new ArrayList<bandSerchVo>();
 		 //sql="select * from band1 where band_num>0 and band_num<11";
 		 //sql="select * from band1 where band_num in(?,?,?,?,?,?,?,?,?,?) and band_publicwhe!=3";
 		 //sql="select * from band where band_num in(?,?,?,?,?,?,?,?,?,?) order by dbms_random.value";
@@ -204,9 +205,11 @@ public class bandDao {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				int band_num=rs.getInt("band_num");
+				int bandimgnum=rs.getInt("bandimgnum");
+				String bandimg=getBandImg(bandimgnum);
 				String band_name=rs.getString("band_name");
 				String band_intoroductio=rs.getString("band_intoroductio");
-				list.add(new bandVo(band_num, band_name, band_intoroductio));
+				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg));
 			}
 			return list;
 		}catch(SQLException se) {
@@ -214,6 +217,29 @@ public class bandDao {
 			return null;
 		}
 	}
+	public String getBandImg(int bandimgnum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String bandimg=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="select * from bandimg where bandimgnum=?";
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,bandimgnum);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				bandimg=rs.getString("bandimg");
+			}
+			return bandimg;
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return null;
+		}finally {
+			JDBCUtil.close(rs, pstmt, con);
+		}
+    }
 	public ArrayList<bandVo> serch(String keyword){
 		String sql="";
 		Connection con=null;
@@ -230,6 +256,7 @@ public class bandDao {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				int band_num=rs.getInt("band_num");
+				String bandimg=getBandImg(band_num);
 				String band_name=rs.getString("band_name");
 				String band_intoroductio=rs.getString("band_intoroductio");
 				list.add(new bandVo(band_num, band_name, band_intoroductio));

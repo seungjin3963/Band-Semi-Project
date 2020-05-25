@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import jhta.band.bandSerch.Dao.bandDao;
+import jhta.band.bandSerch.Vo.bandSerchVo;
 import jhta.band.bandSerch.Vo.bandVo;
 import jhta.band.dao.loginDao;
 import jhta.band.vo.JoinVo;
@@ -57,7 +58,7 @@ public class SendLoginController extends HttpServlet{
 			
 			req.setAttribute("footer","/serch/random_band.jsp");
 			  bandDao dao1=new bandDao();
-			  ArrayList<bandVo> random_list=dao1.random();
+			  ArrayList<bandSerchVo> random_list=dao1.random();
 			  req.setAttribute("random_list",random_list);
 			
 			req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req,resp);

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+#wrap{
+	height: 700px;
+	background-color: #f6f6f6;
+}
+
+#h4{
+	margin-top: 50px;
+}
+
+hr{
+	width: 100%;
+	border-bottom: 0px;
+	text-aligin: left;
+	margin-leftL 0px;
+}
