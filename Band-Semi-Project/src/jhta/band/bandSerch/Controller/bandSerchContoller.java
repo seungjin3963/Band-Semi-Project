@@ -37,7 +37,6 @@ public class bandSerchContoller extends HttpServlet {
 		req.setAttribute("endPage",endPage);
 		req.setAttribute("pageNum",pageNum);
 		req.setAttribute("getcount",getcount);
-		System.out.println(keyword);
 		
 		//req.setAttribute("list", list);
 		req.setAttribute("keyword",keyword);

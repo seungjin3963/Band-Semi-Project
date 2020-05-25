@@ -141,7 +141,6 @@
 		}
 	}
 	function detailcategory(num) {
-		console.log(1);
 		var arraynum=num.split('/');
 		var bnum=arraynum[6].split('.');
 		xhr=new XMLHttpRequest();
