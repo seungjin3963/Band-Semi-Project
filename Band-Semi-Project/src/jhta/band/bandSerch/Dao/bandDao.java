@@ -248,7 +248,8 @@ public class bandDao {
 		String bandleader=null;
 		try {
 			con=JDBCUtil.getConn();
-			String sql="select cc.login_id bandLeader from band aa,band_userinfo bb,login cc where bb.login_num=cc.login_num and aa.band_num=? and bb.band_approved=1";
+			String sql="select bb.band_nickname from band_userinfo bb,login cc " + 
+					"where bb.login_num=cc.login_num  and bb.band_approved=1 and band_num=?";
 			
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1,band_num);
