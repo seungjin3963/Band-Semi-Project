@@ -107,6 +107,7 @@
 		                					<div class="row">
 		                						<label for="user_phone" class="col-xs-6 col-sm-4">전화번호</label>
 		                						<input type="text" name="user_phone" id="user_phone" class="form-control" placeholder="전화번호" required autofocus>
+		                						<button type="button" class="btn btn-success btn-xs" onclick="check_phone();">중복확인</button>
 		                					</div>					
 		                					<!-- 성별(모달) -->
 		                					<div class="row">
@@ -238,20 +239,7 @@
 			alert("이름은 한글만 입력 가능합니다.");
 			return false;
 		}
-		
-		var pattern_num = /[0-9]/;
 		var user_phone = document.getElementById("user_phone");
-		if(user_phone.value == 0 || user_phone == null || user_phone == ""){
-			alert("전화번호를 입력해주세요");
-			return false;
-		}else if(!pattern_num.test(user_phone.value)){
-			alert("숫자만 입력해야 합니다.");
-			return false;
-		}else if(user_phone.value.length != 11){
-			alert("핸드폰 번호를 입력해 주세요. (길이가 맞지 않습니다.)");
-			return false;
-		}
-		
 		var inputId2 = document.getElementById("inputId2");
 		var user_answer = document.getElementsByName("user_answer");
 		
@@ -278,7 +266,6 @@
 			var code = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
 			var inputId1 = document.getElementById("inputId2");
 			var inputPassword = document.getElementById("inputPwd");
-			console.log(code);
 			if(code == "success"){
 				location.href='${cp}/SendLogin.do?loginId='+inputId1.value+'&loginPwd='+inputPassword.value;
 			}
@@ -296,6 +283,40 @@
 		}else{
 			user_quiz.style.display = "inline-block";
 			user_quiz1.style.display = "none";
+		}
+	}
+	
+	// 전화번호 중복 확인
+	function check_phone(){
+		var pattern_num = /[0-9]/;
+		var user_phone = document.getElementById("user_phone");
+		if(user_phone.value == 0 || user_phone == null || user_phone == ""){
+			alert("전화번호를 입력해주세요");
+			return false;
+		}else if(!pattern_num.test(user_phone.value)){
+			alert("숫자만 입력해야 합니다.");
+			return false;
+		}else if(user_phone.value.length != 11){
+			alert("핸드폰 번호를 입력해 주세요. (길이가 맞지 않습니다.)");
+			return false;
+		}
+		xhr = new XMLHttpRequest();
+		xhr.onreadystatechange=check_getId;
+		xhr.open('get','${cp}/checkPhone.do?user_phone='+user_phone.value,true);
+		xhr.send();
+	}
+	function check_getPhone(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var xml = xhr.responseXML;
+			var check_getPhone = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
+			var join_user = document.getElementById("join_user");
+			if(check_getPhone == "success"){
+				alert("사용 가능한 전화번호 입니다.");
+				join_user.disabled="";
+			}else{
+				alert("이미 가입되어있는 전화번호 입니다.");
+				join_user.disabled="true";
+			}
 		}
 	}
 	
@@ -322,10 +343,8 @@
 			var join_user = document.getElementById("join_user");
 			if(check_getId == "success"){
 				alert("사용 가능한 아이디 입니다.");
-				join_user.disabled="";
 			}else{
 				alert("사용 불가능한 아이디 입니다.");
-				join_user.disabled="true";
 			}
 		}
 	}

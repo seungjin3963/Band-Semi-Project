@@ -16,6 +16,30 @@ import jhta.band.vo.loginVo;
 
 public class loginDao {
 	
+	public String check_phone(String phone) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from userinfo where user_phone=?";
+		try {
+			con = JDBCUtil.getConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, phone);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String okey = rs.getString("user_phone");
+				return okey;
+			}else {
+				return null;
+			}
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(rs, pstmt, con);
+		}
+	}
+	
 	public JoinVo selectInfo(long num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
