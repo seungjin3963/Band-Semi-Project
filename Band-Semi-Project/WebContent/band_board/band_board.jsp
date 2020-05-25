@@ -66,11 +66,13 @@
 	
 	
  	function list_view(data) {
- 		
- 		deleteList();
+ 		if(board_page<=1){
+ 			deleteList();	
+ 		}
 		let board = document.getElementById("boardList");
 		for(let i = 0; i<data.length; i++){
-			maxPage = data.maxpage;
+			console.log(data[i].maxPage);
+			max_page = data[i].maxPage;
 			let board_view = document.createElement("div");
 			board_view.setAttribute("id", "board_view");
 			board.appendChild(board_view);
@@ -449,7 +451,8 @@
 					let board_num = data[i].board_num;
 					
 					 function commentList(data) {
-					    	deleteComment(comments_list);
+						 	alert("asd");
+					    	$(comments_list).empty();
 					    	comments_cnt.innerText = "댓글 : " + data.comments_cnt;
 					    	
 					    	let page_div = document.createElement("div");
@@ -496,6 +499,7 @@
 					 			
 					 			$(comments_next).on('click',function(){
 					 				comments_page-=1;
+					 		
 						 			$.ajax({
 						 				type: "post",
 										data: { 
@@ -594,6 +598,7 @@
 										    url: '${cp}/commentdelete.do',
 										    success: function(data) {
 										    	if(data.result=='success'){
+										    		$(comments_list).empty();
 										    		console.log("reset")
 											    	$.ajax({
 										 				type: "post",
