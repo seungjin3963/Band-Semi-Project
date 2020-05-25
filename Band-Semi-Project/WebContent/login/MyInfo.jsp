@@ -226,7 +226,7 @@
 		
 		var div6 = document.createElement("div");
 		div6.setAttribute("class","col-md-2");
-		
+		var pattern_num = /[0-9]/;
 		var button1 = document.createElement("button");
 		button1.setAttribute("class","btn btn-success btn-xs");
 		button1.setAttribute("type","submit");

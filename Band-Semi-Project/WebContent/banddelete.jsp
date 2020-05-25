@@ -5,23 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascr67ipt">
+<script type="text/javascript">
 	window.onload=function(){
 		<%
-		//밴드 삭제 탈퇴후 세션 삭제 
-		//long login_num=(long)session.getAttribute("login_num");
-		//System.out.println("aaaaaaaaaaaaaaaa     " +login_num);
-		//session.invalidate();
-		//session.setAttribute("login_num", login_num);
-		//String cp=request.getContextPath();
-		//session.setAttribute("cp", cp);
+		session.removeAttribute("band_approved");
 		%>
 		location.href="<%=request.getContextPath()%>/layout.do";
 	}
 </script>
 </head>
 <body>
-<h1>삭제완료</h1>
 
 </body>
 </html>
