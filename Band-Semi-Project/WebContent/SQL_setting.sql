@@ -12,10 +12,10 @@ DROP TABLE Band CASCADE CONSTRAINTS;
 DROP TABLE bandimg CASCADE CONSTRAINTS;
 DROP TABLE scategory CASCADE CONSTRAINTS;
 DROP TABLE bcategory CASCADE CONSTRAINTS;
-DROP TABLE Profiledata CASCADE CONSTRAINTS;
 DROP TABLE Userinfo CASCADE CONSTRAINTS;
 DROP TABLE login CASCADE CONSTRAINTS;
 DROP TABLE tag_name CASCADE CONSTRAINTS;
+DROP TABLE Profiledata CASCADE CONSTRAINTS;
 
 /*Create Sequence */
 drop sequence seq_board;
@@ -25,7 +25,7 @@ drop sequence seq_tmpimg;
 drop sequence seq_login;
 drop sequence seq_calender;
 drop sequence seq_band;
-drop sequence seq_banduserinfo;
+drop sequence banduserinfo_seq;
 drop sequence seq_bandlist;
 drop sequence seq_profile;
 
@@ -36,11 +36,9 @@ create sequence seq_tmpimg;
 create sequence seq_login;
 create sequence seq_calender;
 create sequence seq_band;
-create sequence seq_banduserinfo;
+create sequence banduserinfo_seq;
 create sequence seq_bandlist;
 create sequence seq_profile;
-
-
 
 /* Create Tables */
 
@@ -102,7 +100,7 @@ CREATE TABLE board
 (
 	board_num number(20) NOT NULL,
 	band_num number(20) NOT NULL,
-	userBand_num number(20) NOT NULL UNIQUE,
+	userBand_num number(20) NOT NULL,
 	board_content varchar2(1000) NOT NULL,
 	board_redate date NOT NULL,
 	board_states number(3) NOT NULL,
@@ -129,9 +127,9 @@ CREATE TABLE comments
 	board_num number(20) NOT NULL,
 	comments_cotent varchar2(100) NOT NULL,
 	ref number(20) NOT NULL,
-	lev number(5) NOT NULL,
 	step number(5) NOT NULL,
 	comments_date date NOT NULL,
+    comments_state number(5),
 	PRIMARY KEY (comments_Num)
 );
 
@@ -141,12 +139,20 @@ CREATE TABLE imgBoard
 	img_num number(20) NOT NULL,
 	band_num number(20) NOT NULL,
 	board_num number(20) NOT NULL,
-	img_url varchar2(50) NOT NULL,
+	img_url varchar2(100) NOT NULL,
 	img_regdate date NOT NULL,
 	img_states number(3) NOT NULL,
 	PRIMARY KEY (img_num)
 );
 
+drop table tmp_imgboard;
+CREATE TABLE tmp_imgboard(
+    tmp_num number(20) NOT NULL,
+    userband_num number(20) NOT NULL,
+    tmpimg_url varchar2(100) NOT NULL,
+    tmp_state number(5),
+    PRIMARY KEY (tmp_num)
+);
 
 CREATE TABLE login
 (
@@ -159,15 +165,6 @@ CREATE TABLE login
 );
 
 
-CREATE TABLE Profiledata
-(
-	profile_num number(20) NOT NULL,
-	login_num number(20) NOT NULL,
-	User_imgdata blob,
-	PRIMARY KEY (profile_num)
-);
-
-
 CREATE TABLE scategory
 (
 	scategoryNum number(5) NOT NULL,
@@ -176,24 +173,6 @@ CREATE TABLE scategory
 	PRIMARY KEY (scategoryNum)
 );
 
-
-CREATE TABLE tagindex
-(
-	tagindexnum number(20) NOT NULL,
-	tag_num number(20) NOT NULL,
-	board_num number(20) NOT NULL UNIQUE,
-	band_num number(20) NOT NULL,
-	PRIMARY KEY (tagindexnum)
-);
-
-
-CREATE TABLE tag_name
-(
-	tag_num number(20) NOT NULL,
-	tag_contnet varchar2(40) NOT NULL,
-	tag_represent number(3),
-	PRIMARY KEY (tag_num)
-);
 
 
 CREATE TABLE Userinfo
@@ -208,6 +187,13 @@ CREATE TABLE Userinfo
 	user_img varchar2(50),
 	user_birth date NOT NULL,
 	PRIMARY KEY (login_num)
+);
+CREATE TABLE Profiledata
+(
+	profile_num number(20) NOT NULL,
+	login_num number(20) NOT NULL,
+	User_imgdata blob,
+	PRIMARY KEY (profile_num)
 );
 
 insert into login values(9999,'null','null',sysdate,0);
@@ -390,122 +376,6 @@ insert into bandimg values(16,'MakingBand/bandcover/16.jpg');
 
 commit;
 
-
-
-/* Create Foreign Keys */
-
-ALTER TABLE BandList
-	ADD FOREIGN KEY (band_num)
-	REFERENCES Band (band_num)
-;
-
-
-ALTER TABLE band_userinfo
-	ADD FOREIGN KEY (band_num)
-	REFERENCES Band (band_num)
-;
-
-
-ALTER TABLE board
-	ADD FOREIGN KEY (band_num)
-	REFERENCES Band (band_num)
-;
-
-
-ALTER TABLE calendar
-	ADD FOREIGN KEY (band_num)
-	REFERENCES Band (band_num)
-;
-
-
-ALTER TABLE imgBoard
-	ADD FOREIGN KEY (band_num)
-	REFERENCES Band (band_num)
-;
-
-
-ALTER TABLE tagindex
-	ADD FOREIGN KEY (band_num)
-	REFERENCES Band (band_num)
-;
-
-
-ALTER TABLE Band
-	ADD FOREIGN KEY (bandimgNum)
-	REFERENCES bandimg (bandimgNum)
-;
-
-
-ALTER TABLE board
-	ADD FOREIGN KEY (userBand_num)
-	REFERENCES band_userinfo (userBand_num)
-;
-
-
-ALTER TABLE comments
-	ADD FOREIGN KEY (userBand_num)
-	REFERENCES band_userinfo (userBand_num)
-;
-
-
-ALTER TABLE scategory
-	ADD FOREIGN KEY (bcategoryNum)
-	REFERENCES bcategory (bcategoryNum)
-;
-
-
-ALTER TABLE comments
-	ADD FOREIGN KEY (board_num)
-	REFERENCES board (board_num)
-;
-
-
-ALTER TABLE imgBoard
-	ADD FOREIGN KEY (board_num)
-	REFERENCES board (board_num)
-;
-
-
-ALTER TABLE tagindex
-	ADD FOREIGN KEY (board_num)
-	REFERENCES board (board_num)
-;
-
-
-ALTER TABLE BandList
-	ADD FOREIGN KEY (login_num)
-	REFERENCES login (login_num)
-;
-
-
-ALTER TABLE band_userinfo
-	ADD FOREIGN KEY (login_num)
-	REFERENCES login (login_num)
-;
-
-
-ALTER TABLE Userinfo
-	ADD FOREIGN KEY (login_num)
-	REFERENCES login (login_num)
-;
-
-
-ALTER TABLE Band
-	ADD FOREIGN KEY (scategoryNum)
-	REFERENCES scategory (scategoryNum)
-;
-
-
-ALTER TABLE tagindex
-	ADD FOREIGN KEY (tag_num)
-	REFERENCES tag_name (tag_num)
-;
-
-
-ALTER TABLE Profiledata
-	ADD FOREIGN KEY (login_num)
-	REFERENCES Userinfo (login_num)
-;
-
-
-
+alter table userinfo
+    add foreign key (login_num)
+    references login (login_num);

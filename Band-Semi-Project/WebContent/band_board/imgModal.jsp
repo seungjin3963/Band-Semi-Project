@@ -10,28 +10,27 @@
 </style>
 <script type="text/javascript">
 	$('#imgModal').on('show.bs.modal', function() {
-		$('#carousel-example-generic').carousel();
 		var board_num = $('#imgboard_num').val();
 		console.log(board_num);
-		$.ajax({
-			data : {
-				board_num : board_num
-			},
-			type : "POST",
-			dataType : 'JSON',
-			url : '${cp}/imgModal.do',
-			success : getImgList,
-			error : function() {
-				alert("server error");
-			}
-		});
-
+		if(board_num != 0){
+			$.ajax({
+				data : {
+					board_num : board_num
+				},
+				type : "POST",
+				dataType : 'JSON',
+				url : '${cp}/imgModal.do',
+				success : getImgList,
+				error : function() {
+					alert("server error");
+				}
+			});
+		}
 	})
 
 	function getImgList(data) {
 		$('#carousel_indicators').empty();
 		$('#carousel_inner').empty();
-		$('#carousel-example-generic').carousel();
 		let body = $('#imgModal_main');
 		let targer = $('#imgboard_url');
 		console.log(targer.val());
@@ -53,7 +52,7 @@
 			div.append(img);
 			$('#carousel_inner').append(div);
 		}
-
+		$('#carousel-example-generic').carousel();
 	}
 </script>
 
@@ -73,10 +72,16 @@
 				<!-- li는 이미지 개수만큼 추가하고 data-target은 carousel id를 가르킨다.
 					data-slide-to는 순서대로 0부터 올라가고 0은 active를 설정한다.
 					딱히 이 부분은 옵션별로 설정하게 없다. -->
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 			</ol>
 			<!-- 실제 이미지 아이템
 				class는 carousel-inner로 설정하고 role은 listbox에서 설정한다. -->
 			<div class="carousel-inner" role="listbox" id="carousel_inner">
+				<div class="item active">
+					<!-- 아미지 설정- -->
+					<img src="" style="width:100%">
+					</div>
+				</div>
 			</div>
 			<a class="left carousel-control" href="#carousel-example-generic"
 				role="button" data-slide="prev"> <span

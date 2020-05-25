@@ -98,7 +98,10 @@ img {
      border: none;
 	}
 	
-	
+.btnimg{
+	font-size: 43px;
+    color: #999;
+}	
 </style>
 <script>
 
@@ -202,10 +205,10 @@ img {
 
 			<span class="btnArea leftArea _previousImageButton">
 				<button type="button" class="btnPrev"
-					id="prevBtn"><i class="glyphicon glyphicon-menu-left" id="btnleft"></i></button>
+					id="prevBtn"><i class="btnimg glyphicon glyphicon-menu-left" id="btnleft"></i></button>
 			</span> <span class="btnArea rightArea _nextImageButton">
 				<button type="button" class="btnNext"
-					id="nextBtn"><i class="glyphicon glyphicon-menu-right" id="btnleft"></i></button>
+					id="nextBtn"><i class="btnimg glyphicon glyphicon-menu-right" id="btnleft"></i></button>
 			</span>
 		</div>
 

@@ -45,6 +45,7 @@
 	        $('#userband_num').val('${userband_num}');
 	        $('#band_num').val('${b_n}');
 	    })
+	    
 	})
 	
 	
@@ -706,12 +707,31 @@
 		})
 
  	}
+ 	$(document).ready(function(){
+ 		$('#searchInput').on('keydown',function(e){
+ 	 		if(e.keyCode == 13){
+ 	 			let search = $('#searchInput').val();
+ 	 			console.log(search);
+ 		 		$.ajax({
+ 					type: "post",
+ 					data: {
+ 						search: search,
+ 						band_num :'${b_n}'			
+ 					},
+ 					dataType:'JSON',
+ 				    url: '${cp }/boardsearch.do',
+ 				    success: list_view
+ 				})
+ 	 		}
+ 	 	})
+ 		
+ 	})
 </script>
 </head>
 <body onload="getBoardList()"> 
 	<section class="boardList">
 		<!-- 게시글 검색 템플릿 -->
-		<form class="form-horizontal" role="form">
+		<div class="form-horizontal" role="form">
 			<div class="input-group" id="searchFrom">
 				<input type="text" class="form-control" placeholder="글 내용, 닉네임" id="searchInput">
 					<span class="input-group-btn" >
@@ -720,7 +740,7 @@
 						</button>
 					</span>
 			</div>
-		</form>
+		</div>
 		
 		<!-- 글쓰기 템플릿 -->
 		<div class="form-horizontal">
