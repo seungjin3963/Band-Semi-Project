@@ -307,6 +307,8 @@ public class bandDao {
 		}catch(SQLException se) {
 			se.printStackTrace();
 			return null;
+		}finally {
+			JDBCUtil.close(rs, pstmt, con);
 		}
 	}
 	
