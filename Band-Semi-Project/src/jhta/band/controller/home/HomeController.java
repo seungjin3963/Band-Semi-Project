@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 @WebServlet("/home.do")
 public class HomeController extends HttpServlet{
 	@Override
@@ -17,6 +18,7 @@ public class HomeController extends HttpServlet{
 		resp.sendRedirect(req.getContextPath()+"/login/login.jsp"); // login Page move!!!
 	}
 }
+
 
 
 

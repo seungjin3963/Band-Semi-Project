@@ -28,16 +28,15 @@
 
 	})
 
-	$('#imgModal').on('hidden.bs.modal-', function() {
-	})
-
 	function getImgList(data) {
 		$('#carousel_indicators').empty();
 		$('#carousel_inner').empty();
+		$('#carousel-example-generic').carousel();
 		let body = $('#imgModal_main');
 		let targer = $('#imgboard_url');
 		console.log(targer.val());
 		for (var i = 0; i < data.length; i++) {
+			console.log(data[i].url);
 			let li = document.createElement("li");
 			li.setAttribute("data-target", "#carousel-example-generic");
 			li.setAttribute("data-slide-to", i);

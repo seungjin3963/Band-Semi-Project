@@ -295,11 +295,10 @@
 						img_col1.appendChild(img_url1);
 						img_row.appendChild(img_col1);
 					}
-					$(img_col1).on('click',function(){
+					$(img_url1).on('click',function(){
 						$('#imgboard_num').val(data[i].board_num);	
 						$('#imgboard_url').val(jarr[j].img_url);
 						$('#imgModal').modal({
-							backdrop : 'static',
 	                     	remote : '${cp }/band_board/imgModal.jsp'
 	             		});
 					})
@@ -753,8 +752,7 @@
 		
 		<div id="imgModal" class="modal fade">
 			<div class="modal-dialog">
-			<button type="button" class="close" data-dismiss="modal"
-					aria-hidden="true" id="closeBtn1">×</button>
+			<button type="button" class="close" data-dismiss="modal"aria-hidden="true" id="closeBtn1">×</button>
 				<div class="modal-content">
 				</div>
 			</div>
@@ -765,11 +763,14 @@ $('#writeModal').modal({
 	backdrop : 'static',
   	remote : '${cp}/band_board/board_writer.jsp'
 	});
-
+$('#writeModal').modal('hide');
 $('#boardModal').modal({
   	remote : '${cp}/band_board/boardModal.jsp'
 	});
 $('#boardModal').modal('hide');
-$('#writeModal').modal('hide');
+$('#imgModal').modal({
+  	remote : '${cp}/band_board/imgModal.jsp'
+	});
+$('#imgModal').modal('hide');
 </script>
 </html>
