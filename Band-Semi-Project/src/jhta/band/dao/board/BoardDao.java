@@ -23,7 +23,7 @@ public class BoardDao {
 			con = JDBCUtil.getConn();
 			String sql = "select aa.*,bb.band_nickname from" + 
 					"(" + 
-					"    select board.*, lead(board_num) over(order by board_num) next, lag(board_num,1) over(order by board_num) prev from board where band_num=?" + 
+					"    select board.*, lead(board_num) over(order by board_num) next, lag(board_num,1) over(order by board_num) prev from board where band_num=? and board_states!=2" + 
 					")aa,band_userinfo bb " + 
 					"where board_num=? and aa.userband_num=bb.userband_num";
 			
@@ -102,12 +102,9 @@ public class BoardDao {
 			
 			if(ivo != null) {				
 				for(TmpImgVo vo : ivo) {
-					System.out.println("stat: " +vo.getTmp_state());
 					if(vo.getTmp_state() == 1) {
-						System.out.println("state = 1");
 						dao.delete(vo.getTmpimg_url());					
 						if(n<=0) {
-							System.out.println("rollbakc");
 							con.rollback();
 							return -1;
 						}	
@@ -116,7 +113,6 @@ public class BoardDao {
 								0, bvo.getBand_num(), bvo.getBoard_num(), vo.getTmpimg_url(), null, 0);
 						int result = dao.insert(img,con,bvo.getBoard_num());
 						if(result <=0) {
-							System.out.println("qweqw");
 							con.rollback();
 							return -1;
 						}
@@ -164,7 +160,6 @@ public class BoardDao {
 			
 			if(ivo != null) {				
 				for(TmpImgVo vo : ivo) {
-					System.out.println("Asdsa");
 					ImgBoardVo img = new ImgBoardVo(
 							0, bvo.getBand_num(), bvo.getBoard_num(), vo.getTmpimg_url(), null, 0);
 					int result = dao.insert(img,con);

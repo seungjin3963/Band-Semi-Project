@@ -33,7 +33,6 @@ public class ContentUploadController extends HttpServlet{
 		int startNum = 1;
 		int endNum = 5;
 		
-		System.out.println(board_page + "boardpage");
 		int maxBoard = dao.getBoardCount(band_num);
 		int maxPage = (int) Math.ceil(maxBoard/5.0);
 		startNum = (board_page - 1)*5 + 1;
@@ -45,7 +44,6 @@ public class ContentUploadController extends HttpServlet{
 	
 		
 		ArrayList<BoardVo> list = dao.select(band_num,startNum,endNum);
-		System.out.println(band_num);
 		SimpleDateFormat fm=new SimpleDateFormat("yyyy³â MM¿ù dd a hh:mm"); 
 		
 		
@@ -71,7 +69,6 @@ public class ContentUploadController extends HttpServlet{
 						for(ImgBoardVo o:img) {
 							JSONObject json_img = new JSONObject();
 							json_img.put("img_url", o.getImg_url());
-							System.out.println(o.getImg_url());
 							jarr_img.put(json_img);
 						}
 						json.put("img_url", jarr_img);

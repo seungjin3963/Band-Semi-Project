@@ -28,7 +28,6 @@ public class ImgUploadSummernote extends HttpServlet{
 		resp.setContentType("text/html);charset=utf-8");
 		
 		String upload = req.getServletContext().getRealPath("/upload");
-		System.out.println(upload);
 		int size = 10 * 1024 * 1024;
 		
 		try {
@@ -44,7 +43,6 @@ public class ImgUploadSummernote extends HttpServlet{
 			String path = "./upload/" + save_filename;
 			
 			TempImgeDao dao = new TempImgeDao();
-			System.out.println(multi.getParameter("userband_num"));
 			int userband_num = Integer.parseInt(multi.getParameter("userband_num"));
 			TmpImgVo vo = new TmpImgVo(0,userband_num,path,0);
 			

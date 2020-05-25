@@ -22,7 +22,6 @@ public class ImgModalUploadController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		long board_num = Long.parseLong(req.getParameter("board_num"));
-		System.out.println(board_num + "upload");
 		ImgBoardDao dao = new ImgBoardDao();
 		
 		ArrayList<ImgBoardVo> list = dao.select(board_num);
@@ -33,7 +32,6 @@ public class ImgModalUploadController extends HttpServlet{
 			JSONObject json = new JSONObject();
 			
 			json.put("url", vo.getImg_url());
-			System.out.println(vo.getImg_url());
 			jarr.put(json);
 		}
 		resp.setContentType("test/palin;charset=utf-8");

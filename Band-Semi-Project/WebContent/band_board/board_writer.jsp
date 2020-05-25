@@ -144,7 +144,6 @@
 	$('#closeBtn1').on('click',function(){
 		 var board_num = $('#board_num').val();
 		 if(board_num >0){
-			 console.log(board_num);
 			 $('#myModalLabel').text('글쓰기'); 
 		 }
 		var userband_num = '${userband_num}';

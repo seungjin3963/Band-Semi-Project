@@ -41,7 +41,6 @@ public class CommentsListController extends HttpServlet{
 		json_origin.put("maxpage", maxPage);
 		
 		ArrayList<CommentsVo> list = dao.select(board_num,startPageNum,endPageNum);
-		System.out.println(board_num);
 		SimpleDateFormat fm=new SimpleDateFormat("yyyy³â MM¿ù dd a hh:mm"); 
 		if(list != null) {
 			JSONArray jarr = new JSONArray();

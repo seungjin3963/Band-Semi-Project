@@ -22,8 +22,6 @@ public class AlbumModalController extends HttpServlet{
 		long img_num = Long.parseLong(req.getParameter("img_num"));
 		long band_num = Long.parseLong(req.getParameter("band_num"));
 		
-		System.out.println("img" + img_num);
-		System.out.println("band_num" + band_num);
 		
 		
 		ImgBoardDao dao = new ImgBoardDao();

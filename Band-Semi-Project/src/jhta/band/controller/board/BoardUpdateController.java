@@ -22,18 +22,14 @@ public class BoardUpdateController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		System.out.println("updateboard");
 		String userband_num = req.getParameter("userband_num");
-		System.out.println(userband_num);
 		String band_num = req.getParameter("band_num");
 		String board_content = req.getParameter("code");
 		String board_num = req.getParameter("board_num");
 		String noticeChk = req.getParameter("boardState");
 		TempImgeDao tmp_dao = new TempImgeDao();
-		System.out.println("userband:" + board_num + userband_num);
 		ArrayList<TmpImgVo> list = tmp_dao.selectList(Integer.parseInt(userband_num));
 
-		System.out.println(list);
 		BoardVo bvo = new BoardVo(Long.parseLong(board_num), Long.parseLong(band_num), Long.parseLong(userband_num), board_content, null,
 				Integer.parseInt(noticeChk));
 		BoardDao dao = new BoardDao();

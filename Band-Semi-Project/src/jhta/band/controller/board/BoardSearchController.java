@@ -61,7 +61,6 @@ public class BoardSearchController extends HttpServlet{
 					for(ImgBoardVo o:img) {
 						JSONObject json_img = new JSONObject();
 						json_img.put("img_url", o.getImg_url());
-						System.out.println(o.getImg_url());
 						jarr_img.put(json_img);
 					}
 					json.put("img_url", jarr_img);

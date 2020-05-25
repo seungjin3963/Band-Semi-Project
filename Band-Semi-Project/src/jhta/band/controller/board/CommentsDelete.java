@@ -29,7 +29,6 @@ public class CommentsDelete extends HttpServlet{
 		JSONObject json_origin = new JSONObject();
 		
 		if(n>0) {
-			System.out.println("1234");
 			json_origin.put("result", "success");
 		}else{
 			json_origin.put("result", "fail");

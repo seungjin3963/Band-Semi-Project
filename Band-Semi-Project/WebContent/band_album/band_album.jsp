@@ -146,7 +146,6 @@ function changeImg() {
 
 function setMoreImg(){
 	$('#moreImg').on('click',function(){
-		console.log("1234");
 		imgPage +=1;
 		$.ajax({
 			 data:{  

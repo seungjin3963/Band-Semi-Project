@@ -11,7 +11,6 @@
 <script type="text/javascript">
 	$('#imgModal').on('show.bs.modal', function() {
 		var board_num = $('#imgboard_num').val();
-		console.log(board_num);
 		if(board_num != 0){
 			$.ajax({
 				data : {
@@ -33,9 +32,7 @@
 		$('#carousel_inner').empty();
 		let body = $('#imgModal_main');
 		let targer = $('#imgboard_url');
-		console.log(targer.val());
 		for (var i = 0; i < data.length; i++) {
-			console.log(data[i].url);
 			let li = document.createElement("li");
 			li.setAttribute("data-target", "#carousel-example-generic");
 			li.setAttribute("data-slide-to", i);

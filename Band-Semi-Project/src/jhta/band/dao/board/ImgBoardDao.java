@@ -20,7 +20,7 @@ public class ImgBoardDao {
 			con = JDBCUtil.getConn();
 			String sql = "select * from\n" + 
 					"(" + 
-					"    select img_url,img_num, lead(img_num) over(order by img_num) next, lag(img_num,1) over(order by img_num) prev from imgboard where band_num=?" + 
+					"    select img_url,img_num, lead(img_num) over(order by img_num) next, lag(img_num,1) over(order by img_num) prev from imgboard where band_num=? and img_states!=1" + 
 					")" + 
 					"where img_num=?";
 			pstmt = con.prepareStatement(sql);
@@ -76,7 +76,6 @@ public class ImgBoardDao {
 			String sql = "update imgboard set img_states=1 where img_url=?";
 			
 			pstmt = con.prepareStatement(sql);
-		System.out.println(url);
 			pstmt.setString(1, url);
 			
 			return pstmt.executeUpdate();		
@@ -150,7 +149,6 @@ public int insert(ImgBoardVo vo, Connection con,long board_num) {
 			rs = pstmt.executeQuery();
 			
 			if(!rs.next()) {
-				System.out.println("Dasdsa");
 				return null;
 			}
 			ArrayList<ImgBoardVo> list = new ArrayList<ImgBoardVo>();
@@ -164,7 +162,6 @@ public int insert(ImgBoardVo vo, Connection con,long board_num) {
 						rs.getInt("img_states")
 						);
 				list.add(vo);
-				System.out.println("Sd");
 			}while(rs.next());
 			return list;
 			
@@ -212,7 +209,6 @@ public ArrayList<ImgBoardVo> select(long band_num,int startNum, int endNum){
 						rs.getInt("img_states")
 						);
 				list.add(vo);
-				System.out.println("Sd");
 			}while(rs.next());
 			return list;
 			

@@ -125,7 +125,6 @@ public class CommentsDao {
 				pstmt.setLong(4,GetCount() + 1);;
 				pstmt.setInt(5, step);
 			}else {
-				System.out.println("2222");
 				String sql1 = "select max(step) ss from comments where ref=?";
 				pstmt1 = con.prepareStatement(sql1);
 				
@@ -134,11 +133,9 @@ public class CommentsDao {
 				rs = pstmt1.executeQuery();
 				
 				if(!rs.next()) {
-					System.out.println("3333");
 					pstmt.setLong(4, ref);
 					pstmt.setInt(5, rs.getInt("ss")+1);
 				}else {
-					System.out.println("4444");
 					pstmt.setLong(4, ref);
 					pstmt.setInt(5, 1);
 				}

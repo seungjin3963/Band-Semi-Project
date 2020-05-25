@@ -29,20 +29,16 @@ public class BoardModalController extends HttpServlet{
 		long board_num = Long.parseLong(req.getParameter("board_num"));
 		long band_num = Long.parseLong(req.getParameter("band_num"));
 		
-		System.out.println(board_num);
-		System.out.println(band_num);
 		BoardDao board_dao = new BoardDao();
 		
 		BoardVo board_vo = board_dao.selectModal(board_num, band_num);
 		
 		if(board_vo == null) {
-			System.out.println("1111111");
 		}
 		int comments_page = Integer.parseInt(req.getParameter("comments_page"));
 		
 		JSONObject json = new JSONObject();
 		SimpleDateFormat fm=new SimpleDateFormat("yyyy³â MM¿ù dd a hh:mm"); 
-		System.out.println(board_vo.getBoard_num());
 		json.put("band_num", board_vo.getBand_num());
 		json.put("board_num", board_vo.getBoard_num());
 		json.put("board_states", board_vo.getBoard_states());
@@ -67,7 +63,6 @@ public class BoardModalController extends HttpServlet{
 		}
 		
 		ArrayList<CommentsVo> list = dao.select(board_num,startPageNum,endPageNum);
-		System.out.println(board_num);
 		if(list != null) {
 			JSONArray jarr = new JSONArray();
 			for(CommentsVo vo : list) {
@@ -91,7 +86,6 @@ public class BoardModalController extends HttpServlet{
 		json.put("maxpage", maxPage);
 		
 		
-		System.out.println("Asdqw");
 		resp.setContentType("test/palin;charset=utf-8");
 		PrintWriter pw = resp.getWriter();
 		pw.print(json);

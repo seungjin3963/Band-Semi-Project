@@ -33,9 +33,7 @@ public class BoardUploadController extends HttpServlet {
 		String noticeChk = req.getParameter("boardState");
 
 		TempImgeDao tmp_dao = new TempImgeDao();
-		System.out.println(band_num+board_content+userband_num);
 		ArrayList<TmpImgVo> list = tmp_dao.selectList(Integer.parseInt(userband_num));
-		System.out.println("1234");
 		BoardVo bvo = new BoardVo(0, Long.parseLong(band_num), Long.parseLong(userband_num), board_content, null,
 				Integer.parseInt(noticeChk));
 		BoardDao dao = new BoardDao();

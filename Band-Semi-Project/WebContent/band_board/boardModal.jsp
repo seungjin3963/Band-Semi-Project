@@ -142,8 +142,6 @@
 		let prevNum = data.prevNum;
 		let nextNum = data.nextNum;
 		
-		console.log(prevNum);
-		console.log(nextNum);
 		//Controller 에서 이전 다음 페이지 번호 받아와 세팅...
 		$('#prevNum').val(prevNum);
 		$('#nextNum').val(nextNum);
@@ -278,7 +276,6 @@
 		//댓글 수 지
 		let comments_cnt = document.createElement("div");
 		comments_cnt.setAttribute("class","col-sm-2 text-center");
-		console.log(data.comments_cnt);
 		comments_cnt.innerText = "댓글 : " + data.comments_cnt;
 		comments_cnt.setAttribute('style', 'font-weight:bold; padding-left:14px');
 		
@@ -322,7 +319,6 @@
  		comments_prev.setAttribute("id","comments_prev");
  		
     	if(comments_page<maxpage){
-    		console.log("asd");
 	 		comments_prev.innerHTML = "이전으로";
 	 		comments_prev.setAttribute("style", "font-weight:bold;font-size:18px; z-index:999;")
 	 		$(comments_prev).on('click',function(){
@@ -480,7 +476,6 @@
 		 		comments_prev.setAttribute("id","comments_prev");
 		 		
 		    	if(comments_page<maxpage){
-		    		console.log("asd");
 			 		comments_prev.innerHTML = "이전으로";
 			 		comments_prev.setAttribute("style", "font-weight:bold;font-size:18px; z-index:999;")
 			 		$(comments_prev).on('click',function(){
@@ -606,7 +601,6 @@
 							    url: '${cp}/commentdelete.do',
 							    success: function(data) {
 							    	if(data.result=='success'){
-							    		console.log("reset")
 								    	$.ajax({
 							 				type: "post",
 											data: { 

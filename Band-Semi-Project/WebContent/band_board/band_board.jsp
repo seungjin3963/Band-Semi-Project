@@ -73,7 +73,6 @@
  		}
 		let board = document.getElementById("boardList");
 		for(let i = 0; i<data.length; i++){
-			console.log(data[i].maxPage);
 			max_page = data[i].maxPage;
 			let board_view = document.createElement("div");
 			board_view.setAttribute("id", "board_view");
@@ -327,7 +326,6 @@
 			
 			let comments_cnt = document.createElement("div");
 			comments_cnt.setAttribute("class","col-sm-2 text-center");
-			console.log(data[i].comments_cnt);
 			comments_cnt.innerText = "댓글 : " + data[i].comments_cnt;
 			comments_cnt.setAttribute('style', 'font-weight:bold; padding-left:14px');
 			
@@ -410,7 +408,6 @@
 			$(comments_div).on('click',function(){
 			
 				if(click == true){
-					console.log('click');
 					let comments = document.createElement("div");
 					comments.setAttribute("class", "commentInput");
 					
@@ -454,7 +451,6 @@
 					let board_num = data[i].board_num;
 					
 					 function commentList(data) {
-						 	alert("asd");
 					    	$(comments_list).empty();
 					    	comments_cnt.innerText = "댓글 : " + data.comments_cnt;
 					    	
@@ -472,7 +468,6 @@
 					 		comments_prev.setAttribute("id","comments_prev");
 					 		
 					    	if(comments_page<max){
-					    		console.log("asd");
 						 		comments_prev.innerHTML = "이전으로";
 						 		comments_prev.setAttribute("style", "font-weight:bold;font-size:18px")
 						 		
@@ -602,7 +597,6 @@
 										    success: function(data) {
 										    	if(data.result=='success'){
 										    		$(comments_list).empty();
-										    		console.log("reset")
 											    	$.ajax({
 										 				type: "post",
 														data: { 
@@ -700,9 +694,8 @@
 	}
  	
  	function search(){
-	 	
+ 		board_page = 1;
  		let search = $('#searchInput').val();
- 		alert("sda");
  		$.ajax({
 			type: "post",
 			data: {
@@ -719,7 +712,6 @@
  		$('#searchInput').on('keydown',function(e){
  	 		if(e.keyCode == 13){
  	 			let search = $('#searchInput').val();
- 	 			console.log(search);
  		 		$.ajax({
  					type: "post",
  					data: {
