@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="category" style="text-align: center;">
-	<form method="post" action="${cp }/bandcover.do" style="margin: auto;">
+	<form method="post" action="${cp }/bandcover.do" style="margin: auto;" onsubmit="return categorycheck()">
 	<h2 style="display: inline-block;">카테고리 분류</h2>
 		<input type="button" id="cabefor" onclick="cbeforpage()" value="<">
 		<input type="hidden" value="1" id="beforassi">
@@ -140,5 +140,14 @@
 				detail.appendChild(div);
 			}
 		}
+	}
+	
+	function categorycheck(){
+		console.log(1);
+		if(scategoryTrandfer.value == ""){
+			alert("세부 카테고리까지 선택해 주세요");
+			return false;
+		}
+		return true;
 	}
 </script>

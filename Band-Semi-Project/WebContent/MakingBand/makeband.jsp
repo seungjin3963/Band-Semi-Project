@@ -8,7 +8,7 @@
 	<div>
 		<h2 id="bandname">밴드 이름</h2>
 		<form style="width: 1300px; height: 1000px;" method="post"
-			action="<%=request.getContextPath()%>/makeband_end.do">
+			action="<%=request.getContextPath()%>/makeband_end.do" onsubmit="return makebandcheck()">
 			<div class="group">
 				<input type="text" placeholder="밴드 이름 입력" id="textinput"
 					name="bandname">
@@ -105,6 +105,25 @@ function cover(covercount,coverurl) {
 	
 	bcover.src=coverURL[covercount].src;
 	bandcoverimg.value=covernum[0];
+}
+
+function makebandcheck(){
+	var textinput=document.getElementById("textinput");
+	var open=document.getElementsByName("open");
+	
+	if(textinput.value == ""){
+		alert("밴드이름을 입력해 주세요");
+		textinput.focus();
+		return false;
+	}
+	
+	for (var i = 0; i < open.length; i++) {
+		if(open[i].checked == true){
+			return true;
+		}
+	}
+	alert("밴드공개 여부를 선택해 주세요");
+	return false;
 }
 
 </script>
