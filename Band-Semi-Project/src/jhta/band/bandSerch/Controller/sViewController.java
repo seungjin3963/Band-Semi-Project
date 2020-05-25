@@ -24,7 +24,7 @@ public class sViewController extends HttpServlet {
 		String category_stitle=req.getParameter("category_stitle");
 		bandDao dao=new bandDao();
 		//ArrayList<bandVo> list=dao.categoryContents("category_stitle");
-		ArrayList<bandSerchVo> list=dao.random();
+		ArrayList<bandSerchVo> list=dao.bandMoreSerch(category_stitle);
 	//	req.setAttribute("list",list);
 	//	req.setAttribute("category_stitle", category_stitle);
 	//	req.setAttribute("footer","/scategory.jsp");

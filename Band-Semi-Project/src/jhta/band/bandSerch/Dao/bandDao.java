@@ -12,6 +12,80 @@ import jhta.band.bandSerch.Vo.bandVo;
 import jhta.band.db.JDBCUtil;
 
 public class bandDao {
+	public ArrayList<Integer> bandMoreGetNum(String category_stitle) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		int band_num=0;
+		ArrayList<Integer> list =new ArrayList<Integer>();
+		try {
+			con=JDBCUtil.getConn();
+			String sql="select bb.band_num a1 " + 
+					"from scategory ss,band bb " + 
+					"where ss.scategorynum=bb.scategorynum " + 
+					"and ss.category_stitle='"+category_stitle+"' ";
+			
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				band_num=rs.getInt("a1");
+				list.add(band_num);
+			}
+			return list;
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return null;
+		}finally {
+			JDBCUtil.close(rs, pstmt, con);
+		}
+	}
+	//select a1,a2,a3,d1 from( select aa.band_num a1 , aa.band_name a2, aa.band_intoroductio a3, dd.bandimg d1, rownum rnum from  ( select * from  band where (band_name  like '%"+keyword+"%' or band_intoroductio like '%"+keyword+"%') and band_publicwhe!=3  order by band_num desc  ) aa,bandimg dd  where  dd.bandimgNum=aa.bandimgNum) where rnum>=? and  rnum<=?
+	public ArrayList<bandSerchVo> bandMoreSerch(String category_stitle){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		PreparedStatement pstmt2=null;
+		ResultSet rs2=null;
+		long bandcnt=0;
+		try {
+			con=JDBCUtil.getConn();
+//			String sql="select a1,a2,a3,d1 " + 
+//					"from( select aa.band_num a1 , aa.band_name a2, aa.band_intoroductio a3, dd.bandimg d1" + 
+//					"from" + 
+//					"( select * from  band where band_num=?" + 
+//					"and band_publicwhe!=3 ) aa,bandimg dd  where  dd.bandimgNum=aa.bandimgNum) ";
+			String sql="select bb.band_num b1 , bb.band_name b2, bb.band_intoroductio b3, dd.bandimg d1 " + 
+					"from scategory ss,band bb, bandimg dd where  dd.bandimgNum=bb.bandimgNum "+ 
+					"and ss.scategorynum=bb.scategorynum and ss.category_stitle=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,category_stitle);
+			rs=pstmt.executeQuery();
+			ArrayList<bandSerchVo> list=new ArrayList<bandSerchVo>();
+			if(rs.next()) {
+				int band_num=rs.getInt("b1");
+				
+				String bandLeader=getBandLeader(band_num);
+				pstmt2=con.prepareStatement("SELECT COUNT(BAND_NUM) cnt FROM BAND_USERINFO USERINFO WHERE BAND_NUM=? AND BAND_APPROVED != 3");
+				pstmt2.setLong(1, band_num);
+				rs2=pstmt2.executeQuery();
+				if(rs2.next()) {
+					bandcnt=rs2.getLong("cnt");
+				}
+				
+				String band_name=rs.getString("b2");
+				String band_intoroductio=rs.getString("b3");
+				String bandimg=rs.getString("d1");
+				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg, bandLeader, bandcnt));
+			}
+			return list;
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return null;
+		}finally {
+			JDBCUtil.close(rs, pstmt, con);
+		}
+	}
 	public ArrayList<bandVo> bigCategoryView(String category_btitle){
 		String sql="select ss.categoty_stitle" + 
 				"from scategory.ss1,bcategory.bb" + 
@@ -37,13 +111,8 @@ public class bandDao {
 	}
 	public ArrayList<bandVo> categoryContents(int scategoryNum){
 		String sql="select aa.band_name,aa.band_intoroductio,aa.band_img" + 
-				"    from scategory.ss2,band.aa,bandimg.bi" + 
+				"    from scategory ss2,band aa,bandimg bi" + 
 				"    where ss.scategoryNum=aa.scategoryNum and bb.band_publicwhe!=3 and ss.category_stitle=?" + 
-			/*	"    =(" + 
-				"        select ss.categoty_stitle" + 
-				"        from scategory.ss1,bcategory.bb" + 
-				"        where bb.bcategoryNum=aa.bcategoryNum and bb.category_btitle=?" + 
-				"    ) "*/
 				"and bi.bandimgNum=aa.bandimgNum" + 
 				"    order by ss.scategoryNum desc";
 		Connection con=null;
