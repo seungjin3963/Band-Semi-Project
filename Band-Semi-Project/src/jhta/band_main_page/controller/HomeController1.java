@@ -1,6 +1,7 @@
 package jhta.band_main_page.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,8 @@ import javax.websocket.Session;
 
 import org.apache.catalina.core.ApplicationContext;
 
+import jhta.band.dao.board.ImgBoardDao;
+import jhta.band.vo.board.ImgBoardVo;
 import sun.awt.RepaintArea;
 
 @WebServlet("/rladudsh.do")
@@ -64,7 +67,12 @@ public class HomeController1 extends HttpServlet {
 		}else {
 			//등급 관리자:1  회원:2  / 대기중 3  비회원0  
 			paramBANDinfo.setAttribute("band_approved", vo.getBand_approved());
-		
+			ImgBoardDao dao1=new ImgBoardDao();
+			ArrayList<ImgBoardVo>  imglist=dao1.select(BANDNUM , 1 ,1);
+			ImgBoardVo v = imglist.get(0);
+			//최근사진
+			paramBANDinfo.setAttribute("imglist", v.getImg_url());
+			System.out.println(imglist);
 			//유저 번호
 			paramBANDinfo.setAttribute("userband_num", vo.getUser_Band_num());
 			req.setAttribute("file", "/band_board/band_board.jsp");
