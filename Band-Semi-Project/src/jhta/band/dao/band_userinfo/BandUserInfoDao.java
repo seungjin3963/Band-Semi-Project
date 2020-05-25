@@ -9,23 +9,32 @@ import jhta.band.db.JDBCUtil;
 import jhth.band.vo.MakeBandVo.Band_userinfoVo;
 
 public class BandUserInfoDao {
-	
-	
-	/*
-	 * public String selectNickname(long userband_num) {
-	 * 
-	 * Connection con = null; PreparedStatement pstmt = null; ResultSet rs = null;
-	 * 
-	 * try { con = JDBCUtil.getConn(); String sql =
-	 * "select band_nickname from band_userinfo where userband_num=?";
-	 * 
-	 * pstmt = con.prepareStatement(sql); pstmt.setLong(1, userband_num);
-	 * 
-	 * 
-	 * 
-	 * } catch (SQLException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); }
-	 * 
-	 * }
-	 */
+
+	public long selectloginnum(long userband_num) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = JDBCUtil.getConn();
+			pstmt = con.prepareStatement("SELECT LOGIN_NUM FROM BAND_USERINFO WHERE USERBAND_NUM=?");
+			pstmt.setLong(1, userband_num);
+
+			rs = pstmt.executeQuery();
+
+			long login_num = 0;
+
+			if (rs.next()) {
+				login_num = rs.getLong("login_num");
+			}
+
+			return login_num;
+		} catch (SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		} finally {
+			JDBCUtil.close(rs, pstmt, con);
+		}
+	}
 }
