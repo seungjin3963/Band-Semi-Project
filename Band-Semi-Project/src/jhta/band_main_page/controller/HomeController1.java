@@ -58,7 +58,7 @@ public class HomeController1 extends HttpServlet {
 		paramBANDinfo.setAttribute("vo", vo);
 		String dudname=dao.dudmembersselect(login_num ,BANDNUM);
 		paramBANDinfo.setAttribute("dudname", dudname);
-		System.out.println("이름    " +dudname);
+		
 		if(vo==null || vo.getBand_approved()==3) {
 			//비회원 이름
 			
@@ -72,10 +72,10 @@ public class HomeController1 extends HttpServlet {
 			if(imglist!=null) {
 			ImgBoardVo v = imglist.get(0);
 			paramBANDinfo.setAttribute("imglist", v.getImg_url());
-			System.out.println(imglist);
+			
 			}else {
 				paramBANDinfo.setAttribute("imglist", "");
-				System.out.println(imglist);
+				
 
 			}
 			//최근사진

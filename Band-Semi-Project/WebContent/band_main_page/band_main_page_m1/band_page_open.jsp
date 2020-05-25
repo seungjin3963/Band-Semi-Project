@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.band_page_open{width: 100%; height: auto; border: 1px solid black; background-color: white;}
+	.band_page_open{width: 100%; height: auto; background-color: white;}
 	.band_page_open h3{padding-left: 20px;}
-	.band_page_open1{width: 90%; height: auto; border: 1px solid black; padding-left: 20px; margin: auto;}
+	.band_page_open1{width: 90%; height: auto; padding-left: 20px; margin: auto;}
 	.band_page_open #input{padding-left: 20px;}
 	.band_page_open1rad{float: right; margin-right: 50px;margin-top: 20px;}
 </style>

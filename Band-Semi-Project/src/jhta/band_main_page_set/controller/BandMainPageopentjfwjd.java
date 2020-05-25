@@ -13,10 +13,9 @@ public class BandMainPageopentjfwjd extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int valeus=Integer.parseInt(req.getParameter("values"));
-		System.out.println("°ª :" + valeus);
+		
 		HttpSession paramBANDinfo = req.getSession();
 		int bandnum=(int)paramBANDinfo.getAttribute("b_n");
-		System.out.println("¹êµå ¹øÈ£ :" + bandnum);
 		bandmainpagesetdao dao=new bandmainpagesetdao();
 		int n=dao.mainpagesetting(bandnum , valeus);
 		

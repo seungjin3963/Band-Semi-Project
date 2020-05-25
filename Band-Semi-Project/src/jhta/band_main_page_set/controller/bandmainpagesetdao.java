@@ -88,7 +88,6 @@ public class bandmainpagesetdao {
 			pstmt.setInt(1,unum);
 			pstmt.setInt(2,bandnum);	
 			int n=pstmt.executeUpdate();
-			System.out.println("ªË¡¶ 1 : "+ n);
 			return n;
 			}catch(SQLException se) {
 				se.printStackTrace();		

@@ -21,7 +21,6 @@ public class MembersrkdlqController extends HttpServlet{
 		long login_num=(long)session.getAttribute("login_num");
 		String dudname=(String)session.getAttribute("dudname");
 		
-		System.out.println(login_num);
 		
 		//System.out.println(bnadnum);
 	//	System.out.println(dudname);
