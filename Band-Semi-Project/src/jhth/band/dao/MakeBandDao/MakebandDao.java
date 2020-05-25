@@ -65,7 +65,7 @@ public class MakebandDao {
 		
 		try {
 			con=JDBCUtil.getConn();
-			pstmt=con.prepareStatement("INSERT INTO BAND_USERINFO VALUES(SEQ_BANDUSERINFO.NEXTVAL,?,?,?,1,SYSDATE)");
+			pstmt=con.prepareStatement("INSERT INTO BAND_USERINFO VALUES(BANDUSERINFO_SEQ.NEXTVAL,?,?,?,1,SYSDATE)");
 			pstmt.setLong(1, num);
 			pstmt.setLong(2, loginNum);
 			pstmt.setString(3, bandleader);
