@@ -20,7 +20,7 @@
 	<div id="div">
 		<div class="band_page_admin_Img"><img src="${cp }/userprofile.do?userprofile=${sessionScope.userband_num }"></div>&nbsp;&nbsp;&nbsp;
 		<h3>${dudname}</h3>
-		<input type="button" value="변경" id="input">
+		<input type="button" value="변경" id="input" onclick="Mypagesend()">
 	</div>
 	<br>
 	<div id="div1">
@@ -82,5 +82,10 @@
 	function bandout() {
 		location.href ="<%=request.getContextPath()%>/bandout.do";
 	}
+	function Mypagesend() {
+		
+		location.href ="<%=request.getContextPath()%>/MyPage.do";
+}
+
 </script>
 </html>
