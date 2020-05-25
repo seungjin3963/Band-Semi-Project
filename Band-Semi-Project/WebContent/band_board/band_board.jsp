@@ -711,6 +711,7 @@
  	$(document).ready(function(){
  		$('#searchInput').on('keydown',function(e){
  	 		if(e.keyCode == 13){
+ 	 			board_page = 1;
  	 			let search = $('#searchInput').val();
  		 		$.ajax({
  					type: "post",
