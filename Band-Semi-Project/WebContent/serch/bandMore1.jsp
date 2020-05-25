@@ -105,10 +105,9 @@
 			
 			for(var i=0;i<json.length;i++){
 				var div=document.createElement("div");
-				//div1.innerHTML="<table  class='serch01' style=' border:1px solid white;'  >"
+				//div1.innerHTML="밴드사진"
 				
-				div.innerHTML+="<img src="+json[i].bandimg+" style='height: 100px;'>";
-				div.innerHTML+="<span >밴드이름:"+json[i].band_name+"</span> <br>"+"<span class='fontCss2'>밴드소개글:"+json[i].band_intoroductio+"</span><br><span class='fontCss3'> 멤버수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;밴드장:</span>";
+				div.innerHTML="<span class='fontCss1'>밴드이름:"+json[i].band_name+"</span> <br>"+"<span class='fontCss2'>밴드소개글:"+json[i].band_intoroductio+"</span><br><span class='fontCss3'> 멤버수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;밴드장:</span>";
 				
 				detail2.appendChild(div);
 				

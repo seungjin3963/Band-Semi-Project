@@ -35,6 +35,8 @@ public class sViewController extends HttpServlet {
 		JSONArray jarr=new JSONArray();
 		for(bandSerchVo vo: list) {
 			JSONObject json=new JSONObject();
+			json.put("bandimg", vo.getBandimg());
+			json.put("band_num", vo.getBand_num());
 			json.put("band_name", vo.getBand_name());
 			json.put("band_intoroductio", vo.getBand_intoroductio());
 			jarr.put(json);

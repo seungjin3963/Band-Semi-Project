@@ -23,8 +23,7 @@
 <table  class="serch01" style=" border:1px solid white;  "  >
 	
 	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
-<%-- 		<td colspan="5" rowspan="4"><img src="${vo.bandimg }" style="height: 100px;"></td>
- --%>		<td  colspan="1" rowspan="4"><img src="${vo.bandimg }" style="height: 100px;"></td>
+ 		<td  colspan="1" rowspan="4"><img src="${vo.bandimg }" style="height: 100px;"></td>
  		<td colspan="8" ><strong>밴드이름: ${vo.band_name}</strong></td>
 	</tr >
 	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
