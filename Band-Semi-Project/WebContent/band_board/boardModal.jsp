@@ -98,6 +98,12 @@
     background-color: #000;
 }
 
+#closeBtn1{
+	position: fixed;
+    left: unset;
+    right: -120px;
+    z-index: 1000;
+}
 </style>
 <script>
 	var comments_page = 1;
@@ -174,7 +180,7 @@
 		profile.setAttribute("class","col-sm-2");
 		let img = document.createElement("img");
 		img.setAttribute("class","img-responsive img-circle text-center");
-		img.setAttribute("src",'${cp }/upload/img_profile.jpg');
+		img.setAttribute("src",'${cp }/userprofile.do?userprofile='+data.userband_num);
 		profile.appendChild(img);
 		row.appendChild(profile);
 		
@@ -366,7 +372,7 @@
 		 		
 		 		let img = document.createElement("img");
 		 		img.setAttribute("class","img-responsive img-circle text-center");
-				img.setAttribute("src",'${cp}/upload/img_profile.jpg');
+				img.setAttribute("src",'${cp }/userprofile.do?userprofile='+comments[j].userband_num);
 				
 				
 		 		comment_user_img.appendChild(img);
@@ -523,7 +529,7 @@
 			 		
 			 		let img = document.createElement("img");
 			 		img.setAttribute("class","img-responsive img-circle text-center");
-					img.setAttribute("src",'${cp}/upload/img_profile.jpg');
+					img.setAttribute("src",'${cp }/userprofile.do?userprofile='+data.json[y].userband_num);
 					
 					
 			 		comment_user_img.appendChild(img);
@@ -721,19 +727,20 @@
 </head>
 <body>
 
-	
-	<div class="boardContent">
+	<button type="button" class="close glyphicon glyphicon-remove"
+		data-dismiss="modal" aria-hidden="true" id="closeBtn1"></button>
+	<div class="boardContent" >
 			
-		<div class="mediaWrap _mediaWrap modal-body" style="padding: 40px 100px;">
+		<div class="mediaWrap _mediaWrap modal-body" style="padding: 40px 100px;" >
 			
 			<div id="boardList2"></div>
 
 			<span class="btnArea leftArea _previousImageButton">
-				<button type="button" class="btnPrev glyphicon glyphicon-menu-left"
-					id="prevBtn"></button>
+				<button type="button" class="btnPrev"
+					id="prevBtn"><i class="glyphicon glyphicon-menu-left" id="btnleft"></i></button>
 			</span> <span class="btnArea rightArea _nextImageButton">
-				<button type="button" class="btnNext glyphicon glyphicon-menu-right"
-					id="nextBtn"></button>
+				<button type="button" class="btnNext"
+					id="nextBtn"><i class="glyphicon glyphicon-menu-right" id="btnleft"></i></button>
 			</span>
 		</div>
 

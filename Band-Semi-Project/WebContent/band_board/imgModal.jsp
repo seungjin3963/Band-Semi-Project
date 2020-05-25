@@ -59,7 +59,8 @@
 
 </head>
 <body>
-
+	<button type="button" class="close glyphicon glyphicon-remove"
+		data-dismiss="modal" aria-hidden="true" id="closeBtn1"></button>
 	<div class="modal-body" id="imgModal_main">
 		<input type="hidden" value="0" id="imgboard_num">
 
@@ -69,10 +70,9 @@
 			<!-- carousel의 지시자
 				지시자라고는 하는데 ol태그의 class에 carousel-indicators를 넣는다. -->
 			<ol class="carousel-indicators" id="carousel_indicators">
-				<!-- 					li는 이미지 개수만큼 추가하고 data-target은 carousel id를 가르킨다.
+				<!-- li는 이미지 개수만큼 추가하고 data-target은 carousel id를 가르킨다.
 					data-slide-to는 순서대로 0부터 올라가고 0은 active를 설정한다.
 					딱히 이 부분은 옵션별로 설정하게 없다. -->
-
 			</ol>
 			<!-- 실제 이미지 아이템
 				class는 carousel-inner로 설정하고 role은 listbox에서 설정한다. -->
@@ -94,7 +94,7 @@
 	<script>
 		$('#carousel-example-generic').carousel();
 
-		$('#carousel-example-generic').on('slid.bs.carousel', function() {
+		/* $('#carousel-example-generic').on('slid.bs.carousel', function() {
 			// 회전식 슬라이드가 완료되면 호출된다.
 		});
 		// 이미지 슬라이드 전 페이지 이동
@@ -105,7 +105,7 @@
 		// 이미지 슬라이드 다음 페이지 이동
 		$("#carousel_next").on("click", function() {
 			$('#carousel-example-generic').carousel('next');
-		});
+		}); */
 	</script>
 
 

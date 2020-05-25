@@ -90,7 +90,7 @@
 			profile.setAttribute("class","col-sm-2");
 			let img = document.createElement("img");
 			img.setAttribute("class","img-responsive img-circle text-center");
-			img.setAttribute("src",'${cp }/upload/img_profile.jpg');
+			img.setAttribute("src",'${cp }/userprofile.do?userprofile='+data[i].userband_num);
 			profile.appendChild(img);
 			row.appendChild(profile);
 			
@@ -358,7 +358,7 @@
 			 		
 			 		let img = document.createElement("img");
 			 		img.setAttribute("class","img-responsive img-circle text-center");
-					img.setAttribute("src",'${cp}/upload/img_profile.jpg');
+					img.setAttribute("src",'${cp }/userprofile.do?userprofile='+comments[j].userband_num);
 					
 					
 			 		comment_user_img.appendChild(img);
@@ -521,7 +521,7 @@
 						 		
 						 		let img = document.createElement("img");
 						 		img.setAttribute("class","img-responsive img-circle text-center");
-								img.setAttribute("src",'${cp}/upload/img_profile.jpg');
+								img.setAttribute("src",'${cp }/userprofile.do?userprofile='+data.json[y].userband_num);
 								
 								
 						 		comment_user_img.appendChild(img);
@@ -690,6 +690,22 @@
 		$('#boardList').empty();
 	}
  	
+ 	function search(){
+	 	
+ 		let search = $('#searchInput').val();
+ 		alert("sda");
+ 		$.ajax({
+			type: "post",
+			data: {
+				search: search,
+				band_num :'${b_n}'			
+			},
+			dataType:'JSON',
+		    url: '${cp }/boardsearch.do',
+		    success: list_view
+		})
+
+ 	}
 </script>
 </head>
 <body onload="getBoardList()"> 
@@ -697,9 +713,9 @@
 		<!-- 게시글 검색 템플릿 -->
 		<form class="form-horizontal" role="form">
 			<div class="input-group" id="searchFrom">
-				<input type="text" class="form-control" placeholder="글 내용, #태그" id="searchInput">
+				<input type="text" class="form-control" placeholder="글 내용, 닉네임" id="searchInput">
 					<span class="input-group-btn" >
-						<button type="submit" class="btn btn-default" style="height:34px" id="searchBtn">
+						<button type="button" class="btn btn-default" style="height:34px" id="searchBtn" onclick="search()">
 							<i class="glyphicon glyphicon-search"></i>
 						</button>
 					</span>

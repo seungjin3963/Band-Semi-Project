@@ -200,13 +200,12 @@ img {
 				style="z-index: 1; width:100%; height: auto;">
 
 
-			<span class="btnArea leftArea _previousImageButton" >
-				<button type="button" class="btnPrev glyphicon glyphicon-menu-left" id="prevBtn">
-				</button>
-			</span> 
-			<span class="btnArea rightArea _nextImageButton" >
-				<button type="button" class="btnNext glyphicon glyphicon-menu-right" id="nextBtn" >
-				</button>
+			<span class="btnArea leftArea _previousImageButton">
+				<button type="button" class="btnPrev"
+					id="prevBtn"><i class="glyphicon glyphicon-menu-left" id="btnleft"></i></button>
+			</span> <span class="btnArea rightArea _nextImageButton">
+				<button type="button" class="btnNext"
+					id="nextBtn"><i class="glyphicon glyphicon-menu-right" id="btnleft"></i></button>
 			</span>
 		</div>
 

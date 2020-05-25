@@ -30,13 +30,15 @@ public class BoardSearchController extends HttpServlet{
 		
 		
 		int band_num = Integer.parseInt(req.getParameter("band_num"));
-		String board_search = req.getParameter("board_search");
+		String board_search = req.getParameter("search");
 		BoardDao dao = new BoardDao();
 		
 	
 		
 		ArrayList<BoardVo> list = dao.search(band_num, board_search);
 		SimpleDateFormat fm=new SimpleDateFormat("yyyy³â MM¿ù dd a hh:mm"); 
+		
+		
 		
 		JSONArray jarr = new JSONArray();
 		if(list !=null) {
@@ -47,6 +49,7 @@ public class BoardSearchController extends HttpServlet{
 				json.put("board_states", vo.getBoard_states());
 				json.put("userband_num", vo.getUserband_num());
 				json.put("board_content", vo.getBoard_content());
+				json.put("maxPage", 1);
 				String sDate=fm.format(vo.getBoard_redate()); 
 
 				json.put("board_redate", sDate);
