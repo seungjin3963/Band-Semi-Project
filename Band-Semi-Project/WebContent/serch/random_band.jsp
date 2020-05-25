@@ -30,7 +30,7 @@
 		<td colspan="8" >밴드소개글: ${vo.band_intoroductio}</td>
 	</tr>
 	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
-		<td colspan="8" >멤버수:   /   리더:${vo.bandLeader }</td>
+		<td colspan="8" >멤버수:${vo.bandcnt } &nbsp;   리더:${vo.bandLeader }</td>
 	</tr>
 	<tr style = "cursor:pointer;" onClick = " location.href='${cp}/rladudsh.do?band_numnum=${vo.band_num}' ">
 		

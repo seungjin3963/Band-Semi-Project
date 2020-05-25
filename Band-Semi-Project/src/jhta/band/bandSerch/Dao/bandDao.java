@@ -94,6 +94,9 @@ public class bandDao {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
+		PreparedStatement pstmt2=null;
+		ResultSet rs2=null;
+		long bandcnt=0;
 		try {
 			String sql1="select a1,a2,a3,b1 from" + 
 					"(" + 
@@ -125,12 +128,20 @@ public class bandDao {
 			ArrayList<bandSerchVo> list=new ArrayList<bandSerchVo>();
 			while(rs.next()) {
 				int band_num=rs.getInt("a1");
+				
 				String bandLeader=getBandLeader(band_num);
+				pstmt2=con.prepareStatement("SELECT COUNT(BAND_NUM) cnt FROM BAND_USERINFO USERINFO WHERE BAND_NUM=? AND BAND_APPROVED != 3");
+				pstmt2.setLong(1, band_num);
+				rs2=pstmt2.executeQuery();
+				if(rs2.next()) {
+					bandcnt=rs2.getLong("cnt");
+				}
+				
 				String band_name=rs.getString("a2");
 				String band_intoroductio=rs.getString("a3");
 				String bandimg=rs.getString("d1");
 				
-				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg, bandLeader));
+				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg, bandLeader, bandcnt));
 			}
 			return list;
 		}catch(SQLException se) {
@@ -170,7 +181,10 @@ public class bandDao {
 		String sql="";
 		Connection con=null;
 		PreparedStatement pstmt=null;
+		PreparedStatement pstmt2=null;
 		ResultSet rs=null;
+		ResultSet rs2=null;
+		long bandcnt=0;
 		int a[] = new int[10]; 
         Random r = new Random();
        // ArrayList<Integer> list1=getBandNum();
@@ -207,13 +221,18 @@ public class bandDao {
 			while(rs.next()) {
 				int band_num=rs.getInt("band_num");
 				int bandimgnum=rs.getInt("bandimgnum");
-				
+				pstmt2=con.prepareStatement("SELECT COUNT(BAND_NUM) cnt FROM BAND_USERINFO USERINFO WHERE BAND_NUM=? AND BAND_APPROVED != 3");
+				pstmt2.setLong(1, band_num);
+				rs2=pstmt2.executeQuery();
+				if(rs2.next()) {
+					bandcnt=rs2.getLong("cnt");
+				}
 				String bandimg=getBandImg(bandimgnum);
 				String bandLeader=getBandLeader(band_num);
 				
 				String band_name=rs.getString("band_name");
 				String band_intoroductio=rs.getString("band_intoroductio");
-				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg, bandLeader));
+				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg, bandLeader, bandcnt));
 			}
 			return list;
 		}catch(SQLException se) {
@@ -221,6 +240,7 @@ public class bandDao {
 			return null;
 		}
 	}
+	
 	public String getBandLeader(int band_num) {
 		Connection con=null;
 		PreparedStatement pstmt=null;

@@ -6,17 +6,20 @@ public class bandSerchVo {
 	private String band_intoroductio;
 	private String bandimg;
 	private String bandLeader;
+	private long bandcnt;
 	public bandSerchVo() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public bandSerchVo(int band_num, String band_name, String band_intoroductio, String bandimg, String bandLeader) {
+	public bandSerchVo(int band_num, String band_name, String band_intoroductio, String bandimg, String bandLeader,
+			long bandcnt) {
 		super();
 		this.band_num = band_num;
 		this.band_name = band_name;
 		this.band_intoroductio = band_intoroductio;
 		this.bandimg = bandimg;
 		this.bandLeader = bandLeader;
+		this.bandcnt = bandcnt;
 	}
 
 	public int getBand_num() {
@@ -58,6 +61,16 @@ public class bandSerchVo {
 	public void setBandLeader(String bandLeader) {
 		this.bandLeader = bandLeader;
 	}
+
+	public long getBandcnt() {
+		return bandcnt;
+	}
+
+	public void setBandcnt(long bandcnt) {
+		this.bandcnt = bandcnt;
+	}
+	
+	
 	
 	
 }
