@@ -125,11 +125,12 @@ public class bandDao {
 			ArrayList<bandSerchVo> list=new ArrayList<bandSerchVo>();
 			while(rs.next()) {
 				int band_num=rs.getInt("a1");
+				String bandLeader=getBandLeader(band_num);
 				String band_name=rs.getString("a2");
 				String band_intoroductio=rs.getString("a3");
 				String bandimg=rs.getString("d1");
 				
-				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg));
+				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg, bandLeader));
 			}
 			return list;
 		}catch(SQLException se) {
@@ -206,15 +207,41 @@ public class bandDao {
 			while(rs.next()) {
 				int band_num=rs.getInt("band_num");
 				int bandimgnum=rs.getInt("bandimgnum");
+				
 				String bandimg=getBandImg(bandimgnum);
+				String bandLeader=getBandLeader(band_num);
+				
 				String band_name=rs.getString("band_name");
 				String band_intoroductio=rs.getString("band_intoroductio");
-				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg));
+				list.add(new bandSerchVo(band_num, band_name, band_intoroductio, bandimg, bandLeader));
 			}
 			return list;
 		}catch(SQLException se) {
 			se.printStackTrace();
 			return null;
+		}
+	}
+	public String getBandLeader(int band_num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String bandleader=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="select cc.login_id bandLeader from band aa,band_userinfo bb,login cc where bb.login_num=cc.login_num and aa.band_num=? and bb.band_approved=1";
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,band_num);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				bandleader=rs.getString("bandLeader");
+			}
+			return bandleader;
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return null;
+		}finally {
+			JDBCUtil.close(rs, pstmt, con);
 		}
 	}
 	public String getBandImg(int bandimgnum) {

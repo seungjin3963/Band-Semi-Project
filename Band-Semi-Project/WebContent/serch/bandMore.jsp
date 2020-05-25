@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<style>
+	.serchCss2{width:400px;height:60px;  margin-bottom:25px; margin-left: 5px; float:left; }
+	.serchCss1{width:60px;height:60px;  margin-bottom:25px; float:left;   }
+</style>
+<style>
+	.serch01
+	{
+		margin-left:200px; 
+	}
+</style>
 <div id="category" style="text-align: center;">
 	<form method="post" action="<%=request.getContextPath() %>/bandcover.do" style="margin: auto;">
 	<h2 style="display: inline-block;">카테고리 분류</h2>
@@ -106,16 +115,23 @@
 			for(var i=0;i<json.length;i++){
 				var div=document.createElement("div");
 				//div1.innerHTML="<table  class='serch01' style=' border:1px solid white;'  >"
-				
+				//div.innerHTML+="<div style='cursor:pointer'>";
+				div.innerHTML+="<div class='serchCss1'>";
 				div.innerHTML+="<img src="+json[i].bandimg+" style='height: 100px;'>";
-				div.innerHTML+="<span >밴드이름:"+json[i].band_name+"</span> <br>"+"<span class='fontCss2'>밴드소개글:"+json[i].band_intoroductio+"</span><br><span class='fontCss3'> 멤버수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;밴드장:</span>";
-				
+				div.innerHTML+="</div>";
+				div.innerHTML+="<div class='serchCss2'>";
+				div.innerHTML+="<Strogn >밴드이름:"+json[i].band_name+"</Strogn> <br>"+"<span class='fontCss2'>밴드소개글:"+json[i].band_intoroductio+"</span><br><span class='fontCss3'> 멤버수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;밴드장:</span>";
+				div.innerHTML+="</div>";
+			//	div.innerHTML+="</div>";
+				//div.addEventListener("click",function(e){
+				//	location.href='${cp}/rladudsh.do?band_numnum='+json[i].band_num;
+				//});
 				detail2.appendChild(div);
 				
 			}
 			
 		}
-	}
+	
 	function detailcategory(num) {
 		var arraynum=num.split('/');
 		var bnum=arraynum[6].split('.');
