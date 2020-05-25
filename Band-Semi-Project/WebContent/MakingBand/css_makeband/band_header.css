@@ -7,9 +7,9 @@
 	height: 28px;
 }
 
-#a1 {
+#a3 {
 	text-decoration: none;
-	color: black;
+	color: white;
 	font-weight: bold;
 	font-size: 18px;
 }
@@ -45,4 +45,5 @@
 	top: 0px;
 	background-color: #4de22f;
 	width: 100%;
+	z-index: 999;
 }

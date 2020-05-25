@@ -32,7 +32,7 @@ public class BandListDao {
 				String bandimg=null;
 				
 				
-				pstmt2=con.prepareStatement("SELECT COUNT(LSIT.BAND_NUM) cnt FROM BANDLIST LIST, BNADUSERINFO USERINFO WHERE LSIT.BAND_NUM=? AND BAND_APPROVED != 3");
+				pstmt2=con.prepareStatement("SELECT COUNT(BAND_NUM) cnt FROM BAND_USERINFO USERINFO WHERE BAND_NUM=? AND BAND_APPROVED != 3");
 				pstmt2.setLong(1, band_num);
 				rs2=pstmt2.executeQuery();
 				if(rs2.next()) {
