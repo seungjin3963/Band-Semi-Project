@@ -299,12 +299,15 @@
 		var div8 = document.createElement("div");
 		div8.setAttribute("class","col-md-2");
 		
+		var pattern_email = /[@]/;	
+		
 		var button1 = document.createElement("button");
 		button1.setAttribute("class","btn btn-success btn-xs");
 		button1.setAttribute("type","submit");
 		button1.addEventListener("click",function(e){
 			if(Email.value =="" || Email.value == null){
 				alert("이메일을 입력해 주세요.");
+				alert(Email.value);
 				return false;
 			}else if(!pattern_email.test(Email.value)){
 				alert("이메일을 입력해 주세요. (@가 없습니다.)");
@@ -593,7 +596,7 @@
 			</div>
 			<div class="modal-body">
 				<form action="${cp }/profilein.do" method="post"
-					enctype="multipart/form-data" onsubmit="return " style="text-align: center;">
+					enctype="multipart/form-data" style="text-align: center;">
 					<label for="selectimg"> 
 					<img src="${cp }/profileout.do"
 						style="width: 130px; height: 130px; border-radius: 70%; overflow: hiddin;"
