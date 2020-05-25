@@ -120,7 +120,7 @@
 				div.innerHTML+="<img src="+json[i].bandimg+" style='height: 100px;'>";
 				div.innerHTML+="</div>";
 				div.innerHTML+="<div class='serchCss2'>";
-				div.innerHTML+="<Strogn >밴드이름:"+json[i].band_name+"</Strogn> <br>"+"<span class='fontCss2'>밴드소개글:"+json[i].band_intoroductio+"</span><br><span class='fontCss3'> 멤버수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;밴드장:</span>";
+				div.innerHTML+="<Strogn >밴드이름:"+json[i].band_name+"</Strogn> <br>"+"<span class='fontCss2'>밴드소개글:"+json[i].band_intoroductio+"</span><br><span class='fontCss3'> 멤버수:"+json[i].bandcnt+"nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;밴드장:"+json[i].bandLeader+"</span>";
 				div.innerHTML+="</div>";
 			//	div.innerHTML+="</div>";
 				//div.addEventListener("click",function(e){
