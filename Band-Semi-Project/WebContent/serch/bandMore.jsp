@@ -114,17 +114,22 @@
 			var detail2=document.getElementById("detail2");
 			
 			
-			for(var i=0;i<json.length;i++){
+			for(let i=0;i<json.length;i++){
 				var div=document.createElement("div");
 				//div1.innerHTML="<table  class='serch01' style=' border:1px solid white;'  >"
-			
+				
+			//	div.innerHTML+="<div class='serch01' onclik='location.href=location.href='${cp}/rladudsh.do?band_numnum="+json[i].band_num+"'>";
 				div.innerHTML+="<div class='serch01'>";
 				div.innerHTML+="<img class='serch01' src="+json[i].bandimg+" style='height: 100px;'>";
 				div.innerHTML+="</div>";
 				div.innerHTML+="<div class='serch01'>";
 				div.innerHTML+="<Strong class='serch01' >밴드이름:"+json[i].band_name+"</Strong> <br>"+"<span class='serch01'>밴드소개글:"+json[i].band_intoroductio+"</span><br><span class='serch01'> 멤버수:"+json[i].bandcnt+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;밴드장:"+json[i].bandLeader+"</span>";
 				div.innerHTML+="</div>";
-				
+			//	div.innerHTML+="</div>";
+				div.addEventListener('click' , function(e) {
+					location.href="${cp}/rladudsh.do?band_numnum="+json[i].band_num;
+				});
+	
 			//	div.innerHTML+="</div>";
 				//div.addEventListener("click",function(e){
 				//	location.href='${cp}/rladudsh.do?band_numnum='+json[i].band_num;
