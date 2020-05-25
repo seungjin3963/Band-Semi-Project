@@ -38,8 +38,6 @@
                 </div>
 
                 <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Remember password</label>
                 </div>
                 <div style="display: inline-block">
 	                <button class="btn btn-success" type="button" onclick="return check_login()">로그인</button>
@@ -221,6 +219,18 @@
 			return false;
 		}
 		
+		var pattern_num = /[0-9]/;
+		var user_phone = document.getElementById("user_phone");
+		if(user_phone.value == 0 || user_phone == null || user_phone == ""){
+			alert("전화번호를 입력해주세요");
+			return false;
+		}else if(!pattern_num.test(user_phone.value)){
+			alert("숫자만 입력해야 합니다.");
+			return false;
+		}else if(user_phone.value.length != 11){
+			alert("핸드폰 번호를 입력해 주세요. (길이가 맞지 않습니다.)");
+			return false;
+		}
 		var quiz_direct = document.getElementsByName("quiz_direct");
 		var user_quiz1 = document.getElementById("user_quiz1");
 		var user_quiz = document.getElementById("user_quiz");
@@ -285,7 +295,7 @@
 			user_quiz1.style.display = "none";
 		}
 	}
-	
+	var cnt = 0;
 	// 전화번호 중복 확인
 	function check_phone(){
 		var pattern_num = /[0-9]/;
@@ -300,8 +310,9 @@
 			alert("핸드폰 번호를 입력해 주세요. (길이가 맞지 않습니다.)");
 			return false;
 		}
+		
 		xhr = new XMLHttpRequest();
-		xhr.onreadystatechange=check_getId;
+		xhr.onreadystatechange=check_getPhone;
 		xhr.open('get','${cp}/checkPhone.do?user_phone='+user_phone.value,true);
 		xhr.send();
 	}
@@ -312,10 +323,14 @@
 			var join_user = document.getElementById("join_user");
 			if(check_getPhone == "success"){
 				alert("사용 가능한 전화번호 입니다.");
-				join_user.disabled="";
+				cnt += 1;
+				if(cnt >= 2){
+					join_user.disabled="";
+				}else{
+					join_user.disabled="true";
+				}
 			}else{
 				alert("이미 가입되어있는 전화번호 입니다.");
-				join_user.disabled="true";
 			}
 		}
 	}
@@ -343,6 +358,12 @@
 			var join_user = document.getElementById("join_user");
 			if(check_getId == "success"){
 				alert("사용 가능한 아이디 입니다.");
+				cnt += 1;
+				if(cnt >= 2){
+					join_user.disabled="";
+				}else{
+					join_user.disabled="true";
+				}
 			}else{
 				alert("사용 불가능한 아이디 입니다.");
 			}

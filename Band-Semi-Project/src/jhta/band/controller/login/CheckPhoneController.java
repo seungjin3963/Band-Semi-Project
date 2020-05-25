@@ -18,7 +18,6 @@ public class CheckPhoneController extends HttpServlet{
 		
 		String user_phone = req.getParameter("user_phone");
 		
-		
 		loginDao dao = new loginDao();
 		String outputPhone = dao.check_phone(user_phone);
 		
