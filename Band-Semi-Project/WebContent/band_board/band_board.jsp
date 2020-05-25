@@ -37,6 +37,7 @@
 	})
 	$(function(){
 	    $("#contentEditor").on('click', function(){
+	    	$('#board_num').val(0);
 	        $('#writeModal').modal({
 	        				backdrop : 'static',
 	                     	remote : '${cp }/band_board/board_writer.jsp'
@@ -172,6 +173,7 @@
 				li2.appendChild(a2);
 				
 				$(li2).on('click',function(){
+					 board_page=0;
 					 $.ajax({
 						  data:{  
 								  board_num: data[i].board_num,

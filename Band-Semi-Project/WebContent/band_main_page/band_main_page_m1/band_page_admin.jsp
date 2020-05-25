@@ -8,6 +8,7 @@
 <style type="text/css">
 	.modal-body div h4{color:  green;}
 	.band_page_admin #div1 button{float: right;}
+	.band_page_admin_Img img{width: 100%; height: 100%;}
 </style>
 
 </head>
@@ -17,7 +18,7 @@
 	<h1>밴드 설정</h1>
 	<h4>사용중인 프로필</h4>
 	<div id="div">
-		<div class="band_page_admin_Img"> <!-- 프로필 이미지 -->  </div>&nbsp;&nbsp;&nbsp;
+		<div class="band_page_admin_Img"><img src="${cp }/userprofile.do?userprofile=${sessionScope.userband_num }"></div>&nbsp;&nbsp;&nbsp;
 		<h3>${dudname}</h3>
 		<input type="button" value="변경" id="input">
 	</div>

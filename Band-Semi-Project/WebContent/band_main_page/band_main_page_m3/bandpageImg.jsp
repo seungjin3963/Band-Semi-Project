@@ -11,12 +11,12 @@
 <div class="band_main_page_m3">
 	<div>
 		<h4>최근사진</h4>
-		<p>더보기</p>
+		<p><a href="${cp }/potoalbum.do">더보기</a></p>
 	</div>	
 	<div class="band_main_page_m3_div">
-		<div class="band_main_page_m3_div1">
-			
-		</div>	
+		
+			<img src="${imglist}" id="imglistm3">
+		
 	</div>
 </div>
 </body>
