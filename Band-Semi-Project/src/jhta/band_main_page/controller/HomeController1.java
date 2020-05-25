@@ -69,10 +69,16 @@ public class HomeController1 extends HttpServlet {
 			paramBANDinfo.setAttribute("band_approved", vo.getBand_approved());
 			ImgBoardDao dao1=new ImgBoardDao();
 			ArrayList<ImgBoardVo>  imglist=dao1.select(BANDNUM , 1 ,1);
+			if(imglist!=null) {
 			ImgBoardVo v = imglist.get(0);
-			//최근사진
 			paramBANDinfo.setAttribute("imglist", v.getImg_url());
 			System.out.println(imglist);
+			}else {
+				paramBANDinfo.setAttribute("imglist", "");
+				System.out.println(imglist);
+
+			}
+			//최근사진
 			//유저 번호
 			paramBANDinfo.setAttribute("userband_num", vo.getUser_Band_num());
 			req.setAttribute("file", "/band_board/band_board.jsp");
