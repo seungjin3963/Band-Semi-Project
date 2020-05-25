@@ -17,6 +17,10 @@
 		if(temp == 1){
 			return true;
 		}else{
+			if(input_new_pwd.value.length < 4){
+				alert("비밀번호는 4자리 이상 입력해 주세요.");
+				return false;
+			}
 			if(input_now_pwd.value == "" || input_now_pwd.value == null){
 				alert("현재 비밀번호를 입력해 주세요");
 				return false;
