@@ -176,7 +176,6 @@
 		if(xhr.readyState==4 && xhr.status==200){
 			var xml = xhr.responseXML;
 			var code = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
-			console.log(code);
 			if(code == "fail"){
 				alert("가입되지 않은 회원입니다.");
 				return false;

@@ -280,7 +280,6 @@ public class loginDao {
 				pstmt2.setString(5, vo2.getUser_quiz());
 				pstmt2.setString(6, vo2.getUser_anser());
 				pstmt2.setDate(7, vo2.getBirth());
-				System.out.println(vo2.getUser_gender());
 				int n2 = pstmt2.executeUpdate();
 				if( n2>0 ) {
 					pstmt3=con.prepareStatement(sql3);

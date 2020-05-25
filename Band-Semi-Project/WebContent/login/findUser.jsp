@@ -84,7 +84,6 @@
 			alert("다시 입력해 주세요");
 		}
 		a.onclick=null;
-		console.log(a.onclick);
 		xhr = new XMLHttpRequest();
 		xhr.onreadystatechange=getQuiz;
 		xhr.open('post','${cp}/findQuiz.do',true);

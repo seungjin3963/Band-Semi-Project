@@ -54,7 +54,6 @@ public class UserinfoController extends HttpServlet{
 			code="fail";
 		}
 		
-		//System.out.println();
 		
 		// 占쏙옙占쏙옙占쌔억옙 占쏙옙 占쏙옙치
 		resp.setContentType("text/xml;charset=utf-8");

@@ -41,21 +41,17 @@ public class SendLoginController extends HttpServlet{
 			BandListDao listdao=new BandListDao();
 			
 			ArrayList<BandListVo>bandlist=listdao.band_list(a);
-			
-			System.out.println(a);
 
 			String file=req.getParameter("file");
 			
 			req.getSession().setAttribute("header", "bandList_header.jsp");
 			req.setAttribute("bandlist", bandlist);
 			
-			System.out.println(file);
 			if(file == null) {
 				req.setAttribute("file", "/BandList/bandList.jsp");
 			}else {
 				req.setAttribute("file", file);
 			}
-			System.out.println(file);
 			
 			req.setAttribute("footer","/serch/random_band.jsp");
 			  bandDao dao1=new bandDao();
