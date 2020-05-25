@@ -66,6 +66,7 @@
 	
 	
  	function list_view(data) {
+ 		// 페이징
  		if(board_page<=1){
  			deleteList();	
  		}
