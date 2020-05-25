@@ -307,7 +307,6 @@
 		button1.addEventListener("click",function(e){
 			if(Email.value =="" || Email.value == null){
 				alert("이메일을 입력해 주세요.");
-				alert(Email.value);
 				return false;
 			}else if(!pattern_email.test(Email.value)){
 				alert("이메일을 입력해 주세요. (@가 없습니다.)");
