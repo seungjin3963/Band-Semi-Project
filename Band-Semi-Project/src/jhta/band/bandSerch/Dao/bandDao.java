@@ -56,7 +56,7 @@ public class bandDao {
 //					"( select * from  band where band_num=?" + 
 //					"and band_publicwhe!=3 ) aa,bandimg dd  where  dd.bandimgNum=aa.bandimgNum) ";
 			String sql="select bb.band_num b1 , bb.band_name b2, bb.band_intoroductio b3, dd.bandimg d1 " + 
-					"from scategory ss,band bb, bandimg dd where  dd.bandimgNum=bb.bandimgNum "+ 
+					"from scategory ss,band bb, bandimg dd where bb.band_publicwhe!=3 and  dd.bandimgNum=bb.bandimgNum "+ 
 					"and ss.scategorynum=bb.scategorynum and ss.category_stitle=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,category_stitle);
