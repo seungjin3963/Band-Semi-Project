@@ -35,13 +35,30 @@
 		var date = document.getElementsByName("date")[0].value;
 		var name = document.getElementsByName("name")[0].value;
 		if(year=="연도"||month==0||date==0||name==""){
-			alert("다시 입력해 주세요");
+			alert("생년월일을 다시 입력해 주세요.");
+			return false;
+		}
+		if(name==""||name==null){
+			alert("이름을 다시 입력해 주세요.");
+			return false;
+		}
+		var pattern_num = /[0-9]/;
+		var user_phone = document.getElementsByName("user_phone")[0].value;
+		if(user_phone==""||user_phone==null){
+			alert("전화번호를 다시 입력해 주세요.");
+			return false;
+		}else if(!pattern_num.test(user_phone)){
+			alert("숫자만 입력해야 합니다.");
+			return false;
+		}else if(user_phone.length != 11){
+			alert("핸드폰 번호를 입력해 주세요. (길이가 맞지 않습니다.)");
+			return false;
 		}
 		xhr = new XMLHttpRequest();
 		xhr.onreadystatechange=getId;
 		xhr.open('post','${cp}/findId.do',true);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		xhr.send('year='+year+'&month='+month+'&date='+date+'&name='+name);
+		xhr.send('year='+year+'&month='+month+'&date='+date+'&name='+name+'&user_phone='+user_phone);
 	}
 	
 	function getId(){
@@ -130,7 +147,7 @@
 	<div class="row">
 
 	<div class="col-md-6">			<!-- 아이디만 감싸는 div 1 -->
-		<div id="div_find_id" class="col-md-6 col-md-offset-5">						<!-- 아이디 감싸는 div 2 -->
+		<div id="div_find_id" class="col-md-6 col-md-offset-5">		<!-- 아이디 감싸는 div 2 -->
 			<form method="post">
 				<h4>아이디 찾기</h4>
 				<label>이름</label>
@@ -156,6 +173,8 @@
 						<option value="${i }">${i }</option>
 					</c:forEach>
 				</select>
+				<label>전화번호</label>
+				<input type="text" placeholder="전화번호" name="user_phone">
 				<input type="button" value="확인" onclick="find_id()">
 			</form>
 			<div id="findid_div"></div>

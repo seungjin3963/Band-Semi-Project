@@ -23,13 +23,14 @@ public class findIdController extends HttpServlet{
 		int year = Integer.parseInt(req.getParameter("year"));
 		int month = Integer.parseInt(req.getParameter("month"));
 		int date = Integer.parseInt(req.getParameter("date"));
+		String phone = req.getParameter("user_phone");
 		
 		String birth1 = year+"-"+month+"-"+date;
 		Date birth = Date.valueOf(birth1);
 		
 		loginDao dao = new loginDao();
-		String id = dao.findId(name, birth);
-
+		String id = dao.findId(name, birth, phone);
+		
 		String code = "¾ÆÀÌµð: "+id;
 		if(id == null || id =="") {
 			code="fail";

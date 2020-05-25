@@ -103,7 +103,11 @@
 		                							</c:forEach>
 		                						</select>
 		                					</div>
-		                					
+		                					<!-- 전화번호(모달) -->
+		                					<div class="row">
+		                						<label for="user_phone" class="col-xs-6 col-sm-4">전화번호</label>
+		                						<input type="text" name="user_phone" id="user_phone" class="form-control" placeholder="전화번호" required autofocus>
+		                					</div>					
 		                					<!-- 성별(모달) -->
 		                					<div class="row">
 		                						<label for="user_gender" class="col-xs-6 col-sm-4">성별</label>
@@ -235,6 +239,19 @@
 			return false;
 		}
 		
+		var pattern_num = /[0-9]/;
+		var user_phone = document.getElementById("user_phone");
+		if(user_phone.value == 0 || user_phone == null || user_phone == ""){
+			alert("전화번호를 입력해주세요");
+			return false;
+		}else if(!pattern_num.test(user_phone.value)){
+			alert("숫자만 입력해야 합니다.");
+			return false;
+		}else if(user_phone.value.length != 11){
+			alert("핸드폰 번호를 입력해 주세요. (길이가 맞지 않습니다.)");
+			return false;
+		}
+		
 		var inputId2 = document.getElementById("inputId2");
 		var user_answer = document.getElementsByName("user_answer");
 		
@@ -252,7 +269,8 @@
 		xhr.send('login_id='+inputId2.value+'&login_pwd='+inputPwd.value+'&user_name='+user_name[0].value+
 				'&year='+year[0].value+'&month='+month[0].value+'&date='+date[0].value+
 				'&user_gender='+check_gender+'&user_quiz='+user_quiz.value+
-				'&user_quiz1='+user_quiz1.value+'&quiz_direct='+quiz_direct[0].checked+'&user_answer='+user_answer[0].value);
+				'&user_quiz1='+user_quiz1.value+'&quiz_direct='+quiz_direct[0].checked+'&user_answer='+user_answer[0].value+
+				'&user_phone='+user_phone.value);
 	}
 	function getform(){
 		if(xhr.readyState==4 && xhr.status==200){

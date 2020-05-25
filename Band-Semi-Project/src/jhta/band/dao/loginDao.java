@@ -177,18 +177,19 @@ public class loginDao {
 		}
 	}
 	// 占싱몌옙, 占쏙옙占쏙옙占쏙옙占� 占쌉뤄옙占싹곤옙 占쏙옙占싱듸옙 찾占쏙옙
-	public String findId(String name, Date birth) {
+	public String findId(String name, Date birth, String phone) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "select * "
 				+ "from login "
-				+ "where login_num=(select login_num from userinfo where user_name=? and user_birth=?)";
+				+ "where login_num=(select login_num from userinfo where user_name=? and user_birth=? and user_phone=?)";
 		try {
 			con = JDBCUtil.getConn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setDate(2, birth);
+			pstmt.setString(3, phone);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				String id = rs.getString("login_id");
