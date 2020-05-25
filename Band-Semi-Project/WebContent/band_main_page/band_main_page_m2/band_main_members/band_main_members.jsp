@@ -25,7 +25,8 @@
 	   	 </button>
 	   	 <br>
 	   	 <br>
-	   		<c:if test="${sessionScope.band_approved==1} ">
+	   	 
+	   		<c:if test="${band_approved==1}">
 	   		<input type="button" value="가입 신청자>" onclick="checkmembers()">
 	   		</c:if>
 	   	<br>

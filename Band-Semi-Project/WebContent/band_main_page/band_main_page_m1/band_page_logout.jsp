@@ -12,6 +12,7 @@
 	.band_page_logout_madal h4{float: left; margin-left: 15px; margin-top: 20px;}
 	.band_page_logout_madal input {float: right; }
 	.band_main_page1_Img img{width: 100%; height: 180px;}
+	.band_page_logout_Img img{width: 100%; height: 100%;}
 </style>
 </head>
 
@@ -47,9 +48,9 @@
 
         <div class="modal-body" >
 			<div class="band_page_logout_madal">
-				<div class="band_page_logout_Img" > <!-- 프로필 이미지 -->  </div>
+				<div class="band_page_logout_Img" > <img src="${cp }/userprofile.do?userprofile=${sessionScope.userband_num }">  </div>
 				<h4 id="rkdlqname">${dudname}</h4>
-				<input type="radio" > <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
+				<input type="radio" > 
 			</div>
 			<br>
 			<br>

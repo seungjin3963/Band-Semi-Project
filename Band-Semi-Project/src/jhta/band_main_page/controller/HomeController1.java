@@ -59,14 +59,16 @@ public class HomeController1 extends HttpServlet {
 		String dudname=dao.dudmembersselect(login_num ,BANDNUM);
 		paramBANDinfo.setAttribute("dudname", dudname);
 		
-		if(vo==null || vo.getBand_approved()==3) {
-			//비회원 이름
-			
+		
+		
+		//비회원일 경우 밴드 소개 페이지만 보이게 하기 
+		if(vo==null || vo.getBand_approved()==3) {		
 			req.setAttribute("file", "/band_main_page/band_main_page_m1/band_page_data0.jsp");
-		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
+			req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
+		//회원일경우 게시글 보이게 하고 밴드 정보 세션에 담기
 		}else {
 			//등급 관리자:1  회원:2  / 대기중 3  비회원0  
-			paramBANDinfo.setAttribute("band_approved", vo.getBand_approved());
+			paramBANDinfo.setAttribute("band_approved", vo.getBand_approved());//최근사진
 			ImgBoardDao dao1=new ImgBoardDao();
 			ArrayList<ImgBoardVo>  imglist=dao1.select(BANDNUM , 1 ,1);
 			if(imglist!=null) {
@@ -75,10 +77,7 @@ public class HomeController1 extends HttpServlet {
 			
 			}else {
 				paramBANDinfo.setAttribute("imglist", "");
-				
-
 			}
-			//최근사진
 			//유저 번호
 			paramBANDinfo.setAttribute("userband_num", vo.getUser_Band_num());
 			req.setAttribute("file", "/band_board/band_board.jsp");

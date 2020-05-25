@@ -20,8 +20,10 @@
 	ResultSet rs=null;
 	String CalenderTitle="";
 	int Calenderdate=0;
+	String content="";
 	ArrayList<String> TitleList=new ArrayList<String>();
 	ArrayList<Integer> dateList=new ArrayList<Integer>();
+	ArrayList<String> contentList=new ArrayList<String>();
 	try{
 		con=JDBCUtil.getConn();			//밴드 번호
 		String sql="select aa.* , to_char(CALENDARdate,'dd') gg from(select * from calendar where band_num=? and to_char(CALENDARdate,'yyyy')=? and to_char(CALENDARdate,'mm')=?)aa";
@@ -33,8 +35,10 @@
 		while(rs.next()){
 			CalenderTitle=rs.getString("CALENDARTITLE");
 			Calenderdate=rs.getInt("gg");
+			content=rs.getString("calendarcontent");
 			TitleList.add(CalenderTitle);
 			dateList.add(Calenderdate);
+			contentList.add(content);
 			
 		}	
 	}catch(SQLException se){
@@ -56,6 +60,7 @@
 		
 	pw.print("<calendertitle>"+TitleList.get(i)+"</calendertitle>");
 	pw.print("<calenderdate>"+dateList.get(i)+"</calenderdate>");
+	pw.print("<calendercontent>"+contentList.get(i)+"</calendercontent>");
 	}
 	pw.print("</result>");
 %>

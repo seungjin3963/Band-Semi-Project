@@ -3,6 +3,11 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bandMain.css">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
+window.onload=function(){
+	<%
+	session.removeAttribute("band_approved");
+	%>
+}
  	function inshodow(band){
  		var choose = document.getElementById(band);
  		choose.style.boxShadow="3px 3px 3px 3px #999";

@@ -27,6 +27,7 @@ function Calendercollback() {
 		var xml=xhr.responseXML;
 		var calendertitle=xml.getElementsByTagName("calendertitle");
 		var calenderdate=xml.getElementsByTagName("calenderdate");
+		var calendercontent=xml.getElementsByTagName("calendercontent");
 		for (var i = 0; i < calendertitle.length; i++) {
 			var caldate=parseInt(calenderdate[i].firstChild.nodeValue)+b;
 			
@@ -37,7 +38,7 @@ function Calendercollback() {
 				calender.appendChild(newCalenderdiv);
 				newCalenderdiv.className="newCalenderdiv";
 			var newCalenderh1=document.createElement("h4");
-			var newCalenderText=document.createTextNode(calenderdate[i].firstChild.nodeValue+"일 "+calendertitle[i].firstChild.nodeValue);
+			var newCalenderText=document.createTextNode(calenderdate[i].firstChild.nodeValue+"일      제목:"+calendertitle[i].firstChild.nodeValue+"   내용:"+calendercontent[i].firstChild.nodeValue);
 				newCalenderdiv.appendChild(newCalenderh1);
 				newCalenderh1.appendChild(newCalenderText);	
 				
