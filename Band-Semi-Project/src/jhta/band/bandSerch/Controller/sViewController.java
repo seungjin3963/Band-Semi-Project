@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import jhta.band.bandSerch.Dao.bandDao;
+import jhta.band.bandSerch.Vo.bandSerchVo;
 import jhta.band.bandSerch.Vo.bandVo;
 @WebServlet("/sView")
 public class sViewController extends HttpServlet {
@@ -23,7 +24,7 @@ public class sViewController extends HttpServlet {
 		String category_stitle=req.getParameter("category_stitle");
 		bandDao dao=new bandDao();
 		//ArrayList<bandVo> list=dao.categoryContents("category_stitle");
-		ArrayList<bandVo> list=dao.random();
+		ArrayList<bandSerchVo> list=dao.random();
 	//	req.setAttribute("list",list);
 	//	req.setAttribute("category_stitle", category_stitle);
 	//	req.setAttribute("footer","/scategory.jsp");
@@ -32,7 +33,7 @@ public class sViewController extends HttpServlet {
 	//		req.setAttribute("snum", snum);
 	//	}
 		JSONArray jarr=new JSONArray();
-		for(bandVo vo: list) {
+		for(bandSerchVo vo: list) {
 			JSONObject json=new JSONObject();
 			json.put("band_name", vo.getBand_name());
 			json.put("band_intoroductio", vo.getBand_intoroductio());

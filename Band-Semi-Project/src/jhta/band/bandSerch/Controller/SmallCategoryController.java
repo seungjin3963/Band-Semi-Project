@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jhta.band.bandSerch.Dao.bandDao;
+import jhta.band.bandSerch.Vo.bandSerchVo;
 import jhta.band.bandSerch.Vo.bandVo;
 @WebServlet("/smallCategory")
 public class SmallCategoryController extends HttpServlet {
@@ -19,7 +20,7 @@ public class SmallCategoryController extends HttpServlet {
 		String category_stitle=req.getParameter("category_stitle");
 		bandDao dao=new bandDao();
 		//ArrayList<bandVo> list=dao.categoryContents("category_stitle");
-		ArrayList<bandVo> list=dao.random();
+		ArrayList<bandSerchVo> list=dao.random();
 		req.setAttribute("list",list);
 		req.setAttribute("category_stitle", category_stitle);
 		req.setAttribute("footer","/serch/scategory.jsp");
