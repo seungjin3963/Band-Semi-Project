@@ -46,7 +46,7 @@
 
 	
 	
-	
+	${sessionScope.band_approved}
 	<div class="band_main_page_h">	
 		<div class="band_main_page_h_1">	
 			<!-- 승진이형 header -->

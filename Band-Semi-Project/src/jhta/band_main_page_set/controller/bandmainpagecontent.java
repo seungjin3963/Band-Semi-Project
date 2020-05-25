@@ -8,26 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-@WebServlet("/bandout.do")
-public class bandoutController extends HttpServlet{
+@WebServlet("/updatecontent.do")
+public class bandmainpagecontent extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//System.out.println("È¸¿ø Å»Åð");
+		String value=req.getParameter("dudsh");
+		//System.out.println(value);
 		HttpSession paramBANDinfo = req.getSession();
-		int usernum=(int)paramBANDinfo.getAttribute("userband_num");
-		//System.out.println("À¯Àú ³Ñ:"+usernum);
 		int bandnum=(int)paramBANDinfo.getAttribute("b_n");
-		//System.out.println("¹êµå ³Ñ:" +bandnum);
-		long login_num=(long)paramBANDinfo.getAttribute("login_num");
-		//System.out.println(login_num + "        aaaaaaaaaa");
+		
 		bandmainpagesetdao dao=new bandmainpagesetdao();
-		dao.bandout(bandnum,usernum);
-		int n=dao.bandlistdout(bandnum,login_num);
-		if(n==1) {
-			req.getRequestDispatcher("banddelete.jsp").forward(req, resp);
-		}
+		int n=dao.updatecon(bandnum , value);
+		String content=dao.sessioncon(bandnum);
+		
+		paramBANDinfo.setAttribute("band_intoroductio", content);
+		req.setAttribute("file", "/band_main_page/band_main_page_m1/band_page_admin.jsp");
+		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);
 		
 	}
-	
-
 }

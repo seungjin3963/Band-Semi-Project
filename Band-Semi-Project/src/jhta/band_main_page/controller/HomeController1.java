@@ -53,10 +53,11 @@ public class HomeController1 extends HttpServlet {
 		paramBANDinfo.setAttribute("band_Date", date);
 		
 		paramBANDinfo.setAttribute("vo", vo);
+		String dudname=dao.dudmembersselect(login_num ,BANDNUM);
+		paramBANDinfo.setAttribute("dudname", dudname);
+		System.out.println("이름    " +dudname);
 		if(vo==null || vo.getBand_approved()==3) {
-			String dudname=dao.dudmembersselect(login_num ,BANDNUM);
 			//비회원 이름
-			paramBANDinfo.setAttribute("dudname", dudname);
 			
 			req.setAttribute("file", "/band_main_page/band_main_page_m1/band_page_data0.jsp");
 		req.getRequestDispatcher("/band_main_page/band_main_page.jsp").forward(req, resp);

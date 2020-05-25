@@ -8,7 +8,7 @@
 	width: 1900px; height:80px; 
 	}
 		.band_main_page_h_1{
-		width: 100%; height: 100%;
+		width: 100%; height: 55%;
 		background-color: orange;}
 		.band_main_page_h_2{
 		width: 100%; height: 40%; 
@@ -199,22 +199,23 @@
 
 
 
-.bandmemberslist{width: 100%;height: 80%; border: 1px solid black; margin: auto; background-color: white; padding-top: 20px;}
+.bandmemberslist{width: 100%;height: 80%;margin: auto; background-color: white; padding-top: 20px;}
 	.bandmemberslist_h{width: 100%;height: 10%;}
 	.bandmemberslist_h ul li{display: inline-block;}
 	.bandmemberslist_h ul li:first-of-type{font-size:30px; }
 	.bandmemberslist_h ul li:last-of-type{padding-left: 30px;}
 	.bandmemberslist input{width: 85%;height: 40px; margin-left: 40px; }
 	.bandmemberslist button{width: 30px;}
-	.bandmemberslist_m{width: 85%; height: 70%; border: 1px solid black;margin-left: 40px;}
+	.bandmemberslist_m{width: 85%; height: 70%;margin-left: 40px;}
 	.bandmemberslist_m_h p{float: left; margin-top: 20px;}
 	
 	.bandmemberslist_m_h select{float: right; width: 100px;}
 	.bandmemberslist_m_h h4{clear: right;margin-bottom: 15px; padding-left: 50px;}
-	.listbandname{width: 100%; height:auto; border: 1px solid black; padding-left: 20px;}
-	.listbandname_div{width: 50px; height: 50px; border: 1px solid black; border-radius: 70px; 
+	.listbandname{width: 100%; height:auto; padding-left: 20px;}
+	.listbandname_div{width: 50px; height: 50px;border-radius: 70px; 
 			 float: left; 
 			 background: #ececec;}
+			 .listbandname_div img{ width: 50px; height: 50px;border-radius: 70px;  background: #ececec;}
 			 
 			 
 			 
@@ -249,7 +250,6 @@
 }
 
 #bandLisgheader #div2 {
-	border: 1px solid black;
 	text-align: left;
 	width: 200px;
 	clear: right;

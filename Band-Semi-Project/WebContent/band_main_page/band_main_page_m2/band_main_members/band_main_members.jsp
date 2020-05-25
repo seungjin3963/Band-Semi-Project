@@ -42,7 +42,7 @@
 			<c:forEach var="vo" items="${requestScope.list }">
 				<br>
 				<div class="listbandname">
-					<div class="listbandname_div"></div>
+					<div class="listbandname_div"><!--<img src="${cp }/userprofile.do?userprofile=${vo.getUser_num() }">--></div>
 					<h4>${vo.getName() }</h4>
 				</div>
 			</c:forEach>

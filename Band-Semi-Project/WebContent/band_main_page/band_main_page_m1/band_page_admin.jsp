@@ -18,17 +18,17 @@
 	<h4>사용중인 프로필</h4>
 	<div id="div">
 		<div class="band_page_admin_Img"> <!-- 프로필 이미지 -->  </div>&nbsp;&nbsp;&nbsp;
-		<h3>김영노</h3>
+		<h3>${dudname}</h3>
 		<input type="button" value="변경" id="input">
 	</div>
 	<br>
 	<div id="div1">
 		<h4>밴드 소개글 설정</h4>
-		<textarea rows="10" cols="60" placeholder="밴드 소개말과 대표사이트 등을 입력하세요."></textarea>
-		<input type="button" value="변경" id="input1">
+		<textarea  id="dudsh" rows="10" cols="60" placeholder="밴드 소개말과 대표사이트 등을 입력하세요."></textarea>
+		<input type="button" value="변경" onclick="updatecon()">
 		<h4>밴드 정보 관리</h4>
 		<div>
-			밴드 이름 및 커버
+			밴드 이름 
 			<input type="button" value="변경" class="div1btn">
 		</div>
 		<br>
@@ -153,6 +153,12 @@
 		location.href ="<%=request.getContextPath()%>/deleteband.do";
 		
 		}
+	
+	function updatecon() {
+		var dudsh=document.getElementById("dudsh").value;
+		//alert(dudsh);
+		location.href ="<%=request.getContextPath()%>/updatecontent.do?dudsh="+dudsh;
+	}
 	
 	
 </script>
