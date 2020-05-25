@@ -58,7 +58,7 @@
 			<input type="hidden" value="${requestScope.scategory}" name="scategory">
 			<div id="selec">
 				<input type="submit" value="완료" id="c_submit"> <input
-					type="reset" value="취소" id="c_reset">
+					type="button" value="취소" id="c_reset" onClick="location.href='${cp }/layout.do'">
 			</div>
 		</form>
 	</div>

@@ -19,7 +19,7 @@
 	<div id="detail">
 	</div>
 		<input type="submit" value="다음" style="width: 150px; height: 50px; font-size: 20px; background-color: gray; color: white;">
-		<input type="reset" value="취소" style="width: 150px; height: 50px; font-size: 20px;">
+		<input type="button" value="취소" style="width: 150px; height: 50px; font-size: 20px; " onClick="location.href='${cp }/layout.do'">
 	</form>
 </div>
 <script>
@@ -103,10 +103,11 @@
 				}
 
 				var div=document.createElement("div");
-				div.style.width="100px";
+				div.style.width="170px";
 				div.style.height="50px";
 				div.style.display="inline-block";
 				div.style.border="1px solid black";
+				div.backgroundColor="white";
 				div.style.margin="20px";
 				div.style.fontSize="20px";
 				div.className="divclass";
