@@ -21,19 +21,27 @@ public class sViewController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String category_stitle=req.getParameter("category_stitle");
+		System.out.println("´õº¸±â1");
+		//String category_stitle=req.getParameter("category_stitle");
+		String snum=req.getParameter("snum");
+		int num=0;
+		if(snum!=null||snum=="") {
+			num=Integer.parseInt(snum);
+		}
+		System.out.println(snum);
 		bandDao dao=new bandDao();
 		//ArrayList<bandVo> list=dao.categoryContents("category_stitle");
-		ArrayList<bandSerchVo> list=dao.bandMoreSerch(category_stitle);
+		ArrayList<bandSerchVo> list=dao.bandMoreSerch(num);
 	//	req.setAttribute("list",list);
 	//	req.setAttribute("category_stitle", category_stitle);
 	//	req.setAttribute("footer","/scategory.jsp");
-		String snum=req.getParameter("snum");
+	//	String snum=req.getParameter("snum");
 	//	if(snum!=null) {
 	//		req.setAttribute("snum", snum);
 	//	}
 		JSONArray jarr=new JSONArray();
-		for(bandSerchVo vo: list) {
+		for(bandSerchVo vo: list) { 
+			System.out.println(vo.getBand_name());
 			JSONObject json=new JSONObject();
 			json.put("bandimg", vo.getBandimg());
 			json.put("band_num", vo.getBand_num());

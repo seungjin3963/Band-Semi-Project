@@ -15,7 +15,7 @@
 		margin-left:200px; 
 	}
 </style>
-<h2 class="serch01">밴드·페이지  <strong>${getcount }</strong></h2>
+<h2 class="serch01">밴드·소개글  총<strong>${getcount }</strong>개 검색됨</h2>
 <!--  <table border="2" width="1200">-->
 <c:forEach var="vo" items="${list}" >
 <table  class="serch01" style=" border:1px solid white;  "  >

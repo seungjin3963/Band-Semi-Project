@@ -41,7 +41,7 @@ public class bandDao {
 		}
 	}
 	//select a1,a2,a3,d1 from( select aa.band_num a1 , aa.band_name a2, aa.band_intoroductio a3, dd.bandimg d1, rownum rnum from  ( select * from  band where (band_name  like '%"+keyword+"%' or band_intoroductio like '%"+keyword+"%') and band_publicwhe!=3  order by band_num desc  ) aa,bandimg dd  where  dd.bandimgNum=aa.bandimgNum) where rnum>=? and  rnum<=?
-	public ArrayList<bandSerchVo> bandMoreSerch(String category_stitle){
+	public ArrayList<bandSerchVo> bandMoreSerch(int scategorynum){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -57,12 +57,12 @@ public class bandDao {
 //					"and band_publicwhe!=3 ) aa,bandimg dd  where  dd.bandimgNum=aa.bandimgNum) ";
 			String sql="select bb.band_num b1 , bb.band_name b2, bb.band_intoroductio b3, dd.bandimg d1 " + 
 					"from scategory ss,band bb, bandimg dd where bb.band_publicwhe!=3 and  dd.bandimgNum=bb.bandimgNum "+ 
-					"and ss.scategorynum=bb.scategorynum and ss.category_stitle=?";
+					"and ss.scategorynum=bb.scategorynum and ss.scategorynum=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,category_stitle);
+			pstmt.setInt(1, scategorynum);
 			rs=pstmt.executeQuery();
 			ArrayList<bandSerchVo> list=new ArrayList<bandSerchVo>();
-			if(rs.next()) {
+			while(rs.next()) {
 				int band_num=rs.getInt("b1");
 				
 				String bandLeader=getBandLeader(band_num);
