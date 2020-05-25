@@ -13,14 +13,12 @@
  		choose.style.boxShadow="none";
  	}
 </script>
-<div id="bandList">
+<div id="bandList_sel">
 	<h2>내 목록</h2>
 	<div>
 		<a href="category.do" id="a2">
-			<span id="add" onmouseover="inshodow(this.id)"; onmouseout="outshodow(this.id)">
-				<span style="border-radius: 70%; overflow: hidden; font-size: 140px;">
-					&nbsp+&nbsp
-				</span>
+			<span id="add" onmouseover="inshodow(this.id)"; onmouseout="outshodow(this.id)" style="font-size: 120px;">
+					+
 			</span>
 		</a>
 		<c:forEach var="list" items="${requestScope.bandlist }">

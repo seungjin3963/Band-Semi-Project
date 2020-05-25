@@ -48,7 +48,7 @@ public class loginDao {
 				return null;
 			}
 		}catch(SQLException se) {
-			se.printStackTrace();
+			System.out.println(se.getMessage());
 			return null;
 		}finally {
 			JDBCUtil.close(rs,pstmt,con);
@@ -235,8 +235,10 @@ public class loginDao {
 		Connection con = null;
 		PreparedStatement pstmt1 = null;
 		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
 		String sql1 = "insert into login values(seq_login.nextval,?,?,sysdate,?)";
 		String sql2 = "insert into userinfo values(seq_login.currval,?,?,?,?,?,?,null,?)";
+		String sql3 = "insert into profiledata values(seq_profile.nextval,seq_login.currval,null)";
 		try {
 			con = JDBCUtil.getConn();
 			pstmt1 = con.prepareStatement(sql1);
@@ -255,16 +257,23 @@ public class loginDao {
 				pstmt2.setDate(7, vo2.getBirth());
 				System.out.println(vo2.getUser_gender());
 				int n2 = pstmt2.executeUpdate();
-				return n2;
+				if( n2>0 ) {
+					pstmt3=con.prepareStatement(sql3);
+					int n3=pstmt3.executeUpdate();
+					return n3;
+				}else {
+					return 0;
+				}
 			}else {
 				return 0;
 			}
 		}catch(SQLException se) {
-			se.printStackTrace();
+			System.out.println(se.getMessage());
 			return -1;
 		}finally {
 			JDBCUtil.close(pstmt1);
 			JDBCUtil.close(pstmt2);
+			JDBCUtil.close(pstmt3);
 			JDBCUtil.close(con);
 		}
 	}

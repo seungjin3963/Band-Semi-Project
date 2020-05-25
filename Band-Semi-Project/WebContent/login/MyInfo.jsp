@@ -424,6 +424,18 @@ var temp=0;
 			location.href="${cp}/Login_state.do";
 		}
 	}
+	
+	function profilechange(event){
+	
+		var reader = new FileReader();
+		
+		reader.onload = function(event){
+			var profileimg=document.getElementById("profileimg");
+			profileimg.src = event.target.result;
+		};
+		
+		reader.readAsDataURL(event.target.files[0]);
+	}
 </script>
 
 <div class="container-fluid" style="width: 100%">
@@ -434,7 +446,7 @@ var temp=0;
 			<div class="col-md-3" style="text-align: center;">사용중인 프로필</div>
 			<!-- 밑에 div에 사진 -->
 			<div class="col-md-2">
-				<img src="">
+				<img src="${cp }/profileout.do" style="width: 100px; height: 100px; border-radius: 70%; overflow: hidden;">
 			</div>
 			<div class="col-md-5">${requestScope.joinVo.user_name }</div>
 			<div class="col-md-2">
@@ -552,19 +564,23 @@ var temp=0;
  --><div class="modal fade" id="profileChange" role="dialog" aria-labelledby="myCenterModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
+			<div class="model-header" style="text-align: center;"> 
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+	            </button>
+				<h4 class="modal-title">프로필 수정</h4>
+			</div>
 			<div class="modal-body">
-				<form action="${cp }/upload.jsp" method="post"
+				<form action="${cp }/profilein.do" method="post"
 					enctype="multipart/form-data" style="text-align: center;">
 					<label for="selectimg"> 
-					<img src="${cp }/MakingBand/bandcover/1.jpg"
+					<img src="${cp }/profileout.do"
 						style="width: 130px; height: 130px; border-radius: 70%; overflow: hiddin;"
 						id="profileimg">
-					</label><br> <input type="text" name="nickname"
-						style="margin-top: 10px;"><br> <input type="file"
+					</label><br> <input type="file"
 						name="potofile" id="selectimg"
-						accept="image/git, image/jpeg, image/png" style="display: none;">
-					<input type="hidden" value="${sessionScope.login_num }"
-						name="login_num"> <input type="submit" value="확인"
+						accept="image/git, image/jpeg, image/png" style="display: none;" onchange="profilechange(event)">
+					<input type="submit" value="확인"
 						style="margin-top: 10px; width: 100px; height: 40px; background-color: black; color: white;">
 				</form>
 			</div>

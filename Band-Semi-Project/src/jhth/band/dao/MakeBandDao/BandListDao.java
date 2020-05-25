@@ -22,7 +22,7 @@ public class BandListDao {
 		
 		try {
 			con=JDBCUtil.getConn();
-			pstmt1=con.prepareStatement("SELECT BAND_NUM FROM BANDLIST WHERE LOGIN_NUM=?");
+			pstmt1=con.prepareStatement("SELECT BAND_NUM FROM BANDLIST WHERE LOGIN_NUM=? AND BAND_STATES=1");
 			pstmt1.setLong(1, loginnum);
 			rs1=pstmt1.executeQuery();
 			while(rs1.next()) {

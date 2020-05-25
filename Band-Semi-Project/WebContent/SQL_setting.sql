@@ -6,17 +6,16 @@ DROP TABLE comments CASCADE CONSTRAINTS;
 DROP TABLE imgBoard CASCADE CONSTRAINTS;
 DROP TABLE tagindex CASCADE CONSTRAINTS;
 DROP TABLE board CASCADE CONSTRAINTS;
+DROP TABLE band_userinfo CASCADE CONSTRAINTS;
 DROP TABLE calendar CASCADE CONSTRAINTS;
 DROP TABLE Band CASCADE CONSTRAINTS;
-drop table tmp_imgboard;
 DROP TABLE bandimg CASCADE CONSTRAINTS;
 DROP TABLE scategory CASCADE CONSTRAINTS;
 DROP TABLE bcategory CASCADE CONSTRAINTS;
+DROP TABLE Profiledata CASCADE CONSTRAINTS;
 DROP TABLE Userinfo CASCADE CONSTRAINTS;
 DROP TABLE login CASCADE CONSTRAINTS;
 DROP TABLE tag_name CASCADE CONSTRAINTS;
-DROP TABLE band_userinfo CASCADE CONSTRAINTS;
-
 
 /*Create Sequence */
 drop sequence seq_board;
@@ -25,10 +24,10 @@ drop sequence seq_imgboard;
 drop sequence seq_tmpimg;
 drop sequence seq_login;
 drop sequence seq_calender;
-
 drop sequence seq_band;
 drop sequence seq_banduserinfo;
 drop sequence seq_bandlist;
+drop sequence seq_profile;
 
 create sequence seq_board;
 create sequence seq_comments;
@@ -36,10 +35,12 @@ create sequence seq_imgboard;
 create sequence seq_tmpimg;
 create sequence seq_login;
 create sequence seq_calender;
-
 create sequence seq_band;
 create sequence seq_banduserinfo;
 create sequence seq_bandlist;
+create sequence seq_profile;
+
+
 
 /* Create Tables */
 
@@ -101,9 +102,9 @@ CREATE TABLE board
 (
 	board_num number(20) NOT NULL,
 	band_num number(20) NOT NULL,
-	userBand_num number(20) NOT NULL,
+	userBand_num number(20) NOT NULL UNIQUE,
 	board_content varchar2(1000) NOT NULL,
-	board_redate timestamp NOT NULL,
+	board_redate date NOT NULL,
 	board_states number(3) NOT NULL,
 	PRIMARY KEY (board_num)
 );
@@ -128,9 +129,9 @@ CREATE TABLE comments
 	board_num number(20) NOT NULL,
 	comments_cotent varchar2(100) NOT NULL,
 	ref number(20) NOT NULL,
+	lev number(5) NOT NULL,
 	step number(5) NOT NULL,
-	comments_date timestamp NOT NULL,
-    comments_state number(5),
+	comments_date date NOT NULL,
 	PRIMARY KEY (comments_Num)
 );
 
@@ -140,20 +141,12 @@ CREATE TABLE imgBoard
 	img_num number(20) NOT NULL,
 	band_num number(20) NOT NULL,
 	board_num number(20) NOT NULL,
-	img_url varchar2(100) NOT NULL,
+	img_url varchar2(50) NOT NULL,
 	img_regdate date NOT NULL,
 	img_states number(3) NOT NULL,
 	PRIMARY KEY (img_num)
 );
 
-
-CREATE TABLE tmp_imgboard(
-    tmp_num number(20) NOT NULL,
-    userband_num number(20) NOT NULL,
-    tmpimg_url varchar2(100) NOT NULL,
-    tmp_state number(5),
-    PRIMARY KEY (tmp_num)
-);
 
 CREATE TABLE login
 (
@@ -163,6 +156,15 @@ CREATE TABLE login
 	login_date date NOT NULL,
 	login_state number(3) NOT NULL,
 	PRIMARY KEY (login_num)
+);
+
+
+CREATE TABLE Profiledata
+(
+	profile_num number(20) NOT NULL,
+	login_num number(20) NOT NULL,
+	User_imgdata blob,
+	PRIMARY KEY (profile_num)
 );
 
 
@@ -203,10 +205,14 @@ CREATE TABLE Userinfo
 	user_gender varchar2(3) NOT NULL,
 	user_quiz varchar2(60) NOT NULL,
 	user_answer varchar2(60) NOT NULL,
-    user_img blob,
+	user_img varchar2(50),
 	user_birth date NOT NULL,
 	PRIMARY KEY (login_num)
 );
+
+insert into login values(9999,'null','null',sysdate,0);
+insert into userinfo values(9999,'null',null,null,'n','null','null',null,sysdate);
+insert into profiledata values(9999,9999,null);
 
 insert into bcategory values(1,'친목/모임','MakingBand/category/1.png');
 insert into bcategory values(2,'취미','MakingBand/category/2.png');
@@ -237,11 +243,133 @@ insert into bcategory values(26,'여행/캠핑','MakingBand/category/26.png');
 
 INSERT INTO SCATEGORY VALUES(1,3,'고양이');
 INSERT INTO SCATEGORY VALUES(2,3,'강아지');
-INSERT INTO SCATEGORY VALUES(3,3,'동물보호');
+INSERT INTO SCATEGORY VALUES(3,3,'이색동물');
+INSERT INTO SCATEGORY VALUES(4,3,'동물보호');
 
-INSERT INTO SCATEGORY VALUES(4,17,'다이어트');
-INSERT INTO SCATEGORY VALUES(5,17,'건강정보');
-INSERT INTO SCATEGORY VALUES(6,17,'피트니스');
+INSERT INTO SCATEGORY VALUES(5,17,'다이어트');
+INSERT INTO SCATEGORY VALUES(6,17,'건강정보');
+INSERT INTO SCATEGORY VALUES(7,17,'피트니스');
+INSERT INTO SCATEGORY VALUES(8,17,'환우모임');
+
+INSERT INTO SCATEGORY VALUES(9,25,'개발/프로그래밍');
+INSERT INTO SCATEGORY VALUES(10,25,'컴퓨터소프트웨어');
+INSERT INTO SCATEGORY VALUES(11,25,'엑셀/PPT/포토샵');
+INSERT INTO SCATEGORY VALUES(12,25,'IT사용자');
+
+INSERT INTO SCATEGORY VALUES(13,16,'진로/입시');
+INSERT INTO SCATEGORY VALUES(14,16,'초등학교 교육');
+INSERT INTO SCATEGORY VALUES(15,16,'중학교 교육');
+INSERT INTO SCATEGORY VALUES(16,16,'고등학교 교육');
+
+INSERT INTO SCATEGORY VALUES(17,1,'학부모');
+INSERT INTO SCATEGORY VALUES(18,1,'군대/정우회');
+INSERT INTO SCATEGORY VALUES(19,1,'친목');
+INSERT INTO SCATEGORY VALUES(20,1,'싱글/솔로');
+
+INSERT INTO SCATEGORY VALUES(21,12,'20대');
+INSERT INTO SCATEGORY VALUES(22,12,'30대');
+INSERT INTO SCATEGORY VALUES(23,12,'40대');
+INSERT INTO SCATEGORY VALUES(24,12,'50대');
+
+INSERT INTO SCATEGORY VALUES(25,21,'좋은글/명언');
+INSERT INTO SCATEGORY VALUES(26,21,'일상');
+INSERT INTO SCATEGORY VALUES(27,21,'운세/사주/타로');
+INSERT INTO SCATEGORY VALUES(28,21,'유머/짤');
+
+INSERT INTO SCATEGORY VALUES(29,2,'독서');
+INSERT INTO SCATEGORY VALUES(30,2,'드론/액션캠/RC');
+INSERT INTO SCATEGORY VALUES(31,2,'DRY/공예');
+INSERT INTO SCATEGORY VALUES(32,2,'보정/배경화면');
+
+INSERT INTO SCATEGORY VALUES(33,13,'자동차');
+INSERT INTO SCATEGORY VALUES(34,13,'바이크/스쿠터');
+INSERT INTO SCATEGORY VALUES(35,13,'전동휠/킥보드');
+INSERT INTO SCATEGORY VALUES(36,13,'축구/풋살');
+
+INSERT INTO SCATEGORY VALUES(37,14,'인터넷방송');
+INSERT INTO SCATEGORY VALUES(38,14,'드라마');
+INSERT INTO SCATEGORY VALUES(39,14,'예능');
+INSERT INTO SCATEGORY VALUES(40,14,'교양/다큐');
+
+INSERT INTO SCATEGORY VALUES(41,23,'유튜버/BJ');
+INSERT INTO SCATEGORY VALUES(42,23,'가수/뮤지션');
+INSERT INTO SCATEGORY VALUES(43,23,'배우');
+INSERT INTO SCATEGORY VALUES(44,23,'아이돌');
+
+INSERT INTO SCATEGORY VALUES(45,15,'비디오/콘솔게임');
+INSERT INTO SCATEGORY VALUES(46,15,'카드/보드게임');
+INSERT INTO SCATEGORY VALUES(47,15,'모바일게임');
+INSERT INTO SCATEGORY VALUES(48,15,'PC게임');
+
+INSERT INTO SCATEGORY VALUES(49,18,'웹툰');
+INSERT INTO SCATEGORY VALUES(50,18,'코믹스');
+INSERT INTO SCATEGORY VALUES(51,18,'애니메이션');
+INSERT INTO SCATEGORY VALUES(52,18,'만화책');
+
+INSERT INTO SCATEGORY VALUES(53,10,'맛집');
+INSERT INTO SCATEGORY VALUES(54,10,'요리/레시피');
+INSERT INTO SCATEGORY VALUES(55,10,'커피/차');
+INSERT INTO SCATEGORY VALUES(56,10,'홈베이킹');
+
+INSERT INTO SCATEGORY VALUES(57,4,'뷰티');
+INSERT INTO SCATEGORY VALUES(58,4,'메이크업');
+INSERT INTO SCATEGORY VALUES(59,4,'헤어');
+INSERT INTO SCATEGORY VALUES(60,4,'네일');
+
+INSERT INTO SCATEGORY VALUES(61,26,'국내여행');
+INSERT INTO SCATEGORY VALUES(62,26,'해외여행');
+INSERT INTO SCATEGORY VALUES(63,26,'배낭여행');
+INSERT INTO SCATEGORY VALUES(64,26,'캠핑/백패킹');
+
+INSERT INTO SCATEGORY VALUES(65,9,'영화');
+INSERT INTO SCATEGORY VALUES(66,9,'공연/뮤지컬');
+INSERT INTO SCATEGORY VALUES(67,9,'미술/전시');
+INSERT INTO SCATEGORY VALUES(68,9,'그림/일러스트');
+
+INSERT INTO SCATEGORY VALUES(69,6,'팝/R&B');
+INSERT INTO SCATEGORY VALUES(70,6,'힙합');
+INSERT INTO SCATEGORY VALUES(71,6,'클래식/재즈음악');
+INSERT INTO SCATEGORY VALUES(72,6,'트로트');
+
+INSERT INTO SCATEGORY VALUES(73,24,'영어');
+INSERT INTO SCATEGORY VALUES(74,24,'일본어');
+INSERT INTO SCATEGORY VALUES(75,24,'중국어');
+INSERT INTO SCATEGORY VALUES(76,24,'통역/번역');
+
+INSERT INTO SCATEGORY VALUES(77,7,'시험/자격증');
+INSERT INTO SCATEGORY VALUES(78,7,'직업교육');
+INSERT INTO SCATEGORY VALUES(79,7,'지업별모임');
+INSERT INTO SCATEGORY VALUES(80,7,'창업');
+
+INSERT INTO SCATEGORY VALUES(81,20,'역사');
+INSERT INTO SCATEGORY VALUES(82,20,'심리학');
+INSERT INTO SCATEGORY VALUES(83,20,'생물학/생명공학');
+INSERT INTO SCATEGORY VALUES(84,20,'인문/철학');
+
+INSERT INTO SCATEGORY VALUES(85,22,'주식');
+INSERT INTO SCATEGORY VALUES(86,22,'부동산');
+INSERT INTO SCATEGORY VALUES(87,22,'세금/세무');
+INSERT INTO SCATEGORY VALUES(88,22,'보험');
+
+INSERT INTO SCATEGORY VALUES(89,19,'시사/토론');
+INSERT INTO SCATEGORY VALUES(90,19,'뉴스');
+INSERT INTO SCATEGORY VALUES(91,19,'시민행동모임');
+INSERT INTO SCATEGORY VALUES(92,19,'정당/정치인');
+
+INSERT INTO SCATEGORY VALUES(93,8,'봉사/자선');
+INSERT INTO SCATEGORY VALUES(94,8,'카톨릭');
+INSERT INTO SCATEGORY VALUES(95,8,'불교');
+INSERT INTO SCATEGORY VALUES(96,8,'천주교');
+
+INSERT INTO SCATEGORY VALUES(97,5,'생활정보');
+INSERT INTO SCATEGORY VALUES(98,5,'인테리어/건축');
+INSERT INTO SCATEGORY VALUES(99,5,'중고/나눔');
+INSERT INTO SCATEGORY VALUES(100,5,'살림');
+
+INSERT INTO SCATEGORY VALUES(101,11,'꽃/식물');
+INSERT INTO SCATEGORY VALUES(102,11,'농사/텃밭가꾸기');
+INSERT INTO SCATEGORY VALUES(103,11,'가축');
+INSERT INTO SCATEGORY VALUES(104,11,'귀농모임');
 
 insert into bandimg values(1,'MakingBand/bandcover/1.jpg');
 insert into bandimg values(2,'MakingBand/bandcover/2.jpg');
@@ -262,7 +390,122 @@ insert into bandimg values(16,'MakingBand/bandcover/16.jpg');
 
 commit;
 
-alter table userinfo
-    add foreign key (login_num)
-    references login (login_num);
-    
+
+
+/* Create Foreign Keys */
+
+ALTER TABLE BandList
+	ADD FOREIGN KEY (band_num)
+	REFERENCES Band (band_num)
+;
+
+
+ALTER TABLE band_userinfo
+	ADD FOREIGN KEY (band_num)
+	REFERENCES Band (band_num)
+;
+
+
+ALTER TABLE board
+	ADD FOREIGN KEY (band_num)
+	REFERENCES Band (band_num)
+;
+
+
+ALTER TABLE calendar
+	ADD FOREIGN KEY (band_num)
+	REFERENCES Band (band_num)
+;
+
+
+ALTER TABLE imgBoard
+	ADD FOREIGN KEY (band_num)
+	REFERENCES Band (band_num)
+;
+
+
+ALTER TABLE tagindex
+	ADD FOREIGN KEY (band_num)
+	REFERENCES Band (band_num)
+;
+
+
+ALTER TABLE Band
+	ADD FOREIGN KEY (bandimgNum)
+	REFERENCES bandimg (bandimgNum)
+;
+
+
+ALTER TABLE board
+	ADD FOREIGN KEY (userBand_num)
+	REFERENCES band_userinfo (userBand_num)
+;
+
+
+ALTER TABLE comments
+	ADD FOREIGN KEY (userBand_num)
+	REFERENCES band_userinfo (userBand_num)
+;
+
+
+ALTER TABLE scategory
+	ADD FOREIGN KEY (bcategoryNum)
+	REFERENCES bcategory (bcategoryNum)
+;
+
+
+ALTER TABLE comments
+	ADD FOREIGN KEY (board_num)
+	REFERENCES board (board_num)
+;
+
+
+ALTER TABLE imgBoard
+	ADD FOREIGN KEY (board_num)
+	REFERENCES board (board_num)
+;
+
+
+ALTER TABLE tagindex
+	ADD FOREIGN KEY (board_num)
+	REFERENCES board (board_num)
+;
+
+
+ALTER TABLE BandList
+	ADD FOREIGN KEY (login_num)
+	REFERENCES login (login_num)
+;
+
+
+ALTER TABLE band_userinfo
+	ADD FOREIGN KEY (login_num)
+	REFERENCES login (login_num)
+;
+
+
+ALTER TABLE Userinfo
+	ADD FOREIGN KEY (login_num)
+	REFERENCES login (login_num)
+;
+
+
+ALTER TABLE Band
+	ADD FOREIGN KEY (scategoryNum)
+	REFERENCES scategory (scategoryNum)
+;
+
+
+ALTER TABLE tagindex
+	ADD FOREIGN KEY (tag_num)
+	REFERENCES tag_name (tag_num)
+;
+
+
+ALTER TABLE Profiledata
+	ADD FOREIGN KEY (login_num)
+	REFERENCES Userinfo (login_num)
+;
+
+
+

@@ -43,22 +43,20 @@ window.addEventListener('load',function(){
 </script>
 <div id="bandListheader">
 <fieldset id="bandList4">
-	<a href="${cp }/SendLogin.do" id="a1">
+	<a href="${cp }/layout.do" id="a3">
 		&nbsp BAND &nbsp 
 	</a>
 </fieldset>
 <form method="post" action="${cp }/bandSerch" id="bandList3" onsubmit="return noSpaceForm()">
 	<input type="text" name="keyword" class="search-query" id="bandList2" placeholder="밴드명, 소개글 검색">
-    	<button type="submit" class="bandList1"> <i class="icon-search"></i> </button>
+    	<button type="submit" class="bandList1"> <i class="fa fa-search"></i> </button>
 </form>
 <div id="div1_makeband">
-	<button type="button" class="bandList1" id="mypage"><i class="icon-user"></i><i id="bandList_triangle">▼</i></button>
+	<button type="button" class="bandList1" id="mypage"><img src="${cp }/profileout.do" style="width: 40px; height: 40px; border-radius: 70%; overflow: hidden;"><i id="bandList_triangle">▼</i></button>
 </div>
 
 <div id="div2_makeband">
-	<ul>
-		<li class="bandList3"><a href="${cp }/MyPage.do" id="a1">마이페이지</a></li>
-    	<li class="bandList3"><a href="${cp }/logout.do" id="a1">로그아웃</a></li>
-    </ul>
+	<a href="${cp }/MyPage.do" id="a1">마이페이지</a><br>
+    <a href="${cp }/logout.do" id="a1">로그아웃</a>
 </div>
 </div>

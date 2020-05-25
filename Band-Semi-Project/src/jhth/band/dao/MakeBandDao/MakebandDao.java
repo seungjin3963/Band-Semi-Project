@@ -10,7 +10,7 @@ import jhth.band.vo.MakeBandVo.MakebandVo;
 import oracle.jdbc.OracleConnection.CommitOption;
 
 public class MakebandDao {
-	public int makeband(MakebandVo vo,long loginNum) {
+	public int makeband(MakebandVo vo,long loginNum,String username) {
 		Connection con=null;
 		PreparedStatement pstmt1=null;
 		PreparedStatement pstmt2=null;
@@ -40,7 +40,7 @@ public class MakebandDao {
 			
 			if(n>0 && num>0) {
 				
-				f=bandinfo(num,loginNum);
+				f=bandinfo(num,loginNum,username);
 				if(f>0) {
 					g=bandListinfo(num, loginNum);
 				}
@@ -56,12 +56,12 @@ public class MakebandDao {
 		}
 	}
 	
-	public int bandinfo(long num,long loginNum) {
+	public int bandinfo(long num,long loginNum,String username) {
 		
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		
-		String bandleader="πÍµÂ¿Â";
+		String bandleader=username;
 		
 		try {
 			con=JDBCUtil.getConn();
@@ -90,6 +90,26 @@ public class MakebandDao {
 			pstmt.setLong(1, num);
 			pstmt.setLong(2, loginNum);
 			int n=pstmt.executeUpdate();
+			return n;
+		} catch (SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JDBCUtil.close(null, pstmt, con);
+		}
+	}
+	
+	public int bandDel(long band_num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		
+		try {
+			con=JDBCUtil.getConn();
+			pstmt=con.prepareStatement("UPDATE BAND SET BAND_STATES=2 WHERE BAND_NUM=?");
+			pstmt.setLong(1, band_num);
+			
+			int n=pstmt.executeUpdate();
+			
 			return n;
 		} catch (SQLException se) {
 			System.out.println(se.getMessage());
