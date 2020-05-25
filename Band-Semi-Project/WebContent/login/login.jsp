@@ -199,8 +199,8 @@
 		if(inputPwd.value != inputPwdOk.value){
 			alert("비밀번호확인이 다릅니다.");
 			return false;
-		}else if(inputPwd.value.length < 7){
-			alert("비밀번호는 7자리 이상 해주세요");
+		}else if(inputPwd.value.length < 4){
+			alert("비밀번호는 4자리 이상 해주세요");
 			return false;
 		}
 		if(year[0].value == 0 || month[0].value == 0 || date[0].value == 0){
@@ -287,8 +287,8 @@
 		if(inputId2 == "" || inputId2 == null){
 			alert("다시 입력해 주세요");
 			return false;
-		}else if(inputId2.length < 7){
-			alert("아이디는 7자리 이상 입력해주세요");
+		}else if(inputId2.length < 4){
+			alert("아이디는 4자리 이상 입력해주세요");
 			return false;
 		}
 		xhr = new XMLHttpRequest();
