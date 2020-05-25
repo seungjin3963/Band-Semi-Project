@@ -138,7 +138,7 @@
 	                </div>
 	                
 	                <br>
-                <div class="text-center">
+                <div class="text-left">
                 	<a href="${cp }/login/findUser.jsp">아이디 / 비밀번호 찾기</a><br>
                 </div>
               </form>

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<link rel="stylesheet" href="${cp }/login/login_css/MyInfo_css.css">
 <link href="${cp }/Resources/css/bootstrap.min.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -438,10 +439,11 @@ var temp=0;
 	}
 </script>
 
-<div class="container-fluid" style="width: 100%">
+<div class="container-fluid" style="width: 70%" id="wrap">
 	<div class="row no-gutter">
-		<h4>내 정보</h4>
-		<div class="row">
+		<h4 id="h4">내 정보</h4>
+		<hr>
+		<div class="row" id="wrap1">
 			<!-- 사용중인 프로필 -->
 			<div class="col-md-3" style="text-align: center;">사용중인 프로필</div>
 			<!-- 밑에 div에 사진 -->
@@ -454,7 +456,8 @@ var temp=0;
 					data-toggle="modal" data-target="#profileChange">
 			</div>
 		</div>
-		<div class="row">
+		<hr>
+		<div class="row" id="wrap2">
 			<!-- 개인정보  -->
 			<div class="col-md-3" style="text-align: center;">개인 정보</div>
 			<div class="col-md-2">생일</div>
@@ -471,7 +474,8 @@ var temp=0;
 				<form id="form1" method="post" style="display: hidden;"></form>
 			</div>
 		</div>
-		<div class="row">
+		<hr>
+		<div class="row" id="wrap3">
 			<div class="col-md-2 col-md-offset-3">성별</div>
 
 			<div id="genderInfo">
@@ -499,7 +503,7 @@ var temp=0;
 				<form id="form2" method="post" style="display: hidden;"></form>
 			</div>
 		</div>
-		<br>
+		<hr>
 		<div class="row">
 			<!-- 로그인 계정 -->
 			<div class="col-md-3" style="text-align: center;">로그인 계정</div>
@@ -517,6 +521,7 @@ var temp=0;
 				<form id="form3" method="post" style="display: hidden;"></form>
 			</div>
 		</div>
+		<hr>
 		<div class="row">
 			<div id="emailInfo">
 				<div class="col-md-2 col-md-offset-3">이메일</div>
@@ -533,11 +538,12 @@ var temp=0;
 				</div>
 			</div>
 		</div>
+		<hr>
 		<div class="row">
 			<div id="pwdInfo">
 				<div class="col-md-2 col-md-offset-3">비밀번호</div>
 				<div id="changepwd">
-					<div class="col-md-5" id="now_pwd">${requestScope.joinVo.login_pwd }</div>
+					<div class="col-md-5" id="now_pwd"></div>
 					<div class="col-md-2">
 						<input class="btn btn-success btn-xs" type="button" value="변경"
 							onclick="change_pwd()">
@@ -550,6 +556,7 @@ var temp=0;
 				</div>
 			</div>
 		</div>
+		<hr>
 		<div class="row">
 			<div class="col-md-2 col-md-offset-3">탈퇴</div>
 			<div class="col-md-2 col-md-offset-5">
@@ -557,6 +564,7 @@ var temp=0;
 					onclick="change_state()">
 			</div>
 		</div>
+		<hr>
 	</div>
 	<br> <br>
 </div>
