@@ -593,7 +593,7 @@
 			</div>
 			<div class="modal-body">
 				<form action="${cp }/profilein.do" method="post"
-					enctype="multipart/form-data" style="text-align: center;">
+					enctype="multipart/form-data" onsubmit="return " style="text-align: center;">
 					<label for="selectimg"> 
 					<img src="${cp }/profileout.do"
 						style="width: 130px; height: 130px; border-radius: 70%; overflow: hiddin;"

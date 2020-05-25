@@ -143,7 +143,6 @@
 	}
 	
 	function categorycheck(){
-		console.log(1);
 		if(scategoryTrandfer.value == ""){
 			alert("세부 카테고리까지 선택해 주세요");
 			return false;
