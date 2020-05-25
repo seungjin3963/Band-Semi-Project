@@ -17,7 +17,7 @@
 					<div style="width: 500px; height: 270px;float:left">
 					<img src="MakingBand/bandcover/1.jpg" id="bcover"
 						style="width: 500px; height: 280px;"> <input type="hidden"
-						value="" id="bandcoverimg" name="bandcover"> <input
+						value="MakingBand/bandcover/1.jpg" id="bandcoverimg" name="bandcover"> <input
 						type="hidden" value="${ sessionScope.login_num }" name="loginnum">
 						</div>
 					<div style="width: 750px; float:left; margin-left: 20px;">
