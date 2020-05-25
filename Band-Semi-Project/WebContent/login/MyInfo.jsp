@@ -9,7 +9,7 @@
 <script src="./Resources/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-var temp=0;
+	var temp=0;
 	function check_input_new_pwd(){
 		var input_now_pwd = document.getElementById("input_now_pwd");
 		var input_new_pwd = document.getElementById("input_new_pwd");
@@ -437,29 +437,33 @@ var temp=0;
 		
 		reader.readAsDataURL(event.target.files[0]);
 	}
+	
+	function go_main(){
+		location.href="${cp}/go_main.do";
+	}
 </script>
 
 <div class="container-fluid" style="width: 70%" id="wrap">
 	<div class="row no-gutter">
-		<h4 id="h4">내 정보</h4>
+		<h2 id="h4">내 정보</h2>
 		<hr>
-		<div class="row" id="wrap1">
+		<div class="row">
 			<!-- 사용중인 프로필 -->
-			<div class="col-md-3" style="text-align: center;">사용중인 프로필</div>
+			<div class="col-md-3" id="wrap1">사용중인 프로필</div>
 			<!-- 밑에 div에 사진 -->
 			<div class="col-md-2">
 				<img src="${cp }/profileout.do" style="width: 100px; height: 100px; border-radius: 70%; overflow: hidden;">
 			</div>
-			<div class="col-md-5">${requestScope.joinVo.user_name }</div>
-			<div class="col-md-2">
+			<div class="col-md-5" id="wrap_name">${requestScope.joinVo.user_name }</div>
+			<div class="col-md-2" id="wrap_button1">
 				<input class="btn btn-success btn-xs" type="button" value="변경"
 					data-toggle="modal" data-target="#profileChange">
 			</div>
 		</div>
 		<hr>
-		<div class="row" id="wrap2">
+		<div class="row">
 			<!-- 개인정보  -->
-			<div class="col-md-3" style="text-align: center;">개인 정보</div>
+			<div class="col-md-3"  id="wrap2">개인 정보</div>
 			<div class="col-md-2">생일</div>
 
 			<div id="birthInfo">
@@ -475,7 +479,7 @@ var temp=0;
 			</div>
 		</div>
 		<hr>
-		<div class="row" id="wrap3">
+		<div class="row">
 			<div class="col-md-2 col-md-offset-3">성별</div>
 
 			<div id="genderInfo">
@@ -506,7 +510,7 @@ var temp=0;
 		<hr>
 		<div class="row">
 			<!-- 로그인 계정 -->
-			<div class="col-md-3" style="text-align: center;">로그인 계정</div>
+			<div class="col-md-3" id="wrap3">로그인 계정</div>
 			<div class="col-md-2">휴대폰 번호</div>
 
 			<div id="phoneInfo">
@@ -566,7 +570,12 @@ var temp=0;
 		</div>
 		<hr>
 	</div>
-	<br> <br>
+	<div class="row">
+		<div class="col-md-2 col-md-offset-10">
+			<a href="#" onclick="go_main();" class="text-success">메인으로 돌아가기 </a>
+		</div>
+	</div>
+	<hr>
 </div>
 <!-- 질문 
  --><div class="modal fade" id="profileChange" role="dialog" aria-labelledby="myCenterModalLabel">

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import jhta.band.bandSerch.Dao.bandDao;
+import jhta.band.bandSerch.Vo.bandSerchVo;
 import jhta.band.dao.UpdateInfoDao;
 import jhth.band.dao.MakeBandDao.BandListDao;
 import jhth.band.vo.MakeBandVo.BandListVo;
@@ -26,19 +28,25 @@ public class LoginStateController extends HttpServlet{
 		int n = dao.updateState(login_num);
 		
 		BandListDao listdao=new BandListDao();
-		ArrayList<BandListVo>bandlist=listdao.band_list(login_num);
 		
-		String file = req.getParameter("file");
-		session.setAttribute("header", "bandList_header.jsp");
+		ArrayList<BandListVo>bandlist=listdao.band_list(login_num);
+
+		String file=req.getParameter("file");
+		
+		req.getSession().setAttribute("header", "bandList_header.jsp");
 		req.setAttribute("bandlist", bandlist);
 		
 		if(file == null) {
 			req.setAttribute("file", "/BandList/bandList.jsp");
 		}else {
-			req.setAttribute("file",file);
+			req.setAttribute("file", file);
 		}
-		session.setAttribute("header", "bandList_header.jsp");
-		req.setAttribute("bandlist", bandlist);
+		
+		req.setAttribute("footer","/serch/random_band.jsp");
+		bandDao dao1=new bandDao();
+		ArrayList<bandSerchVo> random_list=dao1.random();
+		req.setAttribute("random_list",random_list);
+		
 		req.getRequestDispatcher("/MakingBand/bandList_layout.jsp").forward(req,resp);
 	}
 }
