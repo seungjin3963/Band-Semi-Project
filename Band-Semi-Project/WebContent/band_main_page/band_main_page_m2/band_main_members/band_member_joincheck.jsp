@@ -30,7 +30,7 @@
 				<div class="listbandname">
 					<input type="button" value="승인" class="listbandname_input" onclick="approvalYes('${vo.getName() }','${vo.getUser_num() }')">
 					<input type="button" value="거절" class="listbandname_input" onclick="approvalNo('${vo.getName() }','${vo.getUser_num() }')">
-					<div class="listbandname_div"></div>
+					<div class="listbandname_div"><img src="${cp }/userprofile.do?userprofile=${vo.getUser_num() }"></div>
 					<h4>${vo.getName() }</h4>
 					
 					

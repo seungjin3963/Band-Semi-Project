@@ -39,7 +39,7 @@ public class sViewController extends HttpServlet {
 			json.put("band_num", vo.getBand_num());
 			json.put("band_name", vo.getBand_name());
 			json.put("band_intoroductio", vo.getBand_intoroductio());
-			json.put("bandLider", vo.getBandLeader());
+			json.put("bandLeader", vo.getBandLeader());
 			json.put("bandcnt", vo.getBandcnt());
 			jarr.put(json);
 		}
