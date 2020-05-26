@@ -597,6 +597,7 @@
 										    success: function(data) {
 										    	if(data.result=='success'){
 										    		$(comments_list).empty();
+										    		comments_cnt.innerText = "댓글 : " + 0;
 											    	$.ajax({
 										 				type: "post",
 														data: { 

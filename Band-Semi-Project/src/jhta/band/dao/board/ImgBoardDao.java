@@ -186,7 +186,7 @@ public ArrayList<ImgBoardVo> select(long band_num,int startNum, int endNum){
 					"(" + 
 					"    select aa.*,rownum rnum from " + 
 					"    (" + 
-					"        select * from imgboard where band_num=? and img_states!=1 order by img_regdate asc" + 
+					"        select * from imgboard where band_num=? and img_states!=1 order by img_regdate desc" + 
 					"    ) aa" + 
 					") where rnum >=? and rnum <=?";
 			pstmt = con.prepareStatement(sql);

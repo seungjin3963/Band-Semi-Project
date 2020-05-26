@@ -76,7 +76,7 @@ public class HomeController1 extends HttpServlet {
 			paramBANDinfo.setAttribute("imglist", v.getImg_url());
 			
 			}else {
-				paramBANDinfo.setAttribute("imglist", "");
+				paramBANDinfo.setAttribute("imglist", req.getContextPath()+"/upload/image12.jpg");
 			}
 			//유저 번호
 			paramBANDinfo.setAttribute("userband_num", vo.getUser_Band_num());

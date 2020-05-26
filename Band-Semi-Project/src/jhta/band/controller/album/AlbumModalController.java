@@ -31,8 +31,8 @@ public class AlbumModalController extends HttpServlet{
 		JSONObject json = new JSONObject();
 		
 		json.put("img_url", vo.getImg_url());
-		json.put("prevNum", vo.getPrevNum());
-		json.put("nextNum", vo.getNextNum());
+		json.put("prevNum", vo.getNextNum());
+		json.put("nextNum", vo.getPrevNum());
 		
 		resp.setContentType("test/palin;charset=utf-8");
 		PrintWriter pw = resp.getWriter();
